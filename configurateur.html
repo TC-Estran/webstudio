@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurateur — webstudio</title>
+<meta name="description" content="Configurez votre site web en quelques clics et obtenez un devis instantané. Site vitrine ou e-commerce, choisissez vos options.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f172a;
+    --navy-light: #1e293b;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --accent-bg: rgba(99,102,241,0.08);
+    --accent-border: rgba(99,102,241,0.2);
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.1);
+    --red: #ef4444;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #64748b;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --radius: 16px;
+    --radius-pill: 100px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .header-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header-back {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .header-back:hover { color: var(--accent); }
+
+  .header-cta {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    position: sticky;
+    top: 64px;
+    z-index: 99;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transition: width 0.4s ease;
+  }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    align-items: start;
+    min-height: calc(100vh - 67px);
+  }
+
+  /* ── LEFT PANEL ── */
+  .main {
+    padding-right: 48px;
+  }
+
+  /* Steps nav */
+  .steps-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .step-dot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 8px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .step-dot-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .step-dot.active { color: var(--accent); }
+  .step-dot.active .step-dot-num { background: var(--accent); color: #fff; }
+  .step-dot.done { color: var(--green); }
+  .step-dot.done .step-dot-num { background: var(--green); color: #fff; }
+
+  /* Step panel */
+  .step-panel { display: none; animation: fadeIn 0.3s ease; }
+  .step-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .step-subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  /* ── CHOICE CARDS ── */
+  .choice-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .choice-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+
+  .choice-card {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+    position: relative;
+    text-align: left;
+  }
+
+  .choice-card:hover { border-color: var(--accent-light); background: var(--accent-bg); }
+
+  .choice-card.selected {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .choice-card .check {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .choice-card.selected .check {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .choice-card.selected .check::after {
+    content: '';
+    width: 6px; height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+
+  .card-icon { font-size: 32px; margin-bottom: 12px; }
+  .card-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+  .card-desc { font-size: 14px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+
+  .card-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .card-price span { font-size: 13px; font-weight: 500; color: var(--muted); }
+
+  .card-includes {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card-includes li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .card-includes li::before {
+    content: '\2713';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* ── SLIDER ── */
+  .slider-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .slider-label { font-size: 16px; font-weight: 700; color: var(--navy); }
+
+  .slider-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .slider-note { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 100px;
+    background: var(--border);
+    outline: none;
+    margin: 12px 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+  }
+
+  .slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .slider-extra {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .extra-label { color: var(--muted); }
+  .extra-price { font-weight: 700; color: var(--navy); }
+  .extra-price.free { color: var(--green); }
+
+  /* ── CHECKBOXES OPTIONS ── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .option-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .option-card:hover { border-color: var(--accent-light); }
+  .option-card.selected { border-color: var(--accent); background: var(--accent-bg); }
+
+  .option-check {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+    transition: all 0.2s;
+  }
+
+  .option-card.selected .option-check {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .option-card.selected .option-check::after {
+    content: '';
+    width: 5px; height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+
+  .option-body { flex: 1; }
+  .option-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .option-desc { font-size: 13px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
+  .option-price { font-size: 15px; font-weight: 800; color: var(--accent); }
+
+  /* Maintenance option */
+  .maintenance-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+
+  .maintenance-card:hover { border-color: var(--accent-light); }
+  .maintenance-card.selected { border-color: var(--accent); background: var(--accent-bg); }
+
+  .maintenance-left { display: flex; align-items: center; gap: 14px; }
+  .maintenance-icon { font-size: 24px; }
+  .maintenance-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .maintenance-desc { font-size: 13px; color: var(--muted); }
+  .maintenance-price { font-size: 18px; font-weight: 800; color: var(--accent); }
+
+  /* ── COLOR PICKER ── */
+  .color-section { margin-bottom: 28px; }
+  .color-label { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+
+  .color-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .color-preset {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .color-preset.selected {
+    border-color: var(--navy);
+    transform: scale(1.1);
+  }
+
+  .color-preset.selected::after {
+    content: '\2713';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .color-custom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .color-custom input[type="color"] {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 2px;
+    background: var(--white);
+  }
+
+  /* Style mood */
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .mood-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .mood-card:hover { border-color: var(--accent-light); }
+  .mood-card.selected { border-color: var(--accent); background: var(--accent-bg); }
+
+  .mood-preview {
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .mood-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .mood-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── NAV BUTTONS ── */
+  .nav-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .btn-primary:hover { background: #4f46e5; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover { background: var(--border); color: var(--navy); }
+
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* ── RIGHT PANEL — PRICE ── */
+  .price-panel {
+    position: sticky;
+    top: 88px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .price-header {
+    background: var(--navy);
+    padding: 20px 24px;
+    color: #fff;
+  }
+
+  .price-header-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+  }
+
+  .price-total {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .price-total span { font-size: 18px; font-weight: 500; opacity: 0.6; }
+
+  .price-maintenance {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+
+  .price-body { padding: 20px 24px; }
+
+  .price-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .price-line:last-child { border-bottom: none; }
+
+  .price-line-label { color: var(--muted); }
+  .price-line-value { font-weight: 700; color: var(--navy); }
+  .price-line-value.free { color: var(--green); }
+  .price-line-value.accent { color: var(--accent); }
+
+  .price-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  .price-cta {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-cta {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-cta:hover { background: #4f46e5; transform: translateY(-1px); }
+
+  .price-trust {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* ── RECAP ── */
+  .recap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .recap-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .recap-card-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .recap-card-value { font-size: 18px; font-weight: 800; color: var(--navy); }
+
+  .color-swatch {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-label { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: block; }
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--navy);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--accent); }
+
+  /* ── SUCCESS STATE ── */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .success-overlay.active { display: flex; }
+
+  .success-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 48px;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease;
+  }
+
+  .success-icon { font-size: 64px; margin-bottom: 20px; }
+  .success-title { font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+  .success-desc { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+
+  .success-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .success-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+
+  /* ── RESPONSIVE — tablette (max 900px) ── */
+  @media (max-width: 900px) {
+    .header { padding: 0 20px; }
+    .layout {
+      grid-template-columns: 1fr;
+      padding: 24px 16px;
+      min-height: auto;
+    }
+    .main { padding-right: 0; }
+    .price-panel { position: static; margin-bottom: 24px; order: -1; }
+    .choice-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .options-grid { grid-template-columns: 1fr 1fr; }
+    .mood-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .recap-grid { grid-template-columns: 1fr 1fr; }
+    .steps-nav { display: none; }
+    .maintenance-card { flex-direction: row; }
+  }
+
+  /* ── RESPONSIVE — grand mobile (max 640px) ── */
+  @media (max-width: 640px) {
+    .header { padding: 0 16px; }
+    .header-cta { display: none; }
+    .layout { padding: 16px 12px; }
+    .choice-grid.cols-2 { grid-template-columns: 1fr; }
+    .options-grid { grid-template-columns: 1fr; }
+    .mood-grid { grid-template-columns: 1fr 1fr; }
+    .recap-grid { grid-template-columns: 1fr; }
+    .slider-wrap { padding: 20px; }
+    .slider-value { font-size: 22px; }
+    .step-title { font-size: clamp(20px, 5vw, 28px); }
+    .nav-btns { flex-direction: column-reverse; gap: 10px; }
+    .btn-primary { max-width: none; }
+    .maintenance-card { flex-direction: column; gap: 12px; text-align: center; }
+    .maintenance-left { flex-direction: column; }
+    .success-card { padding: 32px 24px; margin: 0 16px; }
+  }
+
+  /* ── RESPONSIVE — mobile (max 400px) ── */
+  @media (max-width: 400px) {
+    .mood-grid { grid-template-columns: 1fr; }
+    .choice-card { padding: 16px; }
+    .card-price { font-size: 18px; }
+  }
+
+  /* empty state for price lines */
+  .price-empty { font-size: 13px; color: var(--muted); font-style: italic; text-align: center; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">web<span>studio</span></a>
+  <div class="header-links">
+    <a href="index.html" class="header-back">&larr; Retour au site</a>
+    <div class="header-cta">Des questions ? <strong>contact@webstudio.fr</strong></div>
+  </div>
+</header>
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
+</div>
+
+<div class="layout">
+
+  <!-- ── LEFT ── -->
+  <div class="main">
+
+    <!-- Steps nav -->
+    <div class="steps-nav" id="stepsNav">
+      <button class="step-dot active" onclick="goTo(0)"><div class="step-dot-num">1</div> Type de site</button>
+      <button class="step-dot" onclick="goTo(1)"><div class="step-dot-num">2</div> Structure</button>
+      <button class="step-dot" onclick="goTo(2)" id="stepNav2"><div class="step-dot-num">3</div> Produits</button>
+      <button class="step-dot" onclick="goTo(3)"><div class="step-dot-num">4</div> Fonctionnalités</button>
+      <button class="step-dot" onclick="goTo(4)"><div class="step-dot-num">5</div> Design</button>
+      <button class="step-dot" onclick="goTo(5)"><div class="step-dot-num">6</div> Votre activité</button>
+      <button class="step-dot" onclick="goTo(6)"><div class="step-dot-num">7</div> Récapitulatif</button>
+    </div>
+
+    <!-- ── STEP 1 — TYPE ── -->
+    <div class="step-panel active" id="step0">
+      <div class="step-label">Étape 1 sur 7</div>
+      <div class="step-title">Quel type de site<br>souhaitez-vous ?</div>
+      <div class="step-subtitle">Cela détermine la base de votre projet et les fonctionnalités disponibles.</div>
+
+      <div class="choice-grid cols-2">
+        <div class="choice-card" id="card-vitrine" onclick="selectType('vitrine')">
+          <div class="check"></div>
+          <div class="card-icon">&#127968;</div>
+          <div class="card-title">Site vitrine</div>
+          <div class="card-desc">Présentez votre activité, vos services ou votre portfolio. Idéal pour les indépendants, artisans et PME.</div>
+          <div class="card-price">599&#8364; <span>de base</span></div>
+          <ul class="card-includes">
+            <li>5 sections incluses</li>
+            <li>Formulaire de contact</li>
+            <li>Responsive mobile</li>
+            <li>1 revision incluse</li>
+          </ul>
+        </div>
+
+        <div class="choice-card" id="card-ecommerce" onclick="selectType('ecommerce')">
+          <div class="check"></div>
+          <div class="card-icon">&#128722;</div>
+          <div class="card-title">Site e-commerce</div>
+          <div class="card-desc">Vendez vos produits en ligne avec un catalogue, un panier et un paiement sécurisé intégrés.</div>
+          <div class="card-price">1 299&#8364; <span>de base</span></div>
+          <ul class="card-includes">
+            <li>5 sections incluses</li>
+            <li>5 fiches produit incluses</li>
+            <li>Paiement Stripe intégré</li>
+            <li>Gestion des stocks</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-primary" onclick="nextStep()" id="btn0" disabled>Continuer &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2 — SECTIONS ── -->
+    <div class="step-panel" id="step1">
+      <div class="step-label">Étape 2 sur 7</div>
+      <div class="step-title">Combien de sections<br>pour votre site ?</div>
+      <div class="step-subtitle">Une section = un bloc de contenu (hero, services, témoignages, FAQ, etc.). 5 sont incluses dans votre formule.</div>
+
+      <div class="slider-wrap">
+        <div class="slider-header">
+          <div>
+            <div class="slider-label">Nombre de sections</div>
+            <div class="slider-note">5 incluses dans votre formule</div>
+          </div>
+          <div class="slider-value" id="sectionVal">5</div>
+        </div>
+        <input type="range" min="1" max="20" value="5" id="sectionSlider" oninput="updateSections(this.value)">
+        <div class="slider-ticks"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+        <div class="slider-extra">
+          <span class="extra-label" id="sectionExtraLabel">Sections supplémentaires</span>
+          <span class="extra-price free" id="sectionExtraPrice">Incluses ✓</span>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Retour</button>
+        <button class="btn btn-primary" onclick="nextStep()">Continuer &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3 — PRODUITS ── -->
+    <div class="step-panel" id="step2">
+      <div class="step-label">Étape 3 sur 7</div>
+      <div class="step-title">Combien de fiches<br>produit ?</div>
+      <div class="step-subtitle">Les 5 premières fiches sont incluses. Chaque fiche supplémentaire est facturée 10&#8364;.</div>
+
+      <div class="slider-wrap" id="productSliderWrap">
+        <div class="slider-header">
+          <div>
+            <div class="slider-label">Nombre de fiches produit</div>
+            <div class="slider-note">5 incluses dans votre formule e-commerce</div>
+          </div>
+          <div class="slider-value" id="productVal">5</div>
+        </div>
+        <input type="range" min="1" max="100" value="5" id="productSlider" oninput="updateProducts(this.value)">
+        <div class="slider-ticks"><span>1</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+        <div class="slider-extra">
+          <span class="extra-label" id="productExtraLabel">Fiches supplémentaires</span>
+          <span class="extra-price free" id="productExtraPrice">Incluses &#10003;</span>
+        </div>
+      </div>
+
+      <!-- Si vitrine, on skip -->
+      <div id="vitrineProductMsg" style="display:none;">
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:14px; padding:24px; text-align:center;">
+          <div style="font-size:32px; margin-bottom:8px;">&#10004;&#65039;</div>
+          <div style="font-size:16px; font-weight:700; color:#166534;">Site vitrine sélectionné</div>
+          <div style="font-size:14px; color:#15803d; margin-top:4px;">Pas de fiches produit nécessaires — on passe à l'étape suivante.</div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Retour</button>
+        <button class="btn btn-primary" onclick="nextStep()">Continuer &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4 — OPTIONS ── -->
+    <div class="step-panel" id="step3">
+      <div class="step-label">Étape 4 sur 7</div>
+      <div class="step-title">Quelles fonctionnalités<br>souhaitez-vous ?</div>
+      <div class="step-subtitle">Optionnel — ajoutez uniquement ce dont vous avez besoin.</div>
+
+      <div class="options-grid">
+        <div class="option-card" onclick="toggleOption(this, 'blog', 199)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#128221; Blog intégré</div>
+            <div class="option-desc">Publiez des articles, améliorez votre référencement naturel.</div>
+            <div class="option-price">+199&#8364;</div>
+          </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 'galerie', 99)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#128247; Galerie photo</div>
+            <div class="option-desc">Galerie responsive avec lightbox et catégories.</div>
+            <div class="option-price">+99&#8364;</div>
+          </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 'reservation', 149)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#128197; Réservation en ligne</div>
+            <div class="option-desc">Système de prise de rendez-vous ou réservation intégré.</div>
+            <div class="option-price">+149&#8364;</div>
+          </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 'bilingue', 249)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#127758; Site bilingue</div>
+            <div class="option-desc">Version en 2 langues (FR + EN ou autre).</div>
+            <div class="option-price">+249&#8364;</div>
+          </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 'seo', 199)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#128269; Pack SEO</div>
+            <div class="option-desc">Optimisation balises, vitesse, sitemap et Google Search Console.</div>
+            <div class="option-price">+199&#8364;</div>
+          </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 'logo', 249)">
+          <div class="option-check"></div>
+          <div class="option-body">
+            <div class="option-name">&#127912; Création de logo</div>
+            <div class="option-desc">Logo professionnel livré en PNG, SVG et PDF.</div>
+            <div class="option-price">+249&#8364;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maintenance-card" id="maintenanceCard" onclick="toggleMaintenance()">
+        <div class="maintenance-left">
+          <div class="maintenance-icon">&#128295;</div>
+          <div>
+            <div class="maintenance-name">Maintenance mensuelle</div>
+            <div class="maintenance-desc">Mises à jour, sauvegardes, support prioritaire. Sans engagement.</div>
+          </div>
+        </div>
+        <div class="maintenance-price">+39&#8364;/mois</div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Retour</button>
+        <button class="btn btn-primary" onclick="nextStep()">Continuer &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5 — DESIGN ── -->
+    <div class="step-panel" id="step4">
+      <div class="step-label">Étape 5 sur 7</div>
+      <div class="step-title">Choisissez votre<br>identité visuelle</div>
+      <div class="step-subtitle">Ces choix sont indicatifs — ils guident votre designer pour le rendu final.</div>
+
+      <div class="color-section">
+        <div class="color-label">Couleur principale</div>
+        <div class="color-presets" id="primaryPresets">
+          <div class="color-preset selected" style="background:#6366f1" data-color="#6366f1" onclick="selectColor('primary', '#6366f1', this)"></div>
+          <div class="color-preset" style="background:#0ea5e9" data-color="#0ea5e9" onclick="selectColor('primary', '#0ea5e9', this)"></div>
+          <div class="color-preset" style="background:#22c55e" data-color="#22c55e" onclick="selectColor('primary', '#22c55e', this)"></div>
+          <div class="color-preset" style="background:#f59e0b" data-color="#f59e0b" onclick="selectColor('primary', '#f59e0b', this)"></div>
+          <div class="color-preset" style="background:#ef4444" data-color="#ef4444" onclick="selectColor('primary', '#ef4444', this)"></div>
+          <div class="color-preset" style="background:#ec4899" data-color="#ec4899" onclick="selectColor('primary', '#ec4899', this)"></div>
+          <div class="color-preset" style="background:#0f172a" data-color="#0f172a" onclick="selectColor('primary', '#0f172a', this)"></div>
+          <div class="color-preset" style="background:#7c3aed" data-color="#7c3aed" onclick="selectColor('primary', '#7c3aed', this)"></div>
+        </div>
+        <div class="color-custom">
+          <input type="color" value="#6366f1" id="primaryCustom" oninput="selectColor('primary', this.value, null); document.getElementById('primaryHex').value = this.value;">
+          <input type="text" id="primaryHex" value="#6366f1" placeholder="#000000" maxlength="7"
+            style="width:90px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:monospace;outline:none;transition:border-color .2s;"
+            oninput="onHexInput('primary', this.value)">
+          <span>ou entrez un code hex</span>
+        </div>
+      </div>
+
+      <div class="color-section">
+        <div class="color-label">Couleur secondaire / fond</div>
+        <div class="color-presets" id="secondaryPresets">
+          <div class="color-preset selected" style="background:#f8fafc; border:1px solid #e2e8f0" data-color="#f8fafc" onclick="selectColor('secondary', '#f8fafc', this)"></div>
+          <div class="color-preset" style="background:#fef3c7" data-color="#fef3c7" onclick="selectColor('secondary', '#fef3c7', this)"></div>
+          <div class="color-preset" style="background:#dcfce7" data-color="#dcfce7" onclick="selectColor('secondary', '#dcfce7', this)"></div>
+          <div class="color-preset" style="background:#e0e7ff" data-color="#e0e7ff" onclick="selectColor('secondary', '#e0e7ff', this)"></div>
+          <div class="color-preset" style="background:#fce7f3" data-color="#fce7f3" onclick="selectColor('secondary', '#fce7f3', this)"></div>
+          <div class="color-preset" style="background:#1e293b" data-color="#1e293b" onclick="selectColor('secondary', '#1e293b', this)"></div>
+        </div>
+        <div class="color-custom">
+          <input type="color" value="#f8fafc" id="secondaryCustom" oninput="selectColor('secondary', this.value, null); document.getElementById('secondaryHex').value = this.value;">
+          <input type="text" id="secondaryHex" value="#f8fafc" placeholder="#ffffff" maxlength="7"
+            style="width:90px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:monospace;outline:none;transition:border-color .2s;"
+            oninput="onHexInput('secondary', this.value)">
+          <span>ou entrez un code hex</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 8px;">
+        <div class="color-label">Style general</div>
+        <div class="mood-grid">
+          <div class="mood-card selected" id="mood-moderne" onclick="selectMood('Moderne & épuré', this)">
+            <div class="mood-preview">
+              <div style="width:30%; background:#6366f1;"></div>
+              <div style="flex:1; background:#f8fafc; display:flex; flex-direction:column; justify-content:center; padding:8px; gap:4px;">
+                <div style="height:6px; background:#0f172a; border-radius:3px; width:70%;"></div>
+                <div style="height:4px; background:#e2e8f0; border-radius:3px;"></div>
+              </div>
+            </div>
+            <div class="mood-name">Moderne & épuré</div>
+            <div class="mood-desc">Minimaliste, beaucoup d'espace</div>
+          </div>
+
+          <div class="mood-card" id="mood-chaleureux" onclick="selectMood('Chaleureux & humain', this)">
+            <div class="mood-preview">
+              <div style="flex:1; background:#fef9f0; display:flex; flex-direction:column; justify-content:center; padding:8px; gap:4px;">
+                <div style="height:6px; background:#92400e; border-radius:3px; width:80%;"></div>
+                <div style="height:4px; background:#fcd34d; border-radius:3px; width:50%;"></div>
+                <div style="height:4px; background:#e5e7eb; border-radius:3px;"></div>
+              </div>
+            </div>
+            <div class="mood-name">Chaleureux & humain</div>
+            <div class="mood-desc">Tons chauds, typographie douce</div>
+          </div>
+
+          <div class="mood-card" id="mood-premium" onclick="selectMood('Premium & sombre', this)">
+            <div class="mood-preview">
+              <div style="flex:1; background:#0f172a; display:flex; flex-direction:column; justify-content:center; padding:8px; gap:4px;">
+                <div style="height:6px; background:#f8fafc; border-radius:3px; width:70%;"></div>
+                <div style="height:4px; background:#6366f1; border-radius:3px; width:40%;"></div>
+                <div style="height:4px; background:#334155; border-radius:3px;"></div>
+              </div>
+            </div>
+            <div class="mood-name">Premium & sombre</div>
+            <div class="mood-desc">Dark mode, look luxe</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Retour</button>
+        <button class="btn btn-primary" onclick="nextStep()">Continuer &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 6 — VOTRE ACTIVITÉ ── -->
+    <div class="step-panel" id="step5">
+      <div class="step-label">Étape 6 sur 7</div>
+      <div class="step-title">Parlez-nous<br>de votre activité</div>
+      <div class="step-subtitle">Ces informations nous permettent de préparer votre devis précisément et d'adapter votre site à votre secteur.</div>
+
+      <!-- Identité -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;">
+        <div class="color-label" style="margin-bottom:16px;">Votre entreprise</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label class="form-label">Nom de l'entreprise / marque *</label>
+            <input type="text" class="form-input" id="infoEntreprise" placeholder="Ex : Boulangerie Martin">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Secteur d'activité *</label>
+            <select class="form-input" id="infoSecteur">
+              <option value="">Choisir...</option>
+              <option>Restaurant / Café / Bar / Snack</option>
+              <option>Boulangerie / Pâtisserie</option>
+              <option>Artisan / Bâtiment / Rénovation</option>
+              <option>Commerce / Boutique</option>
+              <option>Institut de beauté / Coiffure / Bien-être</option>
+              <option>Professionnel de santé</option>
+              <option>Coach / Formateur / Consultant</option>
+              <option>Hôtel / Chambre d'hôtes / Gîte</option>
+              <option>Association / Événementiel</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coordonnées -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;">
+        <div class="color-label" style="margin-bottom:16px;">Coordonnées de contact</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label class="form-label">Nom / Prénom *</label>
+            <input type="text" class="form-input" id="formName" placeholder="Jean Dupont">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Téléphone *</label>
+            <input type="tel" class="form-input" id="infoTel" placeholder="06 00 00 00 00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email professionnel *</label>
+            <input type="email" class="form-input" id="formEmail" placeholder="contact@monentreprise.fr">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ville / Localisation *</label>
+            <input type="text" class="form-input" id="infoVille" placeholder="Ex : Caen, Normandie">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Adresse complète <span style="font-weight:400;color:var(--muted)">(optionnel)</span></label>
+            <input type="text" class="form-input" id="infoAdresse" placeholder="12 rue de la Paix, 14000 Caen">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Site web actuel <span style="font-weight:400;color:var(--muted)">(si refonte)</span></label>
+            <input type="url" class="form-input" id="infoSiteActuel" placeholder="https://monsite.fr">
+          </div>
+        </div>
+      </div>
+
+      <!-- Horaires & réseaux -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;">
+        <div class="color-label" style="margin-bottom:16px;">Présence & horaires</div>
+        <div class="form-group">
+          <label class="form-label">Horaires d'ouverture <span style="font-weight:400;color:var(--muted)">(si applicable)</span></label>
+          <textarea class="form-input" id="infoHoraires" rows="3" placeholder="Lun-Ven : 9h-19h&#10;Sam : 9h-13h&#10;Dim : Fermé"></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Réseaux sociaux <span style="font-weight:400;color:var(--muted)">(liens ou @username)</span></label>
+          <input type="text" class="form-input" id="infoReseaux" placeholder="Instagram : @monbusiness · Facebook : facebook.com/...">
+        </div>
+      </div>
+
+      <!-- Contenus -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px;">
+        <div class="color-label" style="margin-bottom:16px;">Vos contenus</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Vous avez déjà un logo ?</label>
+            <select class="form-input" id="infoLogo">
+              <option value="oui">Oui, j'ai un logo</option>
+              <option value="non">Non, je n'en ai pas</option>
+              <option value="a-refaire">J'en ai un mais à refaire</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Textes & photos prêts ?</label>
+            <select class="form-input" id="infoContenus">
+              <option value="oui">Oui, j'ai tout</option>
+              <option value="partiel">En partie — j'ai besoin d'aide</option>
+              <option value="non">Non, je pars de zéro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:16px;margin-bottom:0;">
+          <label class="form-label">Informations complémentaires <span style="font-weight:400;color:var(--muted)">(optionnel)</span></label>
+          <textarea class="form-input" id="formMessage" rows="3" placeholder="Des précisions sur votre projet, vos attentes, un délai particulier..."></textarea>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Retour</button>
+        <button class="btn btn-primary" onclick="nextStep()">Voir le récapitulatif &#8594;</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 7 — RECAP ── -->
+    <div class="step-panel" id="step6">
+      <div class="step-label">Récapitulatif</div>
+      <div class="step-title">Votre projet en<br>un coup d'œil</div>
+      <div class="step-subtitle">Vérifiez votre configuration avant d'envoyer votre demande de devis.</div>
+
+      <div class="recap-grid" id="recapGrid"></div>
+
+      <div class="nav-btns">
+        <button class="btn btn-secondary" onclick="prevStep()">&larr; Modifier</button>
+        <button class="btn btn-primary" style="max-width:none; flex:1; padding:16px; font-size:16px;" onclick="submitForm()">Envoyer ma demande de devis &rarr;</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── RIGHT — PRICE PANEL ── -->
+  <div class="price-panel">
+    <div class="price-header">
+      <div class="price-header-label">Estimation en temps reel</div>
+      <div class="price-total" id="priceTotal">0&#8364;</div>
+      <div class="price-maintenance" id="priceMaintenance" style="display:none">+ 39&#8364;/mois (maintenance)</div>
+    </div>
+
+    <div class="price-body" id="priceBody">
+      <div class="price-empty">Commencez à configurer votre site pour voir l'estimation.</div>
+    </div>
+
+    <div class="price-cta">
+      <button class="btn-cta" onclick="goTo(6)">Voir le récapitulatif</button>
+      <div class="price-trust">&#128274; Devis gratuit &middot; Sans engagement</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Success overlay -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">&#127881;</div>
+    <div class="success-title">Demande envoyee !</div>
+    <div class="success-desc">Merci pour votre confiance. Vous recevrez un devis détaillé et personnalisé dans les 24 heures. On a hâte de travailler sur votre projet.</div>
+    <a href="index.html" class="success-btn">Retour au site &rarr;</a>
+  </div>
+</div>
+
+<script>
+  // ── STATE ──
+  const state = {
+    type: null,
+    sections: 5,
+    products: 5,
+    options: {},
+    maintenance: false,
+    primaryColor: '#6366f1',
+    secondaryColor: '#f8fafc',
+    mood: 'Moderne & épuré',
+  };
+
+  const PRICES = {
+    vitrine: 599,
+    ecommerce: 1299,
+    sectionExtra: 75,
+    productExtra: 10,
+    maintenance: 39,
+  };
+
+  let currentStep = 0;
+  const TOTAL_STEPS = 7;
+
+  // ── NAVIGATION ──
+  function goTo(n) {
+    if (n > 0 && !state.type) return;
+    document.querySelectorAll('.step-panel').forEach((p, i) => {
+      p.classList.toggle('active', i === n);
+    });
+    document.querySelectorAll('.step-dot').forEach((d, i) => {
+      d.classList.remove('active', 'done');
+      if (i === n) d.classList.add('active');
+      else if (i < n) d.classList.add('done');
+    });
+    currentStep = n;
+    document.getElementById('progressFill').style.width = `${((n + 1) / TOTAL_STEPS) * 100}%`;
+
+    if (n === 2) {
+      const isEco = state.type === 'ecommerce';
+      document.getElementById('productSliderWrap').style.display = isEco ? '' : 'none';
+      document.getElementById('vitrineProductMsg').style.display = isEco ? 'none' : '';
+    }
+
+    if (n === 6) buildRecap();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextStep() { goTo(currentStep + 1); }
+  function prevStep() { goTo(currentStep - 1); }
+
+  // ── TYPE ──
+  function selectType(type) {
+    state.type = type;
+    document.getElementById('card-vitrine').classList.toggle('selected', type === 'vitrine');
+    document.getElementById('card-ecommerce').classList.toggle('selected', type === 'ecommerce');
+    document.getElementById('btn0').disabled = false;
+    if (type === 'vitrine') state.products = 0;
+    else state.products = 5;
+    updatePrice();
+  }
+
+  // ── SECTIONS ──
+  function updateSections(val) {
+    val = parseInt(val);
+    state.sections = val;
+    document.getElementById('sectionVal').textContent = val;
+    const extra = Math.max(0, val - 5);
+    const extraCost = extra * PRICES.sectionExtra;
+    document.getElementById('sectionExtraLabel').textContent =
+      extra > 0 ? `${extra} section(s) supplémentaire(s)` : 'Sections supplémentaires';
+    const priceEl = document.getElementById('sectionExtraPrice');
+    if (extra === 0) {
+      priceEl.textContent = 'Incluses \u2713';
+      priceEl.className = 'extra-price free';
+    } else {
+      priceEl.textContent = `+${extraCost}\u20AC`;
+      priceEl.className = 'extra-price accent';
+    }
+    updatePrice();
+  }
+
+  // ── PRODUCTS ──
+  function updateProducts(val) {
+    val = parseInt(val);
+    state.products = val;
+    document.getElementById('productVal').textContent = val;
+    const extra = Math.max(0, val - 5);
+    const extraCost = extra * PRICES.productExtra;
+    document.getElementById('productExtraLabel').textContent =
+      extra > 0 ? `${extra} fiche(s) supplémentaire(s)` : 'Fiches supplémentaires';
+    const priceEl = document.getElementById('productExtraPrice');
+    if (extra === 0) {
+      priceEl.textContent = 'Incluses \u2713';
+      priceEl.className = 'extra-price free';
+    } else {
+      priceEl.textContent = `+${extraCost}\u20AC`;
+      priceEl.className = 'extra-price accent';
+    }
+    updatePrice();
+  }
+
+  // ── OPTIONS ──
+  function toggleOption(card, key, price) {
+    card.classList.toggle('selected');
+    if (card.classList.contains('selected')) state.options[key] = price;
+    else delete state.options[key];
+    updatePrice();
+  }
+
+  function toggleMaintenance() {
+    state.maintenance = !state.maintenance;
+    document.getElementById('maintenanceCard').classList.toggle('selected', state.maintenance);
+    updatePrice();
+  }
+
+  // ── HEX INPUT ──
+  function onHexInput(which, val) {
+    if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+      selectColor(which, val, null);
+      document.getElementById(which + 'Custom').value = val;
+    }
+  }
+
+  // ── COLORS ──
+  function selectColor(which, color, el) {
+    state[which + 'Color'] = color;
+    const container = which === 'primary' ? 'primaryPresets' : 'secondaryPresets';
+    document.querySelectorAll(`#${container} .color-preset`).forEach(p => p.classList.remove('selected'));
+    if (el) el.classList.add('selected');
+    document.getElementById(which + 'Custom').value = color;
+  }
+
+  function selectMood(mood, el) {
+    state.mood = mood;
+    document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // ── PRICE ──
+  function calcTotal() {
+    if (!state.type) return 0;
+    let total = PRICES[state.type];
+    const extraSections = Math.max(0, state.sections - 5);
+    total += extraSections * PRICES.sectionExtra;
+    if (state.type === 'ecommerce') {
+      const extraProducts = Math.max(0, state.products - 5);
+      total += extraProducts * PRICES.productExtra;
+    }
+    for (const v of Object.values(state.options)) total += v;
+    return total;
+  }
+
+  function updatePrice() {
+    const total = calcTotal();
+    document.getElementById('priceTotal').textContent = total > 0 ? `${total.toLocaleString('fr-FR')}\u20AC` : '\u2014';
+    document.getElementById('priceMaintenance').style.display = state.maintenance ? '' : 'none';
+
+    const body = document.getElementById('priceBody');
+    if (!state.type) {
+      body.innerHTML = '<div class="price-empty">Commencez à configurer votre site pour voir l\'estimation.</div>';
+      return;
+    }
+
+    let html = '';
+    const baseName = state.type === 'vitrine' ? 'Site vitrine' : 'Site e-commerce';
+    html += line(baseName, `${PRICES[state.type]}\u20AC`);
+
+    const extraSec = Math.max(0, state.sections - 5);
+    if (extraSec > 0) html += line(`+${extraSec} section(s)`, `+${extraSec * PRICES.sectionExtra}\u20AC`, 'accent');
+    else html += line('5 sections', 'incluses', 'free');
+
+    if (state.type === 'ecommerce') {
+      const extraProd = Math.max(0, state.products - 5);
+      if (extraProd > 0) html += line(`+${extraProd} fiche(s) produit`, `+${extraProd * PRICES.productExtra}\u20AC`, 'accent');
+      else html += line('5 fiches produit', 'incluses', 'free');
+    }
+
+    const optionNames = { blog:'Blog', galerie:'Galerie photo', reservation:'Réservation', bilingue:'Bilingue', seo:'Pack SEO', logo:'Logo' };
+    for (const [k, v] of Object.entries(state.options)) {
+      html += line(optionNames[k] || k, `+${v}\u20AC`, 'accent');
+    }
+
+    if (state.maintenance) html += line('Maintenance', '+39\u20AC/mois', 'accent');
+
+    html += '<div class="price-divider"></div>';
+    html += `<div class="price-line"><span class="price-line-label" style="font-weight:700;color:var(--navy)">Total estimé</span><span class="price-line-value" style="font-size:18px;color:var(--accent)">${total.toLocaleString('fr-FR')}\u20AC</span></div>`;
+
+    body.innerHTML = html;
+  }
+
+  function line(label, value, cls = '') {
+    return `<div class="price-line"><span class="price-line-label">${label}</span><span class="price-line-value ${cls}">${value}</span></div>`;
+  }
+
+  // ── RECAP ──
+  function buildRecap() {
+    const optionLabels = { blog:'Blog', galerie:'Galerie photo', reservation:'Réservation', bilingue:'Bilingue', seo:'Pack SEO', logo:'Logo' };
+    const optList = Object.keys(state.options).map(k => optionLabels[k]).join(', ') || 'Aucune';
+    const total = calcTotal();
+
+    const entreprise = document.getElementById('infoEntreprise').value || '—';
+    const secteur    = document.getElementById('infoSecteur').value || '—';
+    const nom        = document.getElementById('formName').value || '—';
+    const tel        = document.getElementById('infoTel').value || '—';
+    const email      = document.getElementById('formEmail').value || '—';
+    const ville      = document.getElementById('infoVille').value || '—';
+    const adresse    = document.getElementById('infoAdresse').value || '';
+    const siteActuel = document.getElementById('infoSiteActuel').value || '—';
+    const horaires   = document.getElementById('infoHoraires').value || '—';
+    const reseaux    = document.getElementById('infoReseaux').value || '—';
+    const logoVal    = document.getElementById('infoLogo').value;
+    const contenus   = document.getElementById('infoContenus').value;
+    const logoLabels   = { oui: 'Oui', non: 'Non', 'a-refaire': 'À refaire' };
+    const contenuLabels = { oui: 'Tout est prêt', partiel: 'En partie', non: 'Pas encore' };
+
+    const grid = document.getElementById('recapGrid');
+    grid.innerHTML = `
+      <div class="recap-card" style="grid-column:1/-1;background:var(--accent);border-color:var(--accent);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div class="recap-card-label" style="color:rgba(255,255,255,0.6)">Total estimé</div>
+          <div class="recap-card-value" style="color:#fff;font-size:32px">${total.toLocaleString('fr-FR')}\u20AC${state.maintenance ? '<div style="font-size:14px;font-weight:500;margin-top:4px;opacity:0.7">+ 39\u20AC/mois maintenance</div>' : ''}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="recap-card-label" style="color:rgba(255,255,255,0.6)">Type de site</div>
+          <div class="recap-card-value" style="color:#fff">${state.type === 'vitrine' ? 'Site vitrine' : 'Site e-commerce'}</div>
+        </div>
+      </div>
+
+      <div class="recap-card">
+        <div class="recap-card-label">Entreprise</div>
+        <div class="recap-card-value" style="font-size:16px">${entreprise}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Secteur</div>
+        <div class="recap-card-value" style="font-size:14px">${secteur}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Contact</div>
+        <div class="recap-card-value" style="font-size:14px">${nom}<br><span style="font-weight:500;color:var(--muted)">${tel}</span><br><span style="font-weight:500;color:var(--muted)">${email}</span></div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Localisation</div>
+        <div class="recap-card-value" style="font-size:14px">${ville}${adresse ? '<br><span style="font-weight:500;color:var(--muted);font-size:13px">'+adresse+'</span>' : ''}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Sections</div>
+        <div class="recap-card-value">${state.sections}</div>
+      </div>
+      ${state.type === 'ecommerce' ? `
+      <div class="recap-card">
+        <div class="recap-card-label">Fiches produit</div>
+        <div class="recap-card-value">${state.products}</div>
+      </div>` : ''}
+      <div class="recap-card">
+        <div class="recap-card-label">Options</div>
+        <div class="recap-card-value" style="font-size:13px">${optList}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Couleurs</div>
+        <div class="recap-card-value" style="font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span class="color-swatch" style="background:${state.primaryColor}"></span>${state.primaryColor}</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span class="color-swatch" style="background:${state.secondaryColor};border:1px solid #e2e8f0"></span>${state.secondaryColor}</span>
+        </div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Style</div>
+        <div class="recap-card-value" style="font-size:14px">${state.mood}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Logo</div>
+        <div class="recap-card-value" style="font-size:14px">${logoLabels[logoVal]}</div>
+      </div>
+      <div class="recap-card">
+        <div class="recap-card-label">Contenus prêts</div>
+        <div class="recap-card-value" style="font-size:14px">${contenuLabels[contenus]}</div>
+      </div>
+      ${horaires !== '—' ? `
+      <div class="recap-card">
+        <div class="recap-card-label">Horaires</div>
+        <div class="recap-card-value" style="font-size:13px;white-space:pre-line">${horaires}</div>
+      </div>` : ''}
+      ${reseaux !== '—' ? `
+      <div class="recap-card">
+        <div class="recap-card-label">Réseaux sociaux</div>
+        <div class="recap-card-value" style="font-size:13px">${reseaux}</div>
+      </div>` : ''}
+      ${siteActuel !== '—' ? `
+      <div class="recap-card">
+        <div class="recap-card-label">Site actuel</div>
+        <div class="recap-card-value" style="font-size:13px">${siteActuel}</div>
+      </div>` : ''}
+    `;
+  }
+
+  function submitForm() {
+    if (!state.type) { goTo(0); return; }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const required = [
+      { id: 'infoEntreprise', label: 'Nom de l\'entreprise' },
+      { id: 'infoSecteur',    label: 'Secteur d\'activité' },
+      { id: 'formName',       label: 'Nom / Prénom' },
+      { id: 'infoTel',        label: 'Téléphone' },
+      { id: 'formEmail',      label: 'Email', email: true },
+      { id: 'infoVille',      label: 'Ville' },
+    ];
+
+    let firstError = null;
+    required.forEach(f => {
+      const el = document.getElementById(f.id);
+      const val = el.value.trim();
+      const invalid = !val || (f.email && !emailRegex.test(val));
+      el.style.borderColor = invalid ? 'var(--red)' : '';
+      if (invalid && !firstError) firstError = el;
+    });
+
+    if (firstError) {
+      goTo(5); // retour à l'étape activité
+      setTimeout(() => { firstError.focus(); firstError.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+      return;
+    }
+
+    document.getElementById('successOverlay').classList.add('active');
+  }
+
+  // Reset bordures sur correction
+  ['formName', 'formEmail', 'infoEntreprise', 'infoSecteur', 'infoTel', 'infoVille'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.style.borderColor = '';
+    });
+  });
+</script>
+</body>
+</html>
