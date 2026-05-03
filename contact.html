@@ -96,7 +96,6 @@
             <option value="">Choisir...</option>
             <option value="vitrine">Site vitrine</option>
             <option value="ecommerce">Site e-commerce</option>
-            <option value="guide">Guide digital Airbnb</option>
             <option value="refonte">Refonte d'un site existant</option>
             <option value="autre">Autre / Je ne sais pas encore</option>
           </select>
@@ -160,7 +159,7 @@ toggle.addEventListener('click', () => {
   toggle.setAttribute('aria-expanded', open);
 });
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const email   = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
@@ -180,9 +179,27 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   }
   if(!valid) return;
 
-  // Ici, branchement futur sur un service d'envoi (Formspree, Netlify Forms, etc.)
-  document.getElementById('formSuccess').style.display = 'block';
-  this.reset();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+
+  try {
+    const res = await fetch('https://formspree.io/f/mj.thomasduboispro@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(this)
+    });
+    if (res.ok) {
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
+    } else {
+      btn.textContent = 'Erreur — réessayez';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Erreur — réessayez';
+    btn.disabled = false;
+  }
 });
 
 const obs = new IntersectionObserver(entries => {
