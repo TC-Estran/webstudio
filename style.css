@@ -1124,3 +1124,115 @@ img { max-width:100%; display:block; }
 .shooting-price small { font-size:.8rem; font-weight:500; color:var(--muted); margin-left:4px; }
 .shooting-zone { margin-top:10px; font-size:.78rem; color:var(--muted); display:flex; align-items:center; gap:5px; }
 .shooting-zone svg { color:var(--green); flex-shrink:0; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE MOBILE — consolidé
+   ══════════════════════════════════════════ */
+
+/* ── Tablette (≤ 768px) ── */
+@media(max-width:768px) {
+
+  /* Sections : padding réduit */
+  .section     { padding:64px 0; }
+  .section-sm  { padding:44px 0; }
+
+  /* Page hero (pages internes) */
+  .page-hero { padding:96px 0 48px; }
+  .page-hero h1 { font-size:clamp(1.75rem,6vw,2.5rem); }
+  .page-hero p  { font-size:.95rem; }
+
+  /* Hero principal */
+  .hero { padding-bottom:56px; min-height:auto; }
+  .hero h1 { font-size:clamp(1.85rem,6vw,3rem); }
+  .hero-desc { font-size:.95rem; margin-bottom:28px; }
+  .hero-actions { gap:10px; }
+  .hero-facts { gap:24px; margin-top:36px; padding-top:28px; }
+  .hero-fact-num { font-size:1.3rem; }
+
+  /* Section titles & sub */
+  .section-title { font-size:clamp(1.5rem,5vw,2.2rem); }
+  .section-sub   { font-size:.95rem; }
+  .section-header { margin-bottom:36px; }
+
+  /* Services */
+  .service-item { padding:24px; }
+
+  /* Process */
+  .process-item { padding:24px 0; gap:16px; }
+  .process-n { font-size:1.5rem; }
+
+  /* Pricing */
+  .pricing-card { padding:28px 24px; }
+  .pricing-price { font-size:2rem; }
+
+  /* Shooting banner */
+  .shooting-banner { padding:28px 24px; }
+  .shooting-card   { padding:20px; }
+
+  /* CTA box */
+  .cta-box { padding:40px 20px; }
+  .cta-box h2 { font-size:clamp(1.4rem,5vw,2rem); }
+
+  /* Map */
+  .map-frame { height:260px; }
+
+  /* Buttons lg → sm sur mobile */
+  .btn-lg { padding:13px 24px; font-size:.95rem; }
+
+  /* Questionnaire : empile les 2 colonnes */
+  .questionnaire-grid {
+    display:flex !important;
+    flex-direction:column !important;
+    gap:32px !important;
+  }
+
+  /* Cache le widget configurateur (la carte de droite) sur mobile — trop lourd */
+  .questionnaire-preview {
+    display:none !important;
+  }
+
+  /* Portfolio page : pcard en colonne */
+  .pcard-2col {
+    display:flex !important;
+    flex-direction:column !important;
+  }
+  .pcard-thumb { height:180px !important; }
+
+  /* Footer */
+  .footer-bottom { flex-direction:column; align-items:flex-start; gap:6px; }
+}
+
+/* ── Mobile (≤ 480px) ── */
+@media(max-width:480px) {
+
+  .section { padding:48px 0; }
+
+  /* Hero : cache les stats pour réduire le scroll */
+  .hero-facts { display:none; }
+  .hero h1 { font-size:1.8rem; line-height:1.15; }
+  .hero-desc { font-size:.9rem; }
+
+  /* Section titles */
+  .section-title { font-size:1.55rem; }
+  .section-sub   { font-size:.88rem; }
+
+  /* Services */
+  .service-item { padding:20px 16px; }
+  .service-name { font-size:1.05rem; }
+  .service-desc { font-size:.85rem; }
+
+  /* Pricing */
+  .pricing-card { padding:24px 18px; }
+
+  /* Zone list : taille réduite */
+  .zone-item { font-size:.85rem; }
+
+  /* Footer full 1 col */
+  .footer-inner { grid-template-columns:1fr; }
+
+  /* Page hero plus compact */
+  .page-hero { padding:80px 0 36px; }
+
+  /* Options chips plus petits */
+  .option-chip { font-size:.78rem; padding:8px 14px; }
+}
