@@ -829,9 +829,9 @@
           <div class="card-icon">&#128722;</div>
           <div class="card-title">Site e-commerce</div>
           <div class="card-desc">Vendez vos produits en ligne avec un catalogue, un panier et un paiement sécurisé intégrés.</div>
-          <div class="card-price">1 299&#8364; <span>de base</span></div>
+          <div class="card-price">1 399&#8364; <span>de base</span></div>
           <ul class="card-includes">
-            <li>5 sections incluses</li>
+            <li>2 sections incluses</li>
             <li>5 fiches produit incluses</li>
             <li>Paiement Stripe intégré</li>
             <li>Gestion des stocks</li>
@@ -1252,9 +1252,9 @@
 
   const PRICES = {
     vitrine: 950,
-    ecommerce: 1299,
+    ecommerce: 1399,
     sectionExtra: 100,
-    productExtra: 10,
+    productExtra: 50,
     maintenance: 80,
   };
 
@@ -1325,7 +1325,7 @@
     val = parseInt(val);
     state.products = val;
     document.getElementById('productVal').textContent = val;
-    const extra = Math.max(0, val - 2);
+    const extra = Math.max(0, val - 5);
     const extraCost = extra * PRICES.productExtra;
     document.getElementById('productExtraLabel').textContent =
       extra > 0 ? `${extra} fiche(s) supplémentaire(s)` : 'Fiches supplémentaires';
