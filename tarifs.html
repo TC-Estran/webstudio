@@ -271,6 +271,8 @@ toggle.addEventListener('click', () => {
   toggle.classList.toggle('open', open);
   toggle.setAttribute('aria-expanded', open);
 });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn => {
