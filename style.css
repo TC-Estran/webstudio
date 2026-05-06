@@ -395,28 +395,80 @@ img { max-width:100%; display:block; }
   font-family:monospace; background:rgba(0,0,0,.5); border-radius:2px; padding:1px 5px;
 }
 
-/* Footage thumbs */
+/* ── Analytics mini dashboard ── */
+.sc-analytics {
+  display:flex; flex-direction:column; gap:7px;
+  opacity:0; animation:fadeIn .5s .6s ease forwards;
+}
+.sc-analytics-hd {
+  display:flex; align-items:center; justify-content:space-between;
+}
+.sc-analytics-title {
+  font-size:.5rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.sc-analytics-period {
+  font-size:.48rem; color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06); border-radius:3px; padding:2px 6px;
+}
+
+/* KPI row */
+.sc-kpi-row { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+.sc-kpi {
+  background:rgba(255,255,255,.04); border-radius:5px;
+  border:1px solid rgba(255,255,255,.06); padding:5px 6px;
+}
+.sc-kpi-val {
+  font-size:.72rem; font-weight:800; line-height:1.1; color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.sc-kpi-delta {
+  font-size:.48rem; font-weight:700;
+  display:flex; align-items:center; gap:2px; margin-top:1px;
+}
+.sc-kpi-delta.up   { color:#22c55e; }
+.sc-kpi-delta.warn { color:#f59e0b; }
+.sc-kpi-label { font-size:.44rem; color:rgba(255,255,255,.22); margin-top:2px; }
+
+/* Sparkline bar chart */
+.sc-sparkline {
+  display:flex; align-items:flex-end; gap:2px; height:30px;
+  padding:0 2px;
+}
+.sc-spark-bar {
+  flex:1; border-radius:2px 2px 0 0; background:rgba(79,70,229,.3);
+  position:relative; overflow:hidden; transition:height .3s;
+}
+.sc-spark-bar.hi { background:rgba(79,70,229,.65); }
+.sc-spark-bar::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,.1), transparent);
+}
+
+/* Source breakdown */
+.sc-sources { display:flex; flex-direction:column; gap:4px; }
+.sc-source-row { display:flex; align-items:center; gap:6px; }
+.sc-source-label { font-size:.46rem; color:rgba(255,255,255,.25); width:40px; flex-shrink:0; }
+.sc-source-bar-wrap { flex:1; height:4px; background:rgba(255,255,255,.06); border-radius:2px; overflow:hidden; }
+.sc-source-bar { height:100%; border-radius:2px; opacity:0; animation:fadeIn .4s ease forwards; }
+.sc-source-pct { font-size:.44rem; color:rgba(255,255,255,.25); width:20px; text-align:right; flex-shrink:0; }
+.src-organic { background:#22c55e; width:58%; animation-delay:1.2s; }
+.src-ads     { background:#f59e0b; width:27%; animation-delay:1.4s; }
+.src-direct  { background:rgba(99,102,241,.7); width:15%; animation-delay:1.6s; }
+
+/* Footage thumbs (kept for cam frame below analytics) */
 .sc-footage {
   display:grid; grid-template-columns:repeat(3,1fr); gap:4px; flex-shrink:0;
   opacity:0; animation:fadeIn .4s .9s ease forwards;
 }
 .sc-footage-thumb {
-  height:26px; border-radius:4px; position:relative; overflow:hidden;
+  height:22px; border-radius:4px; position:relative; overflow:hidden;
   display:flex; align-items:center; justify-content:center;
 }
 .sc-footage-thumb:nth-child(1){background:linear-gradient(135deg,#1a1a2e,#16213e);}
 .sc-footage-thumb:nth-child(2){background:linear-gradient(135deg,#0f3460,#533483);}
 .sc-footage-thumb:nth-child(3){background:linear-gradient(135deg,#1a2e1a,#2d6a2d);}
-.sc-footage-play { font-size:.55rem; color:rgba(255,255,255,.45); }
-
-/* Scene info */
-.sc-scene {
-  display:flex; flex-direction:column; gap:2px; flex-shrink:0;
-  opacity:0; animation:fadeIn .4s 1.1s ease forwards;
-}
-.sc-scene-tag { font-size:.5rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(239,68,68,.75); }
-.sc-scene-name { font-size:.58rem; color:rgba(255,255,255,.5); }
-.sc-scene-meta { font-size:.5rem; color:rgba(255,255,255,.22); }
+.sc-footage-play { font-size:.5rem; color:rgba(255,255,255,.4); }
 
 /* ── Timeline (split 2 zones) ── */
 .sc-timeline { background:#0f1925; border-top:1px solid rgba(255,255,255,.06); padding:8px 12px 10px; }
@@ -447,7 +499,8 @@ img { max-width:100%; display:block; }
 .sc-tl-row { display:flex; align-items:center; gap:5px; }
 .sc-tl-row-lbl {
   font-size:.46rem; font-weight:600; text-transform:uppercase;
-  color:rgba(255,255,255,.18); width:34px; flex-shrink:0; text-align:right; letter-spacing:.03em;
+  color:rgba(255,255,255,.18); width:40px; flex-shrink:0; text-align:right; letter-spacing:.03em;
+  white-space:nowrap; overflow:hidden;
 }
 .sc-tl-track { flex:1; height:8px; border-radius:3px; position:relative; overflow:hidden; }
 .t-w1{background:rgba(79,70,229,.13);} .t-w2{background:rgba(79,70,229,.09);}
