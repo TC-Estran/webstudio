@@ -145,27 +145,21 @@
             <!-- Vertical divider -->
             <div class="sc-divider"></div>
 
-            <!-- ⏺ PRODUCTION -->
+            <!-- 📊 ANALYTICS -->
             <div class="sc-domain-vid">
-              <div class="sc-domain-hd vid">
-                <span class="sc-rec-dot"></span> Vidéo · SEO / SEA
+              <div class="sc-domain-hd ana">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><rect x="1" y="5" width="1.5" height="2.5" rx=".5" fill="currentColor"/><rect x="3.25" y="3" width="1.5" height="4.5" rx=".5" fill="currentColor"/><rect x="5.5" y="1" width="1.5" height="6.5" rx=".5" fill="currentColor"/></svg>
+                Analytics · SEO / SEA
               </div>
               <div class="sc-vid-body">
-                <!-- Camera frame -->
-                <div class="sc-cam-frame">
-                  <div class="sc-cam-grid"></div>
-                  <div class="sc-scanline"></div>
-                  <div class="sc-cam-crosshair"></div>
-                  <div class="sc-cam-corners"></div>
-                  <div class="sc-cam-badge"><span class="sc-rec-dot"></span> REC</div>
-                  <div class="sc-cam-tc">03:42:17:08</div>
-                </div>
-                <!-- Analytics mini dashboard -->
                 <div class="sc-analytics">
+
+                  <!-- Header -->
                   <div class="sc-analytics-hd">
                     <div class="sc-analytics-title">Google Analytics</div>
                     <div class="sc-analytics-period">30 derniers jours</div>
                   </div>
+
                   <!-- KPIs -->
                   <div class="sc-kpi-row">
                     <div class="sc-kpi">
@@ -184,19 +178,44 @@
                       <div class="sc-kpi-label">Position</div>
                     </div>
                   </div>
-                  <!-- Sparkline -->
-                  <div class="sc-sparkline">
-                    <div class="sc-spark-bar" style="height:35%;"></div>
-                    <div class="sc-spark-bar" style="height:50%;"></div>
-                    <div class="sc-spark-bar" style="height:42%;"></div>
-                    <div class="sc-spark-bar" style="height:65%;"></div>
-                    <div class="sc-spark-bar" style="height:55%;"></div>
-                    <div class="sc-spark-bar" style="height:72%;"></div>
-                    <div class="sc-spark-bar" style="height:60%;"></div>
-                    <div class="sc-spark-bar hi" style="height:88%;"></div>
-                    <div class="sc-spark-bar hi" style="height:95%;"></div>
-                    <div class="sc-spark-bar hi" style="height:100%;"></div>
+
+                  <!-- SVG line chart -->
+                  <div class="sc-chart-wrap">
+                    <svg viewBox="0 0 160 52" preserveAspectRatio="none" class="sc-chart-svg">
+                      <defs>
+                        <linearGradient id="gSessions" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#4f46e5" stop-opacity=".45"/>
+                          <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="gConv" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#22c55e" stop-opacity=".3"/>
+                          <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <!-- Grid -->
+                      <line x1="0" y1="13" x2="160" y2="13" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+                      <line x1="0" y1="26" x2="160" y2="26" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+                      <line x1="0" y1="39" x2="160" y2="39" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+                      <!-- Sessions area fill -->
+                      <path d="M0,44 C20,42 30,38 45,34 C60,30 70,26 85,22 C100,18 115,12 130,8 C142,5 152,3 160,1 L160,52 L0,52 Z" fill="url(#gSessions)"/>
+                      <!-- Sessions curve -->
+                      <path class="sc-chart-line" d="M0,44 C20,42 30,38 45,34 C60,30 70,26 85,22 C100,18 115,12 130,8 C142,5 152,3 160,1" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round"/>
+                      <!-- Conversions area fill -->
+                      <path d="M0,48 C20,46 35,44 50,41 C65,38 75,35 90,31 C105,27 120,23 135,19 C148,16 155,14 160,12 L160,52 L0,52 Z" fill="url(#gConv)"/>
+                      <!-- Conversions curve -->
+                      <path class="sc-chart-line sc-chart-line-2" d="M0,48 C20,46 35,44 50,41 C65,38 75,35 90,31 C105,27 120,23 135,19 C148,16 155,14 160,12" fill="none" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 0"/>
+                      <!-- Dot actif -->
+                      <circle cx="160" cy="1" r="2.5" fill="#4f46e5" opacity=".9"/>
+                      <circle cx="160" cy="1" r="4" fill="none" stroke="#4f46e5" stroke-width=".8" opacity=".4"/>
+                      <circle cx="160" cy="12" r="2" fill="#22c55e" opacity=".8"/>
+                    </svg>
+                    <!-- Legend -->
+                    <div class="sc-chart-legend">
+                      <span class="sc-legend-item"><span class="sc-legend-dot" style="background:#4f46e5;"></span>Sessions</span>
+                      <span class="sc-legend-item"><span class="sc-legend-dot" style="background:#22c55e;"></span>Conv.</span>
+                    </div>
                   </div>
+
                   <!-- Sources -->
                   <div class="sc-sources">
                     <div class="sc-source-row">
@@ -215,6 +234,7 @@
                       <div class="sc-source-pct">15%</div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -244,12 +264,12 @@
                 </div>
               </div>
               <div class="sc-tl-zone-sep"></div>
-              <!-- Video zone -->
+              <!-- SEO/SEA zone -->
               <div>
-                <div class="sc-tl-zone-lbl vid">⏺ Vidéo</div>
+                <div class="sc-tl-zone-lbl ana">📈 SEO / SEA</div>
                 <div class="sc-tl-rows">
-                  <div class="sc-tl-row"><div class="sc-tl-row-lbl">Film</div><div class="sc-tl-track t-v1"><div class="sc-tl-clip cv1"></div><div class="sc-tl-clip cv2"></div></div></div>
-                  <div class="sc-tl-row"><div class="sc-tl-row-lbl">Audio</div><div class="sc-tl-track t-va"><div class="sc-waveform"><div class="sc-wave-bar" style="height:40%;"></div><div class="sc-wave-bar" style="height:75%;"></div><div class="sc-wave-bar" style="height:55%;"></div><div class="sc-wave-bar" style="height:90%;"></div><div class="sc-wave-bar" style="height:45%;"></div><div class="sc-wave-bar" style="height:70%;"></div><div class="sc-wave-bar" style="height:60%;"></div><div class="sc-wave-bar" style="height:85%;"></div><div class="sc-wave-bar" style="height:35%;"></div><div class="sc-wave-bar" style="height:65%;"></div><div class="sc-wave-bar" style="height:80%;"></div><div class="sc-wave-bar" style="height:50%;"></div></div></div></div>
+                  <div class="sc-tl-row"><div class="sc-tl-row-lbl">SEO</div><div class="sc-tl-track t-v1"><div class="sc-tl-clip cv1"></div><div class="sc-tl-clip cv2"></div></div></div>
+                  <div class="sc-tl-row"><div class="sc-tl-row-lbl">Ads</div><div class="sc-tl-track t-va"><div class="sc-tl-clip" style="background:rgba(245,158,11,.55);left:5%;width:40%;opacity:0;animation:fadeIn .4s 1.4s ease forwards;"></div><div class="sc-tl-clip" style="background:rgba(245,158,11,.45);left:50%;width:45%;opacity:0;animation:fadeIn .4s 1.7s ease forwards;"></div></div></div>
                 </div>
               </div>
             </div>
