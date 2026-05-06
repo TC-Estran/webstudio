@@ -49,7 +49,7 @@ img { max-width:100%; display:block; }
 /* ══════════════ NAV ══════════════ */
 .nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(255,255,255,0.96);
+  background:#ffffff;
   backdrop-filter:blur(20px) saturate(180%);
   -webkit-backdrop-filter:blur(20px) saturate(180%);
   border-bottom:1px solid rgba(226,232,240,0.8);
@@ -1235,4 +1235,35 @@ img { max-width:100%; display:block; }
 
   /* Options chips plus petits */
   .option-chip { font-size:.78rem; padding:8px 14px; }
+}
+
+/* ── Paysage téléphone (landscape) ── */
+@media(max-height:500px) and (orientation:landscape) {
+
+  /* Hero : compact, sans min-height plein écran */
+  .hero { min-height:auto; padding:72px 0 40px; }
+  .hero h1 { font-size:1.55rem; line-height:1.15; margin-bottom:12px; }
+  .hero-desc { font-size:.85rem; margin-bottom:16px; line-height:1.5; }
+  .hero-facts { display:none; }
+  .hero-actions { gap:8px; }
+  .btn-lg { padding:10px 20px; font-size:.9rem; }
+
+  /* Sections : padding très réduit */
+  .section    { padding:40px 0; }
+  .section-sm { padding:28px 0; }
+
+  /* Page hero */
+  .page-hero { padding:80px 0 32px; }
+  .page-hero h1 { font-size:1.6rem; }
+
+  /* Sections titles */
+  .section-title { font-size:1.4rem; }
+  .section-sub   { font-size:.85rem; }
+  .section-header { margin-bottom:24px; }
+
+  /* Services */
+  .service-item { padding:18px 20px; }
+
+  /* CTA box */
+  .cta-box { padding:32px 20px; }
 }
