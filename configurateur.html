@@ -815,9 +815,9 @@
           <div class="card-icon">&#127968;</div>
           <div class="card-title">Site vitrine</div>
           <div class="card-desc">Présentez votre activité, vos services ou votre portfolio. Idéal pour les indépendants, artisans et PME.</div>
-          <div class="card-price">599&#8364; <span>de base</span></div>
+          <div class="card-price">950&#8364; <span>de base</span></div>
           <ul class="card-includes">
-            <li>5 sections incluses</li>
+            <li>2 sections incluses</li>
             <li>Formulaire de contact</li>
             <li>Responsive mobile</li>
             <li>1 revision incluse</li>
@@ -848,17 +848,17 @@
     <div class="step-panel" id="step1">
       <div class="step-label">Étape 2 sur 7</div>
       <div class="step-title">Combien de sections<br>pour votre site ?</div>
-      <div class="step-subtitle">Une section = un bloc de contenu (hero, services, témoignages, FAQ, etc.). 5 sont incluses dans votre formule.</div>
+      <div class="step-subtitle">Une section = un bloc de contenu (hero, services, FAQ, etc.). 2 sont incluses. Chaque section supplémentaire : +100 €. Les pages légales (mentions légales, CGV) sont toujours incluses gratuitement.</div>
 
       <div class="slider-wrap">
         <div class="slider-header">
           <div>
             <div class="slider-label">Nombre de sections</div>
-            <div class="slider-note">5 incluses dans votre formule</div>
+            <div class="slider-note">2 incluses dans votre formule</div>
           </div>
-          <div class="slider-value" id="sectionVal">5</div>
+          <div class="slider-value" id="sectionVal">2</div>
         </div>
-        <input type="range" min="1" max="20" value="5" id="sectionSlider" oninput="updateSections(this.value)">
+        <input type="range" min="1" max="20" value="2" id="sectionSlider" oninput="updateSections(this.value)">
         <div class="slider-ticks"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
         <div class="slider-extra">
           <span class="extra-label" id="sectionExtraLabel">Sections supplémentaires</span>
@@ -971,15 +971,15 @@
         </div>
       </div>
 
-      <div class="maintenance-card" id="maintenanceCard" onclick="toggleMaintenance()">
+      <div class="maintenance-card selected" id="maintenanceCard" style="cursor:default;">
         <div class="maintenance-left">
           <div class="maintenance-icon">&#128295;</div>
           <div>
-            <div class="maintenance-name">Maintenance mensuelle</div>
-            <div class="maintenance-desc">Mises à jour, sauvegardes, support prioritaire. Sans engagement.</div>
+            <div class="maintenance-name">Maintenance mensuelle <span style="font-size:.72rem;color:var(--accent);font-weight:600;">(obligatoire)</span></div>
+            <div class="maintenance-desc">Mises à jour, corrections et support. Inclus dans chaque projet.</div>
           </div>
         </div>
-        <div class="maintenance-price">+39&#8364;/mois</div>
+        <div class="maintenance-price">80&#8364;/mois</div>
       </div>
 
       <div class="nav-btns">
@@ -1212,7 +1212,7 @@
     <div class="price-header">
       <div class="price-header-label">Estimation en temps reel</div>
       <div class="price-total" id="priceTotal">0&#8364;</div>
-      <div class="price-maintenance" id="priceMaintenance" style="display:none">+ 39&#8364;/mois (maintenance)</div>
+      <div class="price-maintenance" id="priceMaintenance">+ 80&#8364;/mois (maintenance obligatoire)</div>
     </div>
 
     <div class="price-body" id="priceBody">
@@ -1241,21 +1241,21 @@
   // ── STATE ──
   const state = {
     type: null,
-    sections: 5,
+    sections: 2,
     products: 5,
     options: {},
-    maintenance: false,
+    maintenance: true,
     primaryColor: '#6366f1',
     secondaryColor: '#f8fafc',
     mood: 'Moderne & épuré',
   };
 
   const PRICES = {
-    vitrine: 599,
+    vitrine: 950,
     ecommerce: 1299,
-    sectionExtra: 75,
+    sectionExtra: 100,
     productExtra: 10,
-    maintenance: 39,
+    maintenance: 80,
   };
 
   let currentStep = 0;
@@ -1305,7 +1305,7 @@
     val = parseInt(val);
     state.sections = val;
     document.getElementById('sectionVal').textContent = val;
-    const extra = Math.max(0, val - 5);
+    const extra = Math.max(0, val - 2);
     const extraCost = extra * PRICES.sectionExtra;
     document.getElementById('sectionExtraLabel').textContent =
       extra > 0 ? `${extra} section(s) supplémentaire(s)` : 'Sections supplémentaires';
@@ -1325,7 +1325,7 @@
     val = parseInt(val);
     state.products = val;
     document.getElementById('productVal').textContent = val;
-    const extra = Math.max(0, val - 5);
+    const extra = Math.max(0, val - 2);
     const extraCost = extra * PRICES.productExtra;
     document.getElementById('productExtraLabel').textContent =
       extra > 0 ? `${extra} fiche(s) supplémentaire(s)` : 'Fiches supplémentaires';
@@ -1381,7 +1381,7 @@
   function calcTotal() {
     if (!state.type) return 0;
     let total = PRICES[state.type];
-    const extraSections = Math.max(0, state.sections - 5);
+    const extraSections = Math.max(0, state.sections - 2);
     total += extraSections * PRICES.sectionExtra;
     if (state.type === 'ecommerce') {
       const extraProducts = Math.max(0, state.products - 5);
@@ -1406,9 +1406,9 @@
     const baseName = state.type === 'vitrine' ? 'Site vitrine' : 'Site e-commerce';
     html += line(baseName, `${PRICES[state.type]}\u20AC`);
 
-    const extraSec = Math.max(0, state.sections - 5);
+    const extraSec = Math.max(0, state.sections - 2);
     if (extraSec > 0) html += line(`+${extraSec} section(s)`, `+${extraSec * PRICES.sectionExtra}\u20AC`, 'accent');
-    else html += line('5 sections', 'incluses', 'free');
+    else html += line('2 sections', 'incluses', 'free');
 
     if (state.type === 'ecommerce') {
       const extraProd = Math.max(0, state.products - 5);
@@ -1421,7 +1421,7 @@
       html += line(optionNames[k] || k, `+${v}\u20AC`, 'accent');
     }
 
-    if (state.maintenance) html += line('Maintenance', '+39\u20AC/mois', 'accent');
+    html += line('Maintenance mensuelle', '+80\u20AC/mois', 'accent');
 
     html += '<div class="price-divider"></div>';
     html += `<div class="price-line"><span class="price-line-label" style="font-weight:700;color:var(--navy)">Total estimé</span><span class="price-line-value" style="font-size:18px;color:var(--accent)">${total.toLocaleString('fr-FR')}\u20AC</span></div>`;
