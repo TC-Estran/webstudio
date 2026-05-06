@@ -112,26 +112,29 @@ img { max-width:100%; display:block; }
 
 /* Desktop nav */
 @media(min-width:769px) {
-  .nav { padding:0 40px; }
+  .nav { padding:0 32px; }
   .nav-toggle { display:none; }
   .nav-links {
     display:flex; flex-direction:row;
     position:static; background:none; border:none;
-    padding:0; gap:20px; list-style:none;
+    padding:0; gap:14px; list-style:none;
   }
   .nav-links li { width:auto; }
   .nav-links a {
-    display:inline; padding:0; font-size:.82rem;
+    display:inline-flex; align-items:center;
+    padding:0; font-size:.78rem; white-space:nowrap;
   }
   .nav-cta {
     border-radius:var(--r-pill); background:var(--navy) !important;
-    text-align:left; padding:9px 18px; font-size:.82rem;
+    color:var(--white) !important; text-align:center;
+    padding:8px 16px; font-size:.78rem; white-space:nowrap;
   }
   .nav-cta:hover { background:var(--accent) !important; color:var(--white) !important; }
 }
 
-/* Large desktop — plus d'espace et texte légèrement plus grand */
-@media(min-width:1100px) {
+/* Large desktop */
+@media(min-width:1200px) {
+  .nav { padding:0 40px; }
   .nav-links { gap:28px; }
   .nav-links a { font-size:.875rem; }
   .nav-cta { font-size:.875rem; padding:9px 20px; }
