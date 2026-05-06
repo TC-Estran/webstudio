@@ -1179,6 +1179,15 @@ img { max-width:100%; display:block; }
   /* Buttons lg → sm sur mobile */
   .btn-lg { padding:13px 24px; font-size:.95rem; }
 
+  /* FAQ : empile sur mobile */
+  .faq-grid {
+    display:flex !important;
+    flex-direction:column !important;
+    gap:32px !important;
+  }
+  .faq-list { max-width:100%; }
+  .faq-q { font-size:.9rem; padding:18px 0; }
+
   /* Questionnaire : empile les 2 colonnes */
   .questionnaire-grid {
     display:flex !important;
