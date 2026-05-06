@@ -83,77 +83,185 @@
 
           <!-- Top bar -->
           <div class="sc-topbar">
-            <div class="sc-dots">
-              <span class="r"></span><span class="y"></span><span class="g"></span>
+            <div class="sc-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+            <div class="sc-tabs">
+              <div class="sc-tab active">Design</div>
+              <div class="sc-tab">Code</div>
+              <div class="sc-tab">Export</div>
             </div>
-            <div class="sc-title">webstudio — projet-client.ws</div>
+            <div class="sc-export">▼ Publier</div>
             <div class="sc-rec"><span class="sc-rec-dot"></span>REC</div>
           </div>
 
-          <!-- Layers + Preview -->
+          <!-- 3 panels -->
           <div class="sc-body">
+
+            <!-- Layers -->
             <div class="sc-layers">
+              <div class="sc-group-label">Pages</div>
               <div class="sc-layer active">
-                <div class="sc-layer-icon hero"></div> Hero
+                <div class="sc-layer-dot c-accent"></div> Accueil
+                <span class="sc-layer-check">✓</span>
               </div>
               <div class="sc-layer">
-                <div class="sc-layer-icon nav"></div> Nav
+                <div class="sc-layer-dot c-dim"></div> Portfolio
               </div>
               <div class="sc-layer">
-                <div class="sc-layer-icon sec"></div> Services
+                <div class="sc-layer-dot c-dim"></div> Tarifs
+              </div>
+              <div class="sc-group-label">Calques</div>
+              <div class="sc-layer">
+                <div class="sc-layer-dot c-accent"></div> Hero
               </div>
               <div class="sc-layer">
-                <div class="sc-layer-icon sec"></div> Portfolio
+                <div class="sc-layer-dot c-white"></div> Nav
               </div>
               <div class="sc-layer">
-                <div class="sc-layer-icon foot"></div> Footer
+                <div class="sc-layer-dot c-white"></div> Services
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-dot c-green"></div> CTA
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-dot c-dim"></div> Footer
               </div>
             </div>
+
+            <!-- Preview -->
             <div class="sc-preview">
-              <div class="sc-prev-nav"></div>
-              <div class="sc-prev-hero">
-                <div class="sc-prev-hero-text">
-                  <div class="sc-h1-line"></div>
-                  <div class="sc-h1-line"></div>
-                </div>
-                <div class="sc-prev-hero-btn"></div>
+              <!-- Cursor -->
+              <div class="sc-cursor">
+                <svg viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 2l18 12-8 2-4 10L2 2z" fill="white" stroke="rgba(0,0,0,.4)" stroke-width="1"/>
+                </svg>
               </div>
+              <!-- Nav -->
+              <div class="sc-prev-nav">
+                <div class="sc-prev-nav-logo"></div>
+                <div class="sc-prev-nav-links"><span></span><span></span><span></span></div>
+                <div class="sc-prev-nav-cta"></div>
+              </div>
+              <!-- Hero -->
+              <div class="sc-prev-hero">
+                <div class="sc-prev-hero-inner">
+                  <div class="sc-hero-copy">
+                    <div class="sc-h1"></div><div class="sc-h1"></div><div class="sc-h1"></div>
+                  </div>
+                  <div class="sc-hero-actions">
+                    <div class="sc-cta-pill"></div><div class="sc-cta-pill"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Cards -->
               <div class="sc-prev-cards">
-                <div class="sc-prev-card"></div>
-                <div class="sc-prev-card"></div>
-                <div class="sc-prev-card"></div>
+                <div class="sc-prev-card"><div class="sc-card-icon"></div><div class="sc-card-line w80"></div><div class="sc-card-line w60"></div></div>
+                <div class="sc-prev-card"><div class="sc-card-icon"></div><div class="sc-card-line w80"></div><div class="sc-card-line w40"></div></div>
+                <div class="sc-prev-card"><div class="sc-card-icon"></div><div class="sc-card-line w80"></div><div class="sc-card-line w60"></div></div>
+                <div class="sc-prev-card"><div class="sc-card-icon"></div><div class="sc-card-line w80"></div><div class="sc-card-line w40"></div></div>
+              </div>
+              <!-- Footer -->
+              <div class="sc-prev-footer"></div>
+            </div>
+
+            <!-- Properties -->
+            <div class="sc-props">
+              <div class="sc-prop-group">
+                <div class="sc-prop-title">Typo</div>
+                <div class="sc-prop-row">
+                  <div class="sc-prop-val">Plus Jakarta</div>
+                </div>
+                <div class="sc-prop-row">
+                  <div class="sc-prop-val">700 / 16px</div>
+                </div>
+              </div>
+              <div class="sc-prop-divider"></div>
+              <div class="sc-prop-group">
+                <div class="sc-prop-title">Couleurs</div>
+                <div class="sc-prop-row">
+                  <div class="sc-prop-swatch" style="background:#4f46e5;border-radius:3px;"></div>
+                  <div class="sc-prop-val">#4f46e5</div>
+                </div>
+                <div class="sc-prop-row">
+                  <div class="sc-prop-swatch" style="background:#0f172a;border-radius:3px;"></div>
+                  <div class="sc-prop-val">#0f172a</div>
+                </div>
+                <div class="sc-prop-row">
+                  <div class="sc-prop-swatch" style="background:#f8fafc;border-radius:3px;border:1px solid rgba(255,255,255,.1);"></div>
+                  <div class="sc-prop-val">#f8fafc</div>
+                </div>
+              </div>
+              <div class="sc-prop-divider"></div>
+              <div class="sc-prop-group">
+                <div class="sc-prop-title">Effets</div>
+                <div class="sc-prop-toggle">Ombre <div class="sc-prop-on"></div></div>
+                <div class="sc-prop-toggle" style="margin-top:5px;">Radius <span style="color:rgba(255,255,255,.4);font-size:.55rem;">12px</span></div>
               </div>
             </div>
+
           </div>
 
-          <!-- Timeline vidéo -->
+          <!-- Timeline -->
           <div class="sc-timeline">
-            <div class="sc-timeline-head">
-              <div class="sc-timeline-label">Timeline</div>
-              <div class="sc-timeline-tc">00:00:12:04</div>
+            <div class="sc-tl-top">
+              <div class="sc-tl-controls">
+                <span class="sc-tl-btn">⏮</span>
+                <span class="sc-tl-btn">◀</span>
+                <span class="sc-tl-btn play">▶</span>
+                <span class="sc-tl-btn">▶▶</span>
+              </div>
+              <div class="sc-tc">00:00:07:14</div>
+              <div class="sc-tl-fps">24 fps</div>
             </div>
             <div class="sc-scrubber">
-              <div class="sc-scrubber-head"></div>
+              <div class="sc-scrubber-fill"></div>
             </div>
-            <div class="sc-tracks">
-              <div class="sc-track"></div>
-              <div class="sc-track"></div>
-              <div class="sc-track"></div>
+            <div class="sc-tl-rows">
+              <div class="sc-tl-row">
+                <div class="sc-tl-label">Web</div>
+                <div class="sc-tl-track t-design">
+                  <div class="sc-tl-clip c1"></div>
+                  <div class="sc-tl-clip c2"></div>
+                </div>
+              </div>
+              <div class="sc-tl-row">
+                <div class="sc-tl-label">Photo</div>
+                <div class="sc-tl-track t-photo">
+                  <div class="sc-tl-clip c3"></div>
+                </div>
+              </div>
+              <div class="sc-tl-row">
+                <div class="sc-tl-label">Motion</div>
+                <div class="sc-tl-track t-motion">
+                  <div class="sc-tl-clip c4"></div>
+                </div>
+              </div>
+              <div class="sc-tl-row">
+                <div class="sc-tl-label">Audio</div>
+                <div class="sc-tl-track t-audio">
+                  <div class="sc-waveform">
+                    <div class="sc-wave-bar" style="height:30%;"></div><div class="sc-wave-bar" style="height:70%;"></div>
+                    <div class="sc-wave-bar" style="height:50%;"></div><div class="sc-wave-bar" style="height:90%;"></div>
+                    <div class="sc-wave-bar" style="height:40%;"></div><div class="sc-wave-bar" style="height:80%;"></div>
+                    <div class="sc-wave-bar" style="height:60%;"></div><div class="sc-wave-bar" style="height:35%;"></div>
+                    <div class="sc-wave-bar" style="height:75%;"></div><div class="sc-wave-bar" style="height:55%;"></div>
+                    <div class="sc-wave-bar" style="height:85%;"></div><div class="sc-wave-bar" style="height:45%;"></div>
+                    <div class="sc-wave-bar" style="height:65%;"></div><div class="sc-wave-bar" style="height:30%;"></div>
+                    <div class="sc-wave-bar" style="height:70%;"></div><div class="sc-wave-bar" style="height:50%;"></div>
+                    <div class="sc-wave-bar" style="height:90%;"></div><div class="sc-wave-bar" style="height:40%;"></div>
+                    <div class="sc-wave-bar" style="height:60%;"></div><div class="sc-wave-bar" style="height:80%;"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
 
         <!-- Floating badges -->
-        <div class="studio-badge badge-design">
-          <div class="sb-dot" style="background:var(--accent);"></div> Design ✓
-        </div>
-        <div class="studio-badge badge-video">
-          <div class="sb-dot" style="background:#ef4444;"></div> Vidéo ✓
-        </div>
-        <div class="studio-badge badge-seo">
-          <div class="sb-dot" style="background:var(--green);"></div> SEO ✓
-        </div>
+        <div class="studio-badge badge-design"><div class="sb-dot" style="background:var(--accent);"></div> Design</div>
+        <div class="studio-badge badge-video" ><div class="sb-dot" style="background:#ef4444;"></div> Vidéo</div>
+        <div class="studio-badge badge-seo"   ><div class="sb-dot" style="background:var(--green);"></div> SEO</div>
+        <div class="studio-badge badge-code"  ><div class="sb-dot" style="background:#f59e0b;"></div> Code</div>
 
       </div>
     </div>
