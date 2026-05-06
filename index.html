@@ -79,23 +79,82 @@
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <div class="browser-wrap">
-          <div class="browser-bar">
-            <div class="browser-dot red"></div>
-            <div class="browser-dot yel"></div>
-            <div class="browser-dot grn"></div>
-            <div class="browser-url"></div>
+        <div class="studio-canvas">
+
+          <!-- Top bar -->
+          <div class="sc-topbar">
+            <div class="sc-dots">
+              <span class="r"></span><span class="y"></span><span class="g"></span>
+            </div>
+            <div class="sc-title">webstudio — projet-client.ws</div>
+            <div class="sc-rec"><span class="sc-rec-dot"></span>REC</div>
           </div>
-          <div class="browser-body">
-            <div class="bb-nav"></div>
-            <div class="bb-hero"></div>
-            <div class="bb-cards">
-              <div class="bb-card"></div>
-              <div class="bb-card"></div>
-              <div class="bb-card"></div>
+
+          <!-- Layers + Preview -->
+          <div class="sc-body">
+            <div class="sc-layers">
+              <div class="sc-layer active">
+                <div class="sc-layer-icon hero"></div> Hero
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-icon nav"></div> Nav
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-icon sec"></div> Services
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-icon sec"></div> Portfolio
+              </div>
+              <div class="sc-layer">
+                <div class="sc-layer-icon foot"></div> Footer
+              </div>
+            </div>
+            <div class="sc-preview">
+              <div class="sc-prev-nav"></div>
+              <div class="sc-prev-hero">
+                <div class="sc-prev-hero-text">
+                  <div class="sc-h1-line"></div>
+                  <div class="sc-h1-line"></div>
+                </div>
+                <div class="sc-prev-hero-btn"></div>
+              </div>
+              <div class="sc-prev-cards">
+                <div class="sc-prev-card"></div>
+                <div class="sc-prev-card"></div>
+                <div class="sc-prev-card"></div>
+              </div>
             </div>
           </div>
+
+          <!-- Timeline vidéo -->
+          <div class="sc-timeline">
+            <div class="sc-timeline-head">
+              <div class="sc-timeline-label">Timeline</div>
+              <div class="sc-timeline-tc">00:00:12:04</div>
+            </div>
+            <div class="sc-scrubber">
+              <div class="sc-scrubber-head"></div>
+            </div>
+            <div class="sc-tracks">
+              <div class="sc-track"></div>
+              <div class="sc-track"></div>
+              <div class="sc-track"></div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Floating badges -->
+        <div class="studio-badge badge-design">
+          <div class="sb-dot" style="background:var(--accent);"></div> Design ✓
+        </div>
+        <div class="studio-badge badge-video">
+          <div class="sb-dot" style="background:#ef4444;"></div> Vidéo ✓
+        </div>
+        <div class="studio-badge badge-seo">
+          <div class="sb-dot" style="background:var(--green);"></div> SEO ✓
+        </div>
+
       </div>
     </div>
   </div>
