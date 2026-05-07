@@ -33,7 +33,19 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-
 .nav-links a:hover{color:var(--navy)}
 .nav-cta{background:var(--blue);color:var(--white)!important;padding:9px 20px;border-radius:100px;font-weight:600!important;transition:background .2s!important}
 .nav-cta:hover{background:var(--navy)!important}
-@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;color:var(--navy)}
+.burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){
+  .burger{display:flex}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:8px 0;gap:0;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:13px 24px;font-size:.95rem;height:auto;white-space:normal}
+  .nav-links a.nav-cta{margin:8px 16px;border-radius:10px;text-align:center;display:block;padding:12px 16px}
+}
 
 /* HERO */
 .hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:80px 64px;background:linear-gradient(135deg,var(--bg) 0%,var(--white) 60%)}
@@ -134,7 +146,8 @@ footer strong{color:var(--white)}
 
 <nav>
   <div class="logo">Dubois <span>Plomberie</span></div>
-  <ul class="nav-links">
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#">Services</a></li>
     <li><a href="#">Réalisations</a></li>
     <li><a href="#">Tarifs</a></li>
@@ -315,6 +328,13 @@ footer strong{color:var(--white)}
 </footer>
 
 <script>
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
+});
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
 },{threshold:0.1});

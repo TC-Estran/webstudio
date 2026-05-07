@@ -35,7 +35,21 @@ nav.scrolled{background:rgba(18,12,8,.95);backdrop-filter:blur(8px)}
 .nav-links a:hover{color:var(--cream)}
 .nav-cta{border:1px solid rgba(196,163,90,.4)!important;color:var(--gold)!important;padding:8px 20px!important;transition:all .2s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important}
-@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;color:var(--cream)}
+.burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .burger{display:flex}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(18,12,8,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);padding:8px 0;gap:0;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:13px 24px;font-size:.875rem;height:auto;color:rgba(244,239,230,.55)}
+  .nav-links a:hover{color:var(--cream)}
+  .nav-links a.nav-cta{margin:8px 16px;text-align:center;display:block;padding:11px 16px;border:1px solid rgba(196,163,90,.4);color:var(--gold)!important}
+}
 
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden}
@@ -176,7 +190,8 @@ footer a:hover{color:var(--cream)}
 
 <nav id="nav">
   <div class="logo">Le <span>Normand</span></div>
-  <ul class="nav-links">
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#">La carte</a></li>
     <li><a href="#">Notre histoire</a></li>
     <li><a href="#">Événements</a></li>
@@ -364,6 +379,12 @@ footer a:hover{color:var(--cream)}
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)
 },{passive:true});
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('open',open);
+});
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
 },{threshold:0.08});

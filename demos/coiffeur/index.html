@@ -32,7 +32,20 @@ nav{position:sticky;top:0;z-index:100;background:rgba(253,248,243,.96);backdrop-
 .nav-links a:hover{color:var(--dark)}
 .nav-cta{background:var(--dark)!important;color:var(--cream)!important;padding:10px 22px;border-radius:2px;letter-spacing:.08em}
 .nav-cta:hover{background:var(--gold)!important;color:var(--white)!important}
-@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;color:var(--dark)}
+.burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){
+  nav{padding:0 24px}
+  .burger{display:flex}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(253,248,243,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:8px 0;gap:0;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:13px 24px;font-size:.9rem;height:auto}
+  .nav-links a.nav-cta{margin:8px 16px;text-align:center;display:block;padding:12px 16px}
+}
 
 /* HERO */
 .hero{min-height:95vh;display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}
@@ -154,7 +167,8 @@ footer ul li a:hover{color:var(--cream)}
 
 <nav>
   <div class="logo">Studio <span>Élise</span></div>
-  <ul class="nav-links">
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#">Prestations</a></li>
     <li><a href="#">Galerie</a></li>
     <li><a href="#">Le salon</a></li>
@@ -330,6 +344,12 @@ footer ul li a:hover{color:var(--cream)}
 </footer>
 
 <script>
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('open',open);
+});
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
 },{threshold:0.1});
