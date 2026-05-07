@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltex Électricité — Électricien à Caen</title>
+<meta name="description" content="Voltex Électricité, votre électricien certifié à Caen. Installation, dépannage, mise aux normes, rénovation électrique. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0D0D0D;
+  --dark:#1A1A1A;
+  --amber:#F59E0B;
+  --amber-light:#FCD34D;
+  --gray:#F4F4F4;
+  --muted:#6B6B6B;
+  --border:#2E2E2E;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--black);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border)}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase}
+.logo span{color:var(--amber)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--amber)!important;color:var(--black)!important;padding:9px 20px;font-weight:700!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--amber-light)!important}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+
+/* HERO */
+.hero{background:var(--black);min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;position:relative}
+.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a 0%,#0d0d0d 100%)}
+.hero-bg-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(245,158,11,.08)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;padding:80px 64px;max-width:900px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:var(--amber);padding:6px 14px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:800;color:var(--white);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:20px}
+h1 .accent{color:var(--amber)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:520px;margin-bottom:40px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:600;text-decoration:none;cursor:pointer;transition:all .2s;border:none;letter-spacing:.02em}
+.btn-amber{background:var(--amber);color:var(--black)}
+.btn-amber:hover{background:var(--amber-light);transform:translateY(-2px)}
+.btn-ghost-light{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2)}
+.btn-ghost-light:hover{border-color:rgba(255,255,255,.5);transform:translateY(-2px)}
+.hero-strip{position:relative;z-index:2;background:var(--amber);padding:16px 64px;display:flex;gap:64px;overflow:hidden}
+.strip-item{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--black);white-space:nowrap;display:flex;align-items:center;gap:10px}
+.strip-item::before{content:'✦';font-size:.7rem}
+
+/* SECTION */
+.section{padding:80px 64px}
+.section-dark{background:var(--black)}
+.section-gray{background:var(--gray)}
+.label{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:var(--black);line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+h2.light{color:var(--white)}
+.sub{font-size:.9rem;color:var(--muted);line-height:1.7;max-width:500px;margin-top:14px}
+.sub.light{color:rgba(255,255,255,.5)}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:var(--border);margin-top:56px}
+.svc-item{background:var(--black);padding:36px 28px;transition:background .2s;position:relative;overflow:hidden}
+.svc-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber);transform:scaleY(0);transform-origin:bottom;transition:transform .3s ease}
+.svc-item:hover{background:#161616}
+.svc-item:hover::before{transform:scaleY(1)}
+.svc-num{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:rgba(245,158,11,.1);line-height:1;margin-bottom:16px}
+.svc-name{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px}
+.svc-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.65}
+
+/* CHIFFRES */
+.chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--amber)}
+.chiffre-item{padding:40px 28px;border-right:1px solid rgba(0,0,0,.1);text-align:center}
+.chiffre-item:last-child{border:none}
+.chiffre-num{font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:800;color:var(--black);line-height:1}
+.chiffre-label{font-size:.8rem;font-weight:600;color:rgba(0,0,0,.6);margin-top:6px;text-transform:uppercase;letter-spacing:.06em}
+
+/* REALISATIONS */
+.real-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:48px}
+.real-item{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);display:flex;align-items:center;justify-content:center;color:rgba(245,158,11,.2)}
+.real-item:nth-child(1){aspect-ratio:16/9;grid-column:span 2}
+.real-item:nth-child(2),.real-item:nth-child(3){aspect-ratio:1}
+.real-item:nth-child(4){aspect-ratio:1;background:linear-gradient(135deg,#252525 0%,#1a1a1a 100%)}
+.real-caption{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)}
+.real-caption strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em}
+.real-caption span{font-size:.75rem;color:rgba(255,255,255,.5)}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:56px;position:relative}
+.process-step{padding:36px 28px;border-right:1px solid var(--border);position:relative}
+.process-step:last-child{border:none}
+.step-num{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:800;color:var(--amber);line-height:1;margin-bottom:12px}
+.step-name{font-size:.9rem;font-weight:700;color:var(--black);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.step-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* CTA */
+.cta-band{background:var(--amber);padding:64px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.cta-band h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;color:var(--black);text-transform:uppercase}
+.cta-band p{font-size:.9rem;color:rgba(0,0,0,.6);margin-top:8px}
+.btn-dark{background:var(--black);color:var(--white);font-weight:700;padding:14px 28px;text-decoration:none;font-size:.875rem;white-space:nowrap;transition:all .2s;display:inline-block}
+.btn-dark:hover{background:#222;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.35);padding:48px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-size:.83rem;border-top:1px solid var(--border)}
+footer strong{color:var(--white)}
+.footer-logo-f{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.footer-logo-f span{color:var(--amber)}
+
+/* ANIM */
+.slide-up{opacity:0;transform:translateY(40px);transition:opacity .6s ease,transform .6s ease}
+.slide-up.visible{opacity:1;transform:none}
+.slide-left{opacity:0;transform:translateX(-40px);transition:opacity .6s ease,transform .6s ease}
+.slide-left.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .hero-content{padding:60px 32px}
+  .hero-strip{padding:14px 32px;gap:32px}
+  .section,.cta-band{padding:60px 32px}
+  .chiffres{grid-template-columns:repeat(2,1fr)}
+  .chiffre-item{border-right:none;border-bottom:1px solid rgba(0,0,0,.1)}
+  .real-item:nth-child(1){grid-column:span 1;aspect-ratio:1}
+  .cta-band{grid-template-columns:1fr}
+  footer{padding:40px 32px;flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  h1{font-size:3.2rem}
+  .section,.cta-band{padding:48px 20px}
+  .hero-content{padding:48px 20px}
+  .hero-strip{display:none}
+  .svc-grid{background:none;gap:2px}
+  .process-grid{grid-template-columns:1fr}
+  .process-step{border-right:none;border-bottom:1px solid var(--border)}
+  footer{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Volt<span>ex</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Réalisations</a></li>
+    <li><a href="#">Certifications</a></li>
+    <li><a href="#" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-img">
+      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Électricien certifié · Caen &amp; Normandie</div>
+    <h1>L'électricité<br>que vous <span class="accent">méritez.</span></h1>
+    <p class="hero-sub">Installation, dépannage, mise aux normes et rénovation électrique complète. On intervient vite, on fait bien, on garantit tout.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-amber">Demander un devis</a>
+      <a href="#" class="btn btn-ghost-light">Voir nos réalisations</a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-item">Qualibat RGE certifié</div>
+    <div class="strip-item">Garantie décennale</div>
+    <div class="strip-item">Devis sous 24h</div>
+    <div class="strip-item">Disponible 7j/7</div>
+    <div class="strip-item">Caen &amp; 60 km</div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="slide-up">
+    <div class="label">Ce qu'on fait</div>
+    <h2 class="light">Tout l'électrique,<br>rien que l'électrique.</h2>
+    <p class="sub light">De la prise murale à l'installation complète d'un bâtiment, on maîtrise chaque étape.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-item slide-up d1">
+      <div class="svc-num">01</div>
+      <div class="svc-name">Installation neuve</div>
+      <div class="svc-desc">Tableau électrique, câblage, prises, éclairage. Construction ou rénovation : on part de zéro et on fait propre.</div>
+    </div>
+    <div class="svc-item slide-up d2">
+      <div class="svc-num">02</div>
+      <div class="svc-name">Mise aux normes</div>
+      <div class="svc-desc">NF C 15-100, diagnostic électrique, mise en conformité avant vente. On sécurise votre installation.</div>
+    </div>
+    <div class="svc-item slide-up d3">
+      <div class="svc-num">03</div>
+      <div class="svc-name">Dépannage rapide</div>
+      <div class="svc-desc">Coupure de courant, disjoncteur qui saute, prise défectueuse. On intervient en urgence sous 3h.</div>
+    </div>
+    <div class="svc-item slide-up d4">
+      <div class="svc-num">04</div>
+      <div class="svc-name">Éclairage &amp; domotique</div>
+      <div class="svc-desc">LED, smart home, volets roulants électriques, bornes de recharge VE. On installe l'électricité de demain.</div>
+    </div>
+  </div>
+</section>
+
+<div class="chiffres">
+  <div class="chiffre-item slide-up"><div class="chiffre-num">+1 200</div><div class="chiffre-label">Chantiers réalisés</div></div>
+  <div class="chiffre-item slide-up d1"><div class="chiffre-num">15 ans</div><div class="chiffre-label">D'expérience</div></div>
+  <div class="chiffre-item slide-up d2"><div class="chiffre-num">100%</div><div class="chiffre-label">Conformes NFC 15-100</div></div>
+  <div class="chiffre-item slide-up d3"><div class="chiffre-num">4.8★</div><div class="chiffre-label">Note Google</div></div>
+</div>
+
+<section class="section section-gray">
+  <div class="slide-up">
+    <div class="label">Réalisations</div>
+    <h2>Des chantiers<br>qui parlent d'eux-mêmes.</h2>
+  </div>
+  <div class="real-grid">
+    <div class="real-item">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <div class="real-caption"><strong>Rénovation complète — Résidence 45 logements</strong><span>Caen · 2024</span></div>
+    </div>
+    <div class="real-item">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <div class="real-caption"><strong>Tableau &amp; mise aux normes</strong><span>Hérouville · 2024</span></div>
+    </div>
+    <div class="real-item" style="background:linear-gradient(135deg,#1f1f1f,#151515)">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <div class="real-caption"><strong>Smart home — Maison individuelle</strong><span>Bayeux · 2024</span></div>
+    </div>
+    <div class="real-item">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <div class="real-caption"><strong>Bornes recharge VE × 8</strong><span>Falaise · 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="slide-up">
+    <div class="label">Comment ça marche</div>
+    <h2>Simple, rapide,<br>sans mauvaise surprise.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step slide-up d1">
+      <div class="step-num">01</div>
+      <div class="step-name">Devis gratuit</div>
+      <div class="step-desc">On se déplace ou on échange par téléphone. Vous recevez un devis détaillé sous 24h, sans engagement.</div>
+    </div>
+    <div class="process-step slide-up d2">
+      <div class="step-num">02</div>
+      <div class="step-name">Planification</div>
+      <div class="step-desc">On fixe la date d'intervention ensemble. On respecte les délais annoncés, sans exception.</div>
+    </div>
+    <div class="process-step slide-up d3">
+      <div class="step-num">03</div>
+      <div class="step-name">Intervention</div>
+      <div class="step-desc">Nos techniciens arrivent à l'heure, protègent votre espace et réalisent le travail avec soin.</div>
+    </div>
+    <div class="process-step slide-up d4">
+      <div class="step-num">04</div>
+      <div class="step-name">Garantie</div>
+      <div class="step-desc">Chaque installation est testée et certifiée. On remet le certificat de conformité et on reste disponibles.</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="slide-up">
+    <h2>Un projet électrique ?<br>Parlons-en.</h2>
+    <p>Devis gratuit, réponse sous 24h. Interventions sur Caen et dans un rayon de 60 km.</p>
+  </div>
+  <a href="#" class="btn-dark slide-up d1">→ Demander un devis</a>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo-f">Volt<span>ex</span></div>
+    <div>Électricité générale · Caen, Normandie<br>Qualibat RGE · Garantie décennale</div>
+  </div>
+  <div style="text-align:right">06 23 45 67 89<br>contact@voltex-elec.fr<br>© 2025 Voltex Électricité</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.08});
+document.querySelectorAll('.slide-up,.slide-left').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubois Plomberie — Plombier à Caen</title>
+<meta name="description" content="Dubois Plomberie, votre plombier à Caen. Dépannage urgent 7j/7, installation sanitaire, rénovation salle de bain. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2D4F;
+  --blue:#2563EB;
+  --blue-light:#3B82F6;
+  --bg:#F0F6FF;
+  --white:#FFFFFF;
+  --text:#1a2a3a;
+  --muted:#6B7E97;
+  --border:#D1DFF5;
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-weight:700;font-size:1.1rem;color:var(--navy);letter-spacing:-.01em}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.875rem;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{background:var(--blue);color:var(--white)!important;padding:9px 20px;border-radius:100px;font-weight:600!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--navy)!important}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+
+/* HERO */
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:80px 64px;background:linear-gradient(135deg,var(--bg) 0%,var(--white) 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);color:var(--blue);border:1px solid rgba(37,99,235,.2);border-radius:100px;padding:6px 14px;font-size:.78rem;font-weight:600;margin-bottom:24px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:var(--blue);color:var(--white)}
+.btn-primary:hover{background:var(--navy);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,.3)}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--navy);transform:translateY(-1px)}
+.hero-stats{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--navy)}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:2px}
+.hero-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,#cce0ff 0%,#93c5fd 100%)}
+.img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(37,99,235,.4)}
+.img-placeholder svg{opacity:.5}
+.img-placeholder span{font-size:.8rem;font-weight:500;opacity:.6}
+.hero-img::after{content:'';position:absolute;inset:0;border-radius:20px;border:1px solid rgba(37,99,235,.15)}
+.badge-urgence{position:absolute;bottom:20px;left:20px;background:var(--white);border-radius:12px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px}
+.badge-urgence .dot{width:8px;height:8px;background:#22c55e;border-radius:50%;flex-shrink:0;animation:pulse 1.5s infinite}
+.badge-urgence strong{font-size:.85rem;color:var(--navy);display:block}
+.badge-urgence span{font-size:.75rem;color:var(--muted)}
+
+/* SERVICES */
+.section{padding:80px 64px}
+.section-bg{background:var(--bg)}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.7}
+.section-header{margin-bottom:48px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.service-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:28px;transition:all .25s;cursor:default}
+.service-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.1);transform:translateY(-3px)}
+.service-icon{width:48px;height:48px;background:rgba(37,99,235,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:16px}
+.service-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.service-card p{font-size:.875rem;color:var(--muted);line-height:1.6}
+
+/* URGENCE */
+.urgence-band{background:var(--navy);color:var(--white);padding:48px 64px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.urgence-band h2{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+.urgence-band p{color:rgba(255,255,255,.65);font-size:.95rem}
+.btn-white{background:var(--white);color:var(--navy);font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;font-size:.95rem;white-space:nowrap;transition:all .2s}
+.btn-white:hover{background:var(--bg);transform:translateY(-1px)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-item{border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#dbeafe 0%,#bfdbfe 100%);position:relative}
+.gallery-item.tall{aspect-ratio:3/4;grid-row:span 2}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(to top,rgba(27,45,79,.7),transparent);color:var(--white);font-size:.8rem;font-weight:500}
+
+/* TEMOIGNAGES */
+.temoignages{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.temo-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px}
+.stars{color:#F59E0B;font-size:.9rem;margin-bottom:12px;letter-spacing:2px}
+.temo-text{font-size:.9rem;color:var(--text);line-height:1.6;margin-bottom:16px;font-style:italic}
+.temo-author{font-size:.8rem;font-weight:600;color:var(--navy)}
+.temo-ville{font-size:.75rem;color:var(--muted)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--blue) 0%,#1d4ed8 100%);color:var(--white);text-align:center;padding:80px 64px}
+.cta-section h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,.75);margin-bottom:36px;font-size:1rem;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:40px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.85rem}
+footer strong{color:var(--white)}
+
+/* ANIM */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:60px 32px;gap:40px;min-height:auto}
+  .hero-img{aspect-ratio:16/9;order:-1}
+  .section,.urgence-band,.cta-section{padding:60px 32px}
+  .urgence-band{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.tall{aspect-ratio:4/3;grid-row:span 1}
+  footer{padding:32px}
+}
+@media(max-width:480px){
+  .section,.urgence-band,.cta-section{padding:48px 20px}
+  .hero{padding:48px 20px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Dubois <span>Plomberie</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Réalisations</a></li>
+    <li><a href="#">Tarifs</a></li>
+    <li><a href="#" class="nav-cta">📞 06 12 34 56 78</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>Disponible 7j/7 · Caen &amp; alentours</span>
+    </div>
+    <h1>Votre plombier<br>à Caen.<br><em>Rapide &amp; fiable.</em></h1>
+    <p class="hero-sub">Dépannage d'urgence, installation sanitaire, rénovation de salle de bain. Intervention sous 2h. Devis gratuit et sans engagement.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler maintenant
+      </a>
+      <a href="#" class="btn btn-outline">Devis gratuit</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+800</div>
+        <div class="stat-label">Interventions réalisées</div>
+      </div>
+      <div>
+        <div class="stat-num">12 ans</div>
+        <div class="stat-label">D'expérience</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Note Google</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="img-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <span>Photo intervention</span>
+    </div>
+    <div class="badge-urgence">
+      <div class="dot"></div>
+      <div>
+        <strong>Urgence 24h/24</strong>
+        <span>Intervention sous 2h</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-bg">
+  <div class="section-header reveal">
+    <div class="section-label">Nos services</div>
+    <h2 class="section-title">Tout ce qu'il faut<br>pour votre installation.</h2>
+    <p class="section-sub">Du dépannage rapide à la rénovation complète, on intervient sur tout type de chantier en Normandie.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h3>Dépannage urgent</h3>
+      <p>Fuite, canalisation bouchée, chauffe-eau en panne. On intervient rapidement, 7 jours sur 7.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <h3>Salle de bain</h3>
+      <p>Rénovation complète, pose de baignoire, douche à l'italienne, WC suspendu. Du sol au plafond.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Installation neuve</h3>
+      <p>Construction ou rénovation : on installe toute votre plomberie aux normes, avec les bons matériaux.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>Contrat d'entretien</h3>
+      <p>Chaudière, cumulus, VMC… On entretient vos équipements pour éviter les pannes et allonger leur durée.</p>
+    </div>
+  </div>
+</section>
+
+<div class="urgence-band">
+  <div>
+    <h2>Une fuite ? Une canalisation bouchée ?</h2>
+    <p>On intervient en urgence 7j/7, même le week-end et les jours fériés. Pas de supplément de nuit caché.</p>
+  </div>
+  <a href="#" class="btn-white">📞 Appeler le 06 12 34 56 78</a>
+</div>
+
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Réalisations</div>
+    <h2 class="section-title">Quelques chantiers récents.</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall reveal">
+      <div class="img-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(37,99,235,.35)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="gallery-caption">Rénovation salle de bain — Caen</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <div class="img-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(37,99,235,.35)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="gallery-caption">Installation chauffe-eau — Bayeux</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <div class="img-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(37,99,235,.35)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="gallery-caption">Douche italienne — Hérouville</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <div class="img-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(37,99,235,.35)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="gallery-caption">Plomberie neuve — Colombelles</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" style="background:linear-gradient(135deg,#bfdbfe,#93c5fd)">
+      <div class="img-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(37,99,235,.35)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div class="gallery-caption">WC suspendu — Falaise</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-bg">
+  <div class="section-header reveal">
+    <div class="section-label">Avis clients</div>
+    <h2 class="section-title">Ce qu'ils disent de nous.</h2>
+  </div>
+  <div class="temoignages">
+    <div class="temo-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="temo-text">"Intervention rapide pour une fuite sous évier. Propre, efficace, et le prix annoncé est celui facturé. Je recommande sans hésiter."</p>
+      <div class="temo-author">Marie-Claire D.</div>
+      <div class="temo-ville">Caen · Fuite urgente</div>
+    </div>
+    <div class="temo-card reveal reveal-delay-1">
+      <div class="stars">★★★★★</div>
+      <p class="temo-text">"Rénovation complète de notre salle de bain. Très pro, ponctuel, et le résultat est impeccable. On est très contents du suivi."</p>
+      <div class="temo-author">Stéphane &amp; Aurélie M.</div>
+      <div class="temo-ville">Hérouville-Saint-Clair · Rénovation</div>
+    </div>
+    <div class="temo-card reveal reveal-delay-2">
+      <div class="stars">★★★★★</div>
+      <p class="temo-text">"Arrivé en moins d'une heure un dimanche matin. Problème résolu en 30 minutes. Tarif honnête. Prestataire à garder précieusement."</p>
+      <div class="temo-author">Jacques L.</div>
+      <div class="temo-ville">Bayeux · Urgence week-end</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="reveal">
+    <h2>Prêt à démarrer votre projet ?</h2>
+    <p>Devis gratuit sous 24h. On se déplace sur Caen et dans un rayon de 40 km.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn" style="background:var(--white);color:var(--blue);font-weight:700">Demander un devis</a>
+      <a href="#" class="btn" style="background:rgba(255,255,255,.15);color:var(--white);border:2px solid rgba(255,255,255,.3)">📞 06 12 34 56 78</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><strong>Dubois Plomberie</strong> · Caen, Normandie<br>SIRET 123 456 789 00012 · RGE qualifié</div>
+  <div style="text-align:right">Lun–Sam 7h–19h · Urgences 24h/24<br>© 2025 Dubois Plomberie</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

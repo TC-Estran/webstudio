@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Normand — Restaurant à Caen</title>
+<meta name="description" content="Le Normand, restaurant brasserie à Caen. Cuisine de terroir, produits locaux, cadre chaleureux. Réservation en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#120C08;
+  --bordeaux:#7A1A1A;
+  --bordeaux-light:#9E2828;
+  --cream:#F4EFE6;
+  --warm:#E8DDD0;
+  --sand:#F9F6F1;
+  --muted:#8B7A6B;
+  --gold:#C4A35A;
+  --border:#DDD0BE;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;color:var(--dark);background:var(--white);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:72px;transition:all .4s}
+nav.scrolled{background:rgba(18,12,8,.95);backdrop-filter:blur(8px)}
+.logo{font-family:'Libre Baskerville',serif;font-size:1.2rem;font-weight:700;color:var(--cream);letter-spacing:.04em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,239,230,.55);transition:color .2s}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{border:1px solid rgba(196,163,90,.4)!important;color:var(--gold)!important;padding:8px 20px!important;transition:all .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2a1a10 0%,#120c08 50%,#1a0808 100%);display:flex;align-items:center;justify-content:center}
+.hero-bg-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(196,163,90,.06)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,12,8,.95) 0%,rgba(18,12,8,.3) 60%,rgba(18,12,8,.6) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;padding:0 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-end}
+.hero-left{}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.hero-tag::before,.hero-tag::after{content:'—';opacity:.4}
+h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:700;color:var(--cream);line-height:1;letter-spacing:-.01em;margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold);display:block}
+.hero-sub{font-size:1rem;color:rgba(244,239,230,.55);line-height:1.75;max-width:420px;margin-bottom:36px;font-weight:300}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .25s;border:none}
+.btn-gold{background:var(--gold);color:var(--dark)}
+.btn-gold:hover{background:#d4b36a;transform:translateY(-2px)}
+.btn-ghost-cream{background:transparent;color:var(--cream);border:1px solid rgba(244,239,230,.25)}
+.btn-ghost-cream:hover{border-color:var(--cream)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-right{text-align:right}
+.hero-info{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
+.hero-info-item{text-align:right}
+.info-val{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--cream);font-style:italic}
+.info-lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,239,230,.35);margin-top:2px}
+
+/* BANDEAU */
+.bandeau{background:var(--bordeaux);padding:14px 64px;display:flex;align-items:center;justify-content:center;gap:48px;overflow:hidden}
+.bandeau-item{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,239,230,.7);white-space:nowrap;display:flex;align-items:center;gap:12px}
+.bandeau-sep{color:var(--gold);font-size:.7rem}
+
+/* SECTION */
+.section{padding:88px 64px}
+.section-sand{background:var(--sand)}
+.section-cream{background:var(--cream)}
+.section-dark{background:var(--dark)}
+.tag{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--bordeaux);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+h2{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;color:var(--dark);line-height:1.1;letter-spacing:-.01em}
+h2.light{color:var(--cream)}
+.sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:500px;margin-top:16px;font-weight:300}
+
+/* CARTE */
+.carte-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.carte-col{padding:48px}
+.carte-col:first-child{border-right:1px solid var(--border)}
+.carte-cat{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:var(--bordeaux);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.carte-cat::after{content:'';flex:1;height:1px;background:var(--border)}
+.plat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;padding-bottom:20px;border-bottom:1px dotted var(--border);gap:16px}
+.plat:last-child{border:none;margin:0;padding:0}
+.plat-info{}
+.plat-name{font-family:'Libre Baskerville',serif;font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.plat-desc{font-size:.8rem;color:var(--muted);line-height:1.5;font-weight:300;font-style:italic}
+.plat-price{font-family:'Libre Baskerville',serif;font-size:.95rem;font-weight:700;color:var(--bordeaux);white-space:nowrap}
+.menu-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bordeaux);color:var(--cream);padding:10px 20px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:24px}
+
+/* AMBIANCE */
+.ambiance-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.amb{background:linear-gradient(135deg,#2a1a10 0%,#1a0808 100%);display:flex;align-items:center;justify-content:center;color:rgba(196,163,90,.15);overflow:hidden}
+.amb:nth-child(1){grid-row:span 2;aspect-ratio:unset}
+.amb:nth-child(2){aspect-ratio:4/3;background:linear-gradient(135deg,#3a1a10 0%,#2a0808 100%)}
+.amb:nth-child(3){aspect-ratio:4/3;background:linear-gradient(135deg,#1a1508 0%,#120c08 100%)}
+.amb:nth-child(4){aspect-ratio:4/3;grid-column:span 2;background:linear-gradient(135deg,#251810 0%,#1a0c08 100%)}
+
+/* PRODUCTEURS */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);margin-top:56px}
+.prod-item{background:var(--sand);padding:32px 24px;text-align:center}
+.prod-icon{font-family:'Libre Baskerville',serif;font-size:2rem;color:var(--gold);margin-bottom:12px;font-style:italic}
+.prod-name{font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:6px}
+.prod-lieu{font-size:.78rem;color:var(--muted);font-style:italic}
+
+/* RÉSA */
+.resa-section{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.resa-left{background:var(--dark);padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+.resa-left h2{color:var(--cream);margin-bottom:16px}
+.resa-left p{font-size:.9rem;color:rgba(244,239,230,.45);line-height:1.8;font-weight:300;margin-bottom:36px}
+.resa-hours{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.resa-hour{display:flex;justify-content:space-between;font-size:.875rem;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.05)}
+.resa-hour .day{font-weight:500;color:rgba(244,239,230,.6)}
+.resa-hour .time{color:var(--gold);font-weight:400}
+.resa-right{background:var(--cream);padding:72px 64px}
+.resa-right h3{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:700;margin-bottom:28px;color:var(--dark)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-group input,.form-group select{width:100%;padding:12px 16px;border:1px solid var(--border);background:var(--white);font-family:'Source Sans 3',sans-serif;font-size:.9rem;color:var(--dark);outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{border-color:var(--bordeaux)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-bordeaux{background:var(--bordeaux);color:var(--cream);width:100%;justify-content:center;margin-top:8px;font-size:.82rem;letter-spacing:.06em}
+.btn-bordeaux:hover{background:var(--bordeaux-light)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(244,239,230,.35);padding:56px 64px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-logo-f{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--cream);letter-spacing:.04em;margin-bottom:12px}
+.footer-logo-f span{color:var(--gold)}
+footer p,footer li{font-size:.83rem;line-height:1.8;list-style:none}
+footer h4{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:600}
+footer a{color:rgba(244,239,230,.35);text-decoration:none}
+footer a:hover{color:var(--cream)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;font-size:.78rem}
+
+/* ANIM */
+.scale-in{opacity:0;transform:scale(.96);transition:opacity .8s ease,transform .8s ease}
+.scale-in.visible{opacity:1;transform:scale(1)}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.25s}.d3{transition-delay:.4s}
+
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .hero-content{grid-template-columns:1fr;gap:40px;padding:0 32px}
+  .hero-right{text-align:left}
+  .hero-info{align-items:flex-start}
+  .bandeau{padding:14px 32px;gap:24px}
+  .section{padding:60px 32px}
+  .carte-layout{grid-template-columns:1fr}
+  .carte-col{padding:32px 24px}
+  .carte-col:first-child{border-right:none;border-bottom:1px solid var(--border)}
+  .ambiance-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .amb:nth-child(1){grid-row:span 1;aspect-ratio:4/3}
+  .amb:nth-child(4){grid-column:span 2}
+  .resa-section{grid-template-columns:1fr}
+  .resa-left,.resa-right{padding:56px 32px}
+  .footer-inner{grid-template-columns:1fr}
+  footer{padding:48px 32px}
+  .footer-bottom{flex-direction:column;gap:8px}
+}
+@media(max-width:480px){
+  .section{padding:48px 20px}
+  .resa-left,.resa-right{padding:48px 20px}
+  footer{padding:40px 20px}
+  .hero-content{padding:0 20px}
+  .bandeau{flex-direction:column;gap:8px;text-align:center}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">Le <span>Normand</span></div>
+  <ul class="nav-links">
+    <li><a href="#">La carte</a></li>
+    <li><a href="#">Notre histoire</a></li>
+    <li><a href="#">Événements</a></li>
+    <li><a href="#" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-img">
+      <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".4"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">Brasserie normande · Caen</div>
+      <h1>La cuisine<br>qui <em>revient aux sources.</em></h1>
+      <p class="hero-sub">Produits du terroir normand, recettes transmises de génération en génération, accueil qui ne ressemble à aucune chaîne.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn btn-gold">Réserver une table</a>
+        <a href="#" class="btn btn-ghost-cream">Voir la carte</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-info">
+        <div class="hero-info-item">
+          <div class="info-val">Lun – Sam</div>
+          <div class="info-lbl">Ouverture</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="info-val">12h – 14h · 19h – 22h</div>
+          <div class="info-lbl">Service</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="info-val">02 31 78 90 12</div>
+          <div class="info-lbl">Réservations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bandeau">
+  <div class="bandeau-item">Produits 100% locaux</div>
+  <div class="bandeau-sep">✦</div>
+  <div class="bandeau-item">Fait maison chaque jour</div>
+  <div class="bandeau-sep">✦</div>
+  <div class="bandeau-item">Cave à vins sélectionnée</div>
+  <div class="bandeau-sep">✦</div>
+  <div class="bandeau-item">Menu du marché 28 €</div>
+</div>
+
+<section class="section section-sand">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+    <div class="fade-up">
+      <div class="tag">La carte</div>
+      <h2>Des plats qui<br>racontent la Normandie.</h2>
+      <p class="sub">Chaque semaine, on adapte notre carte aux arrivages du marché et aux saisons. Ici, rien n'est figé.</p>
+      <div style="margin-top:32px"><a href="#" class="btn" style="background:var(--bordeaux);color:var(--cream);font-size:.82rem;letter-spacing:.06em">Voir la carte complète</a></div>
+    </div>
+    <div class="fade-up d2">
+      <div style="text-align:center;margin-bottom:16px;font-family:'Libre Baskerville',serif;font-size:.85rem;font-style:italic;color:var(--bordeaux)">— Extrait de notre carte —</div>
+      <div class="carte-layout" style="border:1px solid var(--border)">
+        <div class="carte-col">
+          <div class="carte-cat">Entrées</div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Terrine de canard</div><div class="plat-desc">Chutney de figues, pain brioché maison</div></div><div class="plat-price">13 €</div></div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Soupe de poissons</div><div class="plat-desc">Rouille, croûtons, gruyère</div></div><div class="plat-price">14 €</div></div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Camembert rôti</div><div class="plat-desc">Miel de Normandie, noix, roquette</div></div><div class="plat-price">11 €</div></div>
+        </div>
+        <div class="carte-col">
+          <div class="carte-cat">Plats</div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Côte de bœuf</div><div class="plat-desc">Pommes Normandes, sauce au cidre</div></div><div class="plat-price">34 €</div></div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Sole meunière</div><div class="plat-desc">Beurre citronné, légumes vapeur</div></div><div class="plat-price">28 €</div></div>
+          <div class="plat"><div class="plat-info"><div class="plat-name">Tripes à la mode de Caen</div><div class="plat-desc">Recette traditionnelle, mijoté 12h</div></div><div class="plat-price">22 €</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="fade-up" style="margin-bottom:48px">
+    <div class="tag">L'ambiance</div>
+    <h2>Un endroit où<br>on revient volontiers.</h2>
+  </div>
+  <div class="ambiance-grid">
+    <div class="amb scale-in">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <div class="amb scale-in d1">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <div class="amb scale-in d2">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <div class="amb scale-in d1">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="fade-up" style="text-align:center;margin-bottom:56px">
+    <div class="tag" style="justify-content:center">Nos producteurs</div>
+    <h2 style="max-width:500px;margin:0 auto">Court-circuit, traçabilité,<br>goût authentique.</h2>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-item fade-up d1"><div class="prod-icon">🥛</div><div class="prod-name">Ferme Leconte</div><div class="prod-lieu">Camembert · Lait &amp; fromages</div></div>
+    <div class="prod-item fade-up d2"><div class="prod-icon">🐄</div><div class="prod-name">Élevage Martin</div><div class="prod-lieu">Vire · Viande bovine</div></div>
+    <div class="prod-item fade-up d3"><div class="prod-icon">🍎</div><div class="prod-name">Verger Dupont</div><div class="prod-lieu">Pays d'Auge · Pommes &amp; Cidre</div></div>
+    <div class="prod-item fade-up"><div class="prod-icon">🐟</div><div class="prod-name">Marée Guilbert</div><div class="prod-lieu">Port-en-Bessin · Poissons frais</div></div>
+  </div>
+</section>
+
+<section class="resa-section">
+  <div class="resa-left">
+    <div class="fade-up">
+      <div class="tag" style="color:var(--gold)">Réservations</div>
+      <h2 class="light">Une table vous attend.</h2>
+      <p>On vous accueille du lundi au samedi, midi et soir. Pour les groupes de plus de 8 personnes, appelez-nous directement.</p>
+      <div class="resa-hours">
+        <div class="resa-hour"><span class="day">Lundi – Jeudi</span><span class="time">12h–14h · 19h–22h</span></div>
+        <div class="resa-hour"><span class="day">Vendredi – Samedi</span><span class="time">12h–14h30 · 19h–22h30</span></div>
+        <div class="resa-hour"><span class="day">Dimanche</span><span class="time" style="color:var(--muted)">Fermé</span></div>
+      </div>
+      <div style="font-size:.9rem;color:rgba(244,239,230,.4)">📍 3 place de la République, Caen<br>📞 02 31 78 90 12</div>
+    </div>
+  </div>
+  <div class="resa-right">
+    <h3>Réserver une table</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Prénom</label><input type="text" placeholder="Jean"></div>
+      <div class="form-group"><label>Nom</label><input type="text" placeholder="Martin"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date"></div>
+      <div class="form-group"><label>Heure</label>
+        <select><option>12h00</option><option>12h30</option><option>13h00</option><option>19h00</option><option>19h30</option><option>20h00</option><option>20h30</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Couverts</label>
+        <select><option>1 personne</option><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5–8 personnes</option></select>
+      </div>
+      <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+    </div>
+    <button class="btn btn-bordeaux">Confirmer ma réservation</button>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:12px;font-style:italic">Confirmation par SMS dans les 2h. Annulation gratuite jusqu'à 24h avant.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-f">Le <span>Normand</span></div>
+      <p>Brasserie normande à Caen depuis 2011. Cuisine de terroir, produits locaux, accueil sincère.</p>
+      <div style="margin-top:16px;display:flex;gap:12px">
+        <a href="#" style="font-size:.78rem;color:var(--gold)">Instagram</a>
+        <a href="#" style="font-size:.78rem;color:var(--gold)">Facebook</a>
+        <a href="#" style="font-size:.78rem;color:var(--gold)">TripAdvisor</a>
+      </div>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#">La carte</a></li>
+        <li><a href="#">Nos producteurs</a></li>
+        <li><a href="#">Événements privés</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Infos pratiques</h4>
+      <p>3 place de la République<br>14000 Caen<br>02 31 78 90 12<br><br>Parking à proximité</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Le Normand · Restaurant</span>
+    <span>Mentions légales · CGV</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)
+},{passive:true});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.08});
+document.querySelectorAll('.fade-up,.scale-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

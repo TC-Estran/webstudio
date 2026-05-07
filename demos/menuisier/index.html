@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Leroy — Menuiserie sur mesure à Caen</title>
+<meta name="description" content="Atelier Leroy, menuiserie artisanale sur mesure à Caen. Cuisine, escalier, agencement intérieur, mobilier bois. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#2C1A0E;
+  --medium:#5C3A1E;
+  --oak:#C4914A;
+  --oak-light:#DEB97A;
+  --bg:#F7F3EE;
+  --warm:#EDE4D6;
+  --lighter:#F9F7F4;
+  --muted:#8B7260;
+  --border:#D4C4B0;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;color:var(--dark);background:var(--white);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--dark);padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:400;color:var(--white);letter-spacing:.04em}
+.logo span{color:var(--oak)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.8rem;font-weight:400;letter-spacing:.06em;color:rgba(255,255,255,.45);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{border:1px solid rgba(196,145,74,.5)!important;color:var(--oak)!important;padding:8px 18px!important;transition:all .2s!important}
+.nav-cta:hover{background:var(--oak)!important;color:var(--dark)!important;border-color:var(--oak)!important}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+
+/* HERO */
+.hero{background:var(--dark);min-height:92vh;display:grid;grid-template-columns:55% 45%;overflow:hidden}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 64px;position:relative}
+.hero-text::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:rgba(255,255,255,.06)}
+.hero-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oak);margin-bottom:28px}
+h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,4.5vw,4.5rem);font-weight:300;color:var(--white);line-height:1.1;letter-spacing:-.01em;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--oak-light)}
+.hero-desc{font-size:.95rem;color:rgba(255,255,255,.45);line-height:1.8;font-weight:300;max-width:440px;margin-bottom:44px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;font-family:'Nunito Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:all .25s;border:none}
+.btn-oak{background:var(--oak);color:var(--dark)}
+.btn-oak:hover{background:var(--oak-light);transform:translateY(-2px)}
+.btn-ghost-w{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15)}
+.btn-ghost-w:hover{color:var(--white);border-color:rgba(255,255,255,.35)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img-col{background:linear-gradient(160deg,#4a2c14 0%,#2c1a0e 100%);display:flex;align-items:center;justify-content:center;color:rgba(196,145,74,.15);position:relative;overflow:hidden}
+.hero-img-col::before{content:'';position:absolute;top:-40%;left:-40%;width:80%;height:80%;border-radius:50%;border:120px solid rgba(196,145,74,.04)}
+.hero-img-col::after{content:'';position:absolute;bottom:-20%;right:-20%;width:60%;height:60%;border-radius:50%;border:80px solid rgba(196,145,74,.03)}
+.hero-scroll{margin-top:auto;padding-top:48px;display:flex;align-items:center;gap:12px;font-size:.75rem;color:rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase}
+.hero-scroll::before{content:'';width:40px;height:1px;background:rgba(255,255,255,.15)}
+
+/* SECTION */
+.section{padding:88px 64px}
+.section-bg{background:var(--bg)}
+.section-warm{background:var(--warm)}
+.section-dark{background:var(--dark)}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oak);margin-bottom:16px}
+h2{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--dark);line-height:1.1;letter-spacing:-.01em}
+h2.light{color:var(--white)}
+h2 em{font-style:italic;color:var(--oak)}
+.sub{font-size:.9rem;color:var(--muted);line-height:1.85;font-weight:300;max-width:520px;margin-top:16px}
+
+/* INTRO SPLIT */
+.intro-split{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.intro-img{background:linear-gradient(160deg,#5c3a1e 0%,#2c1a0e 100%);aspect-ratio:unset;min-height:400px;display:flex;align-items:center;justify-content:center;color:rgba(196,145,74,.15)}
+.intro-text-col{padding:72px 64px;display:flex;flex-direction:column;justify-content:center;background:var(--lighter)}
+.savoir-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.savoir-item{display:flex;gap:14px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.savoir-item:last-child{border:none;padding:0}
+.savoir-tick{color:var(--oak);font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;flex-shrink:0;line-height:1.4}
+.savoir-text strong{display:block;font-size:.875rem;font-weight:600;color:var(--dark);margin-bottom:3px}
+.savoir-text span{font-size:.83rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* RÉALISATIONS */
+.real-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:56px}
+.real-card{position:relative;overflow:hidden;border-radius:4px;background:linear-gradient(135deg,#5c3a1e 0%,#2c1a0e 100%);cursor:pointer}
+.real-card:nth-child(1){aspect-ratio:3/4;grid-row:span 2}
+.real-card:nth-child(2),.real-card:nth-child(3),.real-card:nth-child(4),.real-card:nth-child(5){aspect-ratio:4/3}
+.real-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(196,145,74,.15)}
+.real-hover{position:absolute;inset:0;background:rgba(44,26,14,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;padding:24px;text-align:center}
+.real-card:hover .real-hover{opacity:1}
+.real-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--white);margin-bottom:6px}
+.real-type{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--oak)}
+
+/* PROCESS */
+.process-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.process-img{aspect-ratio:4/5;background:linear-gradient(160deg,#4a2c14 0%,#2c1a0e 100%);border-radius:4px;display:flex;align-items:center;justify-content:center;color:rgba(196,145,74,.1)}
+.process-steps{display:flex;flex-direction:column;gap:0}
+.p-step{padding:28px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start}
+.p-step:last-child{border:none}
+.p-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:300;color:var(--oak-light);line-height:1}
+.p-body strong{display:block;font-size:.9rem;font-weight:600;color:var(--dark);margin-bottom:4px}
+.p-body p{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* MATÉRIAUX */
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);margin-top:56px}
+.mat-item{background:var(--white);padding:32px 24px;text-align:center;transition:background .25s}
+.mat-item:hover{background:var(--warm)}
+.mat-icon{font-family:'Fraunces',serif;font-size:2rem;color:var(--oak);margin-bottom:10px;font-style:italic}
+.mat-name{font-size:.875rem;font-weight:600;color:var(--dark);margin-bottom:6px}
+.mat-desc{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:300}
+
+/* CTA */
+.cta-split{display:grid;grid-template-columns:1fr 1fr}
+.cta-img{background:linear-gradient(135deg,#5c3a1e 0%,#2c1a0e 100%);min-height:360px;display:flex;align-items:center;justify-content:center;color:rgba(196,145,74,.1)}
+.cta-content{background:var(--dark);padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+.cta-content h2{color:var(--white);margin-bottom:16px}
+.cta-content p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.8;font-weight:300;margin-bottom:36px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Nunito Sans',sans-serif;font-size:.875rem;color:var(--white);outline:none;transition:border-color .2s}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--oak)}
+.form-group select option{background:var(--dark)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:56px 64px}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-logo-f{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:400;color:var(--white);letter-spacing:.04em;margin-bottom:12px}
+.footer-logo-f span{color:var(--oak)}
+footer p,footer li{font-size:.83rem;color:rgba(255,255,255,.35);line-height:1.8;list-style:none;font-weight:300}
+footer h4{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--oak);margin-bottom:16px;font-weight:600}
+footer a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.2)}
+
+/* ANIM */
+.appear{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.appear.visible{opacity:1;transform:none}
+.appear-x{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease}
+.appear-x.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
+
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-text{padding:60px 32px}
+  .hero-img-col{aspect-ratio:4/3;min-height:280px}
+  .section{padding:60px 32px}
+  .intro-split{grid-template-columns:1fr}
+  .intro-img{min-height:260px;aspect-ratio:4/3}
+  .intro-text-col{padding:48px 32px}
+  .real-grid{grid-template-columns:repeat(2,1fr)}
+  .real-card:nth-child(1){grid-row:span 1;aspect-ratio:4/3}
+  .process-layout{grid-template-columns:1fr;gap:40px}
+  .process-img{aspect-ratio:4/3}
+  .cta-split{grid-template-columns:1fr}
+  .cta-img{min-height:200px;aspect-ratio:4/3}
+  .cta-content{padding:56px 32px}
+  .footer-inner{grid-template-columns:1fr}
+  footer{padding:48px 32px}
+  .footer-bottom{flex-direction:column;gap:8px}
+}
+@media(max-width:480px){
+  .section{padding:48px 20px}
+  .hero-text{padding:48px 20px}
+  .intro-text-col{padding:40px 20px}
+  .cta-content{padding:48px 20px}
+  footer{padding:40px 20px}
+  .real-grid{grid-template-columns:1fr}
+  .real-card:nth-child(1){grid-row:span 1}
+  h1{font-size:2.6rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Atelier <span>Leroy</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Réalisations</a></li>
+    <li><a href="#">Savoir-faire</a></li>
+    <li><a href="#">Matériaux</a></li>
+    <li><a href="#" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Menuiserie sur mesure · Caen</div>
+    <h1>Le bois<br>comme on <em>l'imagine.</em></h1>
+    <p class="hero-desc">Cuisine, escalier, bibliothèque, dressing, mobilier. Chaque pièce sort de l'atelier avec une seule ambition : durer et vous ressembler.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-oak">Demander un devis</a>
+      <a href="#" class="btn btn-ghost-w">Voir les réalisations</a>
+    </div>
+    <div class="hero-scroll">Défiler pour découvrir</div>
+  </div>
+  <div class="hero-img-col">
+    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><rect x="2" y="3" width="7" height="7"/><rect x="15" y="3" width="7" height="7"/><rect x="2" y="14" width="7" height="7"/><rect x="15" y="14" width="7" height="7"/></svg>
+  </div>
+</section>
+
+<section class="intro-split">
+  <div class="intro-img appear">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+  </div>
+  <div class="intro-text-col appear d2">
+    <div class="eyebrow">Notre métier</div>
+    <h2>Artisans depuis<br>trois <em>générations.</em></h2>
+    <p class="sub">L'atelier Leroy c'est une histoire de famille. Du père au fils, la même passion du bois, la même exigence du trait, la même fierté du travail bien fait.</p>
+    <ul class="savoir-list">
+      <li class="savoir-item"><div class="savoir-tick">i.</div><div class="savoir-text"><strong>Conception sur mesure</strong><span>Chaque projet part de zéro : plans, choix des essences, finitions. Rien n'est standardisé.</span></div></li>
+      <li class="savoir-item"><div class="savoir-tick">ii.</div><div class="savoir-text"><strong>Fabrication en atelier</strong><span>Tout est fabriqué dans notre atelier de Caen. On maîtrise chaque étape, du découpe à la pose.</span></div></li>
+      <li class="savoir-item"><div class="savoir-tick">iii.</div><div class="savoir-text"><strong>Pose et finitions</strong><span>On ne lâche pas le chantier avant que ce soit parfait. Y compris les détails que vous serez les seuls à voir.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-bg">
+  <div class="appear">
+    <div class="eyebrow">Nos réalisations</div>
+    <h2>Des projets qui<br>parlent <em>d'eux-mêmes.</em></h2>
+    <p class="sub">Chaque réalisation est unique. Voici quelques exemples de ce qu'on a construit ces dernières années.</p>
+  </div>
+  <div class="real-grid">
+    <div class="real-card appear d1">
+      <div class="real-inner"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="real-hover"><div class="real-name">Cuisine sur mesure</div><div class="real-type">Ilot central · Chêne massif</div></div>
+    </div>
+    <div class="real-card appear d2" style="background:linear-gradient(135deg,#6a4020,#3c1e0a)">
+      <div class="real-inner"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="real-hover"><div class="real-name">Escalier quart tournant</div><div class="real-type">Frêne · Garde-corps fer forgé</div></div>
+    </div>
+    <div class="real-card appear d3" style="background:linear-gradient(135deg,#4a2c14,#1e0e04)">
+      <div class="real-inner"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="real-hover"><div class="real-name">Bibliothèque murale</div><div class="real-type">Noyer · 4 m de haut</div></div>
+    </div>
+    <div class="real-card appear" style="background:linear-gradient(135deg,#7a4e28,#4a2c14)">
+      <div class="real-inner"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="real-hover"><div class="real-name">Dressing intégré</div><div class="real-type">MDF laqué · Led intégré</div></div>
+    </div>
+    <div class="real-card appear d1" style="background:linear-gradient(135deg,#3c2008,#2c1a0e)">
+      <div class="real-inner"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="real-hover"><div class="real-name">Table de salle à manger</div><div class="real-type">Chêne massif · Pieds acier</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="process-layout">
+    <div class="appear">
+      <div class="eyebrow">Notre approche</div>
+      <h2>Un projet<br>pensé <em>ensemble.</em></h2>
+      <div class="process-steps" style="margin-top:40px">
+        <div class="p-step"><div class="p-num">01</div><div class="p-body"><strong>Visite et écoute</strong><p>On vient chez vous. On mesure, on échange, on comprend votre façon de vivre avant de proposer quoi que ce soit.</p></div></div>
+        <div class="p-step"><div class="p-num">02</div><div class="p-body"><strong>Plans et devis détaillé</strong><p>Sous 5 jours, vous recevez les plans 3D, le choix des essences et un devis complet. Pas de surprise en cours de route.</p></div></div>
+        <div class="p-step"><div class="p-num">03</div><div class="p-body"><strong>Fabrication en atelier</strong><p>4 à 6 semaines selon la complexité. Vous pouvez passer nous voir à l'atelier pour suivre l'avancement.</p></div></div>
+        <div class="p-step"><div class="p-num">04</div><div class="p-body"><strong>Pose et réception</strong><p>On pose, on finit, on protège. On part seulement quand vous êtes entièrement satisfaits.</p></div></div>
+      </div>
+    </div>
+    <div class="process-img appear-x">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="section section-warm">
+  <div class="appear" style="text-align:center;margin-bottom:56px">
+    <div class="eyebrow" style="justify-content:center;display:flex;align-items:center;gap:8px">Nos essences</div>
+    <h2>On choisit le bois<br>avec <em>vous.</em></h2>
+    <p class="sub" style="margin:16px auto 0">Chaque essence a ses qualités, sa couleur, son grain. On vous guide vers ce qui correspond le mieux à votre projet.</p>
+  </div>
+  <div class="mat-grid">
+    <div class="mat-item appear d1"><div class="mat-icon">Ch.</div><div class="mat-name">Chêne</div><div class="mat-desc">Robuste, chaleureux, intemporel. L'essence la plus polyvalente.</div></div>
+    <div class="mat-item appear d2"><div class="mat-icon">No.</div><div class="mat-name">Noyer</div><div class="mat-desc">Bois sombre et luxueux. Idéal pour le mobilier haut de gamme.</div></div>
+    <div class="mat-item appear d3"><div class="mat-icon">Fr.</div><div class="mat-name">Frêne</div><div class="mat-desc">Grain fin et clair. Parfait pour les escaliers et plans de travail.</div></div>
+    <div class="mat-item appear d4"><div class="mat-icon">Pi.</div><div class="mat-name">Pin Douglas</div><div class="mat-desc">Local, durable, économique. Un choix responsable et esthétique.</div></div>
+  </div>
+</section>
+
+<section class="cta-split">
+  <div class="cta-img appear">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".6"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+  </div>
+  <div class="cta-content">
+    <div class="appear">
+      <div class="eyebrow">Démarrer un projet</div>
+      <h2 class="light">Décrivez-nous<br>votre <em>projet.</em></h2>
+      <p>Réponse sous 48h. Dévis gratuit et sans engagement. On se déplace dans un rayon de 50 km autour de Caen.</p>
+      <div class="form-group"><label>Votre prénom</label><input type="text" placeholder="Paul"></div>
+      <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+      <div class="form-group"><label>Type de projet</label>
+        <select>
+          <option>Choisir...</option>
+          <option>Cuisine sur mesure</option>
+          <option>Escalier</option>
+          <option>Bibliothèque / Rangement</option>
+          <option>Mobilier</option>
+          <option>Dressing</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Décrivez votre projet</label><textarea rows="3" placeholder="En quelques mots : dimensions approximatives, essence souhaitée, délai..."></textarea></div>
+      <button class="btn btn-oak" style="width:100%;justify-content:center;margin-top:4px">Envoyer ma demande</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-f">Atelier <span>Leroy</span></div>
+      <p>Menuiserie artisanale sur mesure à Caen depuis 1987. Trois générations au service de vos projets en bois.</p>
+      <p style="margin-top:12px">Qualibat · Artisan RGE · Garantie décennale</p>
+    </div>
+    <div>
+      <h4>Nos services</h4>
+      <ul>
+        <li><a href="#">Cuisine sur mesure</a></li>
+        <li><a href="#">Escaliers</a></li>
+        <li><a href="#">Bibliothèques</a></li>
+        <li><a href="#">Mobilier</a></li>
+        <li><a href="#">Dressing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Atelier &amp; Contact</h4>
+      <p>45 zone artisanale Les Pins<br>14000 Caen<br>02 31 23 45 67<br>contact@atelier-leroy.fr<br><br>Lun–Ven · 8h–18h</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Atelier Leroy · Menuiserie sur mesure</span>
+    <span>Mentions légales</span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.07});
+document.querySelectorAll('.appear,.appear-x').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
