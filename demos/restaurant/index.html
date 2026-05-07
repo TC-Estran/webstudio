@@ -156,6 +156,11 @@ footer a:hover{color:var(--cream)}
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .fade-up.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.25s}.d3{transition-delay:.4s}
+.carte-section-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+@media(max-width:900px){
+  .carte-section-grid{grid-template-columns:1fr;gap:40px}
+}
 
 @media(max-width:900px){
   nav{padding:0 24px}
@@ -246,7 +251,7 @@ footer a:hover{color:var(--cream)}
 </div>
 
 <section class="section section-sand">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+  <div class="carte-section-grid">
     <div class="fade-up">
       <div class="tag">La carte</div>
       <h2>Des plats qui<br>racontent la Normandie.</h2>
@@ -318,7 +323,7 @@ footer a:hover{color:var(--cream)}
         <div class="resa-hour"><span class="day">Vendredi – Samedi</span><span class="time">12h–14h30 · 19h–22h30</span></div>
         <div class="resa-hour"><span class="day">Dimanche</span><span class="time" style="color:var(--muted)">Fermé</span></div>
       </div>
-      <div style="font-size:.9rem;color:rgba(244,239,230,.4)">📍 3 place de la République, Caen<br>📞 02 31 78 90 12</div>
+      <div style="font-size:.9rem;color:var(--gold);margin-top:4px">📍 3 place de la République, Caen<br>📞 02 31 78 90 12</div>
     </div>
   </div>
   <div class="resa-right">
