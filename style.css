@@ -675,6 +675,7 @@ img { max-width:100%; display:block; }
   text-decoration: none;
   color: inherit;
   border: 1.5px solid var(--border);
+  border-top: 3px solid var(--card-accent, var(--border));
   border-radius: 16px;
   overflow: hidden;
   transition: border-color .25s, box-shadow .25s, transform .25s;
@@ -689,8 +690,9 @@ img { max-width:100%; display:block; }
   }
 }
 .demo-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 40px rgba(99,102,241,.12);
+  border-color: var(--card-accent, var(--accent));
+  border-top-color: var(--card-accent, var(--accent));
+  box-shadow: 0 8px 40px color-mix(in srgb, var(--card-accent, var(--accent)) 15%, transparent);
   transform: translateY(-4px);
 }
 .demo-preview {
@@ -760,7 +762,7 @@ img { max-width:100%; display:block; }
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--card-accent, var(--accent));
 }
 .demo-name {
   font-size: 1rem;
@@ -1340,25 +1342,24 @@ img { max-width:100%; display:block; }
   .page-hero h1 { font-size:1.6rem; }
 }
 
-/* ── Mobile serré (< 480px) ── */
+/* ── Mobile (< 480px) ── */
 @media(max-width:480px) {
-  .hero { padding:48px 0 36px; }
+  .hero { padding:56px 0 44px; }
   .hero h1 { font-size:1.65rem; margin-bottom:16px; }
   .hero-desc { font-size:.875rem; margin-bottom:24px; }
   .hero-label { margin-bottom:16px; }
   .hero-actions { gap:10px; }
-  .section { padding:36px 0; }
-  .section-header { margin-bottom:24px; }
+  .section { padding:56px 0; }
+  .section-header { margin-bottom:28px; }
   .section-title { font-size:1.35rem; }
   .section-sub { font-size:.875rem; }
-  .services-grid { gap:10px; }
+  .services-grid { gap:12px; }
   .svc-card { padding:20px 16px; gap:12px; }
-  .demo-body { padding:14px; }
-  .map-section { padding:36px 0; }
-  .cta-box { padding:40px 20px; }
-  .footer-inner { gap:28px; }
-  .footer { padding-top:40px; padding-bottom:28px; }
-  .page-hero { padding:64px 0 28px; }
+  .demo-body { padding:16px; }
+  .map-section { padding:48px 0; }
+  .cta-box { padding:52px 20px; }
+  .footer-inner { gap:32px; }
+  .page-hero { padding:72px 0 40px; }
   .page-hero h1 { font-size:1.5rem; }
 }
 
