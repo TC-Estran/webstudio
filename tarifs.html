@@ -5,21 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarifs — Webstudio</title>
 <meta name="description" content="Tarifs transparents pour la création de sites web : vitrine dès 950 €, e-commerce dès 1 399 €. Devis gratuit et sans engagement.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">web<span>studio</span></a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="tarifs.html" class="nav-active">Tarifs</a></li>
     <li><a href="apropos.html">L'équipe</a></li>
     <li><a href="accompagnement.html">Accompagnement</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -27,14 +23,12 @@
   </ul>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="section-label" style="display:block;margin-bottom:12px;">Tarifs</div>
+    <div class="section-label">Tarifs</div>
     <h1>Des prix fixes,<br>sans mauvaise surprise.</h1>
-    <p>Vous savez exactement ce que vous payez avant de commencer. Tout est inclus dans le prix annoncé. Pas de coûts cachés en fin de projet.</p>
-    <div style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(99,102,241,0.10);border:1.5px solid rgba(99,102,241,0.25);border-radius:100px;padding:8px 18px;font-size:.85rem;font-weight:600;color:var(--accent);">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+    <p>Vous savez exactement ce que vous payez avant de commencer. Tout est inclus dans le prix annoncé. Pas de coûts cachés.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:100px;padding:6px 16px;font-size:.72rem;font-weight:600;color:var(--accent);">
       Offre de lancement · Tarifs amenés à évoluer
     </div>
   </div>
@@ -45,7 +39,6 @@
   <div class="container">
     <div class="pricing-grid reveal">
 
-      <!-- Vitrine -->
       <div class="pricing-card">
         <div class="pricing-name">Site vitrine</div>
         <div class="pricing-tagline">Pour présenter votre activité, vos services et vos coordonnées de façon claire et professionnelle.</div>
@@ -63,14 +56,13 @@
           <li>Mise en ligne sur votre domaine</li>
           <li>Livraison sous 7 jours ouvrés</li>
         </ul>
-        <div class="pricing-cta">
+        <div>
           <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Demander un devis gratuit</a>
         </div>
       </div>
 
-      <!-- E-commerce -->
       <div class="pricing-card featured">
-        <div class="pricing-badge">E-commerce</div>
+        <div class="pricing-badge">Le plus demandé</div>
         <div class="pricing-name">Site e-commerce</div>
         <div class="pricing-tagline">Pour vendre vos produits en ligne, avec catalogue, panier et paiement sécurisé.</div>
         <div class="pricing-price">1&nbsp;399 <span>€</span></div>
@@ -78,7 +70,7 @@
         <ul class="pricing-features">
           <li>Design sur mesure (pas de template)</li>
           <li>2 sections incluses · +100 €/section supplémentaire</li>
-          <li>Pages légales incluses (mentions légales, CGV)</li>
+          <li>Pages légales incluses</li>
           <li>5 fiches produit incluses · +50 €/fiche supplémentaire</li>
           <li>Panier d'achat</li>
           <li>Paiement en ligne sécurisé (Stripe)</li>
@@ -88,7 +80,7 @@
           <li>1 révision incluse</li>
           <li>Livraison sous 10 jours ouvrés</li>
         </ul>
-        <div class="pricing-cta">
+        <div>
           <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Demander un devis gratuit</a>
         </div>
       </div>
@@ -97,80 +89,74 @@
 
     <!-- PAIEMENT ÉCHELONNÉ -->
     <div class="reveal" style="margin-top:48px;">
-      <div style="text-align:center;margin-bottom:28px;">
-        <div class="section-label" style="display:inline-block;margin-bottom:10px;">Paiement échelonné</div>
-        <h3 style="font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:8px;">Payez en 4, 6 ou 12 fois — sans frais.</h3>
-        <p style="color:var(--muted);font-size:.9rem;">30 % d'acompte à la commande, le reste en mensualités égales. Aucun intérêt, aucun organisme de crédit.</p>
+      <div style="text-align:center;margin-bottom:32px;">
+        <div class="section-label" style="display:block;margin-bottom:12px;">Paiement échelonné</div>
+        <h3 style="font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:-0.02em;">Payez en 4, 6 ou 12 fois — sans frais.</h3>
+        <p style="color:var(--muted);font-size:.85rem;max-width:480px;margin:0 auto;line-height:1.75;">30 % d'acompte à la commande, le reste en mensualités égales. Aucun intérêt, aucun organisme de crédit.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-
-        <!-- Vitrine -->
-        <div style="border:1.5px solid var(--border);border-radius:16px;padding:24px;">
-          <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:4px;">Site vitrine <span style="color:var(--muted);font-weight:500;">· 950 €</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:16px;">Acompte : <strong style="color:var(--navy);">285 €</strong> · Reste : 665 €</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="background:var(--bg);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--muted);">4 mensualités</span>
-                <span style="font-weight:700;color:var(--navy);">251 €/mois</span>
+      <div class="payment-grid">
+        <div class="payment-card">
+          <div class="payment-card-title">Site vitrine <span style="color:var(--muted);font-weight:400;">· 950 €</span></div>
+          <div class="payment-card-note">Acompte : <strong style="color:var(--text);">285 €</strong> · Reste : 665 €</div>
+          <div class="payment-rows">
+            <div class="payment-row">
+              <div class="payment-row-top">
+                <span class="payment-row-label">4 mensualités</span>
+                <span class="payment-row-value">251 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--muted);">166 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">166 € site + 85 € abonnement</div>
             </div>
-            <div style="background:var(--accent-bg);border:1.5px solid var(--accent-border);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--accent);font-weight:600;">6 mensualités</span>
-                <span style="font-weight:700;color:var(--accent);">196 €/mois</span>
+            <div class="payment-row highlight">
+              <div class="payment-row-top">
+                <span class="payment-row-label">6 mensualités</span>
+                <span class="payment-row-value">196 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--accent);opacity:.8;">111 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">111 € site + 85 € abonnement</div>
             </div>
-            <div style="background:var(--bg);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--muted);">12 mensualités</span>
-                <span style="font-weight:700;color:var(--navy);">140 €/mois</span>
+            <div class="payment-row">
+              <div class="payment-row-top">
+                <span class="payment-row-label">12 mensualités</span>
+                <span class="payment-row-value">140 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--muted);">55 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">55 € site + 85 € abonnement</div>
             </div>
           </div>
         </div>
-
-        <!-- E-commerce -->
-        <div style="border:1.5px solid var(--border);border-radius:16px;padding:24px;">
-          <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:4px;">Site e-commerce <span style="color:var(--muted);font-weight:500;">· 1 399 €</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:16px;">Acompte : <strong style="color:var(--navy);">420 €</strong> · Reste : 979 €</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="background:var(--bg);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--muted);">4 mensualités</span>
-                <span style="font-weight:700;color:var(--navy);">330 €/mois</span>
+        <div class="payment-card">
+          <div class="payment-card-title">Site e-commerce <span style="color:var(--muted);font-weight:400;">· 1 399 €</span></div>
+          <div class="payment-card-note">Acompte : <strong style="color:var(--text);">420 €</strong> · Reste : 979 €</div>
+          <div class="payment-rows">
+            <div class="payment-row">
+              <div class="payment-row-top">
+                <span class="payment-row-label">4 mensualités</span>
+                <span class="payment-row-value">330 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--muted);">245 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">245 € site + 85 € abonnement</div>
             </div>
-            <div style="background:var(--accent-bg);border:1.5px solid var(--accent-border);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--accent);font-weight:600;">6 mensualités</span>
-                <span style="font-weight:700;color:var(--accent);">248 €/mois</span>
+            <div class="payment-row highlight">
+              <div class="payment-row-top">
+                <span class="payment-row-label">6 mensualités</span>
+                <span class="payment-row-value">248 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--accent);opacity:.8;">163 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">163 € site + 85 € abonnement</div>
             </div>
-            <div style="background:var(--bg);border-radius:10px;padding:10px 14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                <span style="font-size:.85rem;color:var(--muted);">12 mensualités</span>
-                <span style="font-weight:700;color:var(--navy);">167 €/mois</span>
+            <div class="payment-row">
+              <div class="payment-row-top">
+                <span class="payment-row-label">12 mensualités</span>
+                <span class="payment-row-value">167 €/mois</span>
               </div>
-              <div style="font-size:.75rem;color:var(--muted);">82 € site + 85 € abonnement</div>
+              <div class="payment-row-sub">82 € site + 85 € abonnement</div>
             </div>
           </div>
         </div>
-
       </div>
-      <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:16px;">Après remboursement du site, il reste uniquement l'abonnement mensuel de 85 €.</p>
+      <p style="text-align:center;font-size:.73rem;color:var(--muted);margin-top:14px;">Après remboursement du site, il reste uniquement l'abonnement mensuel de 85 €.</p>
     </div>
-
   </div>
 </section>
 
 <!-- SHOOTING PHOTO & VIDÉO -->
-<section class="section section-bg">
+<section class="section section-alt">
   <div class="container">
     <div class="shooting-banner reveal">
       <div>
@@ -178,29 +164,29 @@
         <h3>Pack photo & vidéo</h3>
         <p>Photos et vidéos pro de votre activité, tournées sur place. Pour votre site, vos réseaux, vos supports.</p>
       </div>
-      <div style="flex-shrink:0;">
+      <div>
         <a href="contact.html" class="btn btn-primary btn-lg">Demander un devis</a>
       </div>
     </div>
     <div class="shooting-grid reveal">
       <div class="shooting-card">
-        <div class="shooting-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div class="shooting-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
         <div class="shooting-name">Shooting photo</div>
         <div class="shooting-desc">Photos de votre activité, portraits et produits. Fichiers HD retouchés sous 5 jours.</div>
         <div class="shooting-price">149 € <small>à partir de</small></div>
         <div class="shooting-zone">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Normandie uniquement · déplacement inclus (rayon 50 km)
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Normandie · déplacement inclus (rayon 50 km)
         </div>
       </div>
       <div class="shooting-card">
-        <div class="shooting-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+        <div class="shooting-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
         <div class="shooting-name">Vidéo courte</div>
         <div class="shooting-desc">Vidéo de présentation (30s à 2 min), montée et étalonnée. Site, Reels, Google Business.</div>
         <div class="shooting-price">299 € <small>à partir de</small></div>
         <div class="shooting-zone">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Normandie uniquement · déplacement inclus (rayon 50 km)
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Normandie · déplacement inclus (rayon 50 km)
         </div>
       </div>
     </div>
@@ -208,11 +194,11 @@
 </section>
 
 <!-- OPTIONS -->
-<section class="section section-bg">
+<section class="section">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">Options</div>
-      <h2 class="section-title">Pour aller plus loin</h2>
+      <h2 class="section-title">Pour aller plus loin.</h2>
       <p class="section-sub">Des fonctionnalités supplémentaires à ajouter à votre projet selon vos besoins.</p>
     </div>
     <div class="options-grid reveal">
@@ -229,68 +215,69 @@
   </div>
 </section>
 
-<!-- FAQ TARIFS -->
-<section class="section">
+<!-- FAQ -->
+<section class="section section-alt">
   <div class="container">
-    <div class="faq-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
       <div class="section-header reveal">
         <div class="section-label">Questions fréquentes</div>
-        <h2 class="section-title">Ce que vous vous demandez sûrement</h2>
+        <h2 class="section-title">Ce que vous vous demandez sûrement.</h2>
       </div>
-      <div class="faq-list">
-        <div class="faq-item reveal">
+      <div class="faq-list reveal">
+        <div class="faq-item">
           <button class="faq-q">
             Quels sont les délais de paiement ?
             <span class="faq-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
-          <div class="faq-a">50 % à la commande, 50 % à la livraison. Paiement par virement bancaire. Facture fournie.</div>
+          <div class="faq-a">30 % à la commande, le reste en mensualités sans frais. Paiement par virement bancaire. Facture fournie.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <button class="faq-q">
-            Est-ce que le prix inclut l'hébergement et le nom de domaine ?
+            Le prix inclut-il l'hébergement et le domaine ?
             <span class="faq-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
-          <div class="faq-a">Non. L'hébergement et le nom de domaine sont à votre charge (environ 10 à 20 € par an). On vous guide dans les démarches si besoin. On travaille avec GitHub Pages (gratuit) ou OVH selon les besoins.</div>
+          <div class="faq-a">Non. L'hébergement et le nom de domaine sont à votre charge (environ 10 à 20 € par an). On vous guide dans les démarches si besoin.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <button class="faq-q">
-            Est-ce que je peux modifier le site moi-même après livraison ?
+            Puis-je modifier le site moi-même après livraison ?
             <span class="faq-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
-          <div class="faq-a">Les sites qu'on livre sont des fichiers HTML/CSS. Pour des retouches simples (textes, photos), on peut vous former rapidement. Pour les changements réguliers, on propose une formule de maintenance à 85 €/mois.</div>
+          <div class="faq-a">Les sites livrés sont des fichiers HTML/CSS. Pour des retouches simples, on peut vous former rapidement. Pour les changements réguliers, on propose la maintenance à 85 €/mois.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <button class="faq-q">
-            Est-ce que vous travaillez en dehors de la Normandie ?
+            Travaillez-vous en dehors de la Normandie ?
             <span class="faq-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
-          <div class="faq-a">Oui, tout à fait. On travaille à distance sans problème : email, téléphone ou visio. On est basés à Caen mais on accompagne des clients partout en France.</div>
+          <div class="faq-a">Oui. On travaille à distance sans problème : email, téléphone ou visio. On est basés à Caen mais on accompagne des clients partout en France.</div>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <button class="faq-q">
-            Que se passe-t-il si je ne suis pas satisfait du résultat ?
+            Que se passe-t-il si je ne suis pas satisfait ?
             <span class="faq-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
-          <div class="faq-a">Une révision est incluse dans chaque projet. Si la première version ne vous convient pas, on en discute et on apporte les corrections nécessaires. Notre objectif : vous livrer quelque chose dont vous êtes fier.</div>
+          <div class="faq-a">Une révision est incluse dans chaque projet. Si la première version ne vous convient pas, on en discute et on apporte les corrections nécessaires.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONFIGURATEUR -->
-<section class="section section-bg">
-  <div class="container" style="text-align:center;max-width:640px;margin:0 auto;">
-    <div class="reveal">
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box reveal">
       <div class="section-label" style="display:block;margin-bottom:12px;">Configurateur</div>
-      <h2 class="section-title" style="margin-bottom:16px;">Estimez votre budget en 2 minutes</h2>
-      <p class="section-sub" style="margin:0 auto 32px;">Choisissez vos options et obtenez un prix indicatif immédiatement. Sans engagement.</p>
-      <a href="configurateur.html" class="btn btn-primary btn-lg">Estimer mon projet &rarr;</a>
+      <h2>Estimez votre budget en 2 minutes.</h2>
+      <p>Choisissez vos options et obtenez un prix indicatif immédiatement. Sans engagement.</p>
+      <div class="cta-box-actions">
+        <a href="configurateur.html" class="btn btn-primary btn-lg">Estimer mon projet &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
@@ -303,7 +290,7 @@
         <ul>
           <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="apropos.html">L'équipe</a></li>
-    <li><a href="accompagnement.html">Accompagnement</a></li>
+          <li><a href="accompagnement.html">Accompagnement</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -318,7 +305,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Webstudio · Thomas Dubois & Kyllian Guy</span>
-      <a href="mentions-legales.html" style="color:rgba(255,255,255,.35)">Mentions légales</a> &nbsp;&middot;&nbsp; <a href="cgv.html" style="color:rgba(255,255,255,.35)">CGV</a>
+      <span><a href="mentions-legales.html">Mentions légales</a> &nbsp;·&nbsp; <a href="cgv.html">CGV</a></span>
     </div>
   </div>
 </footer>
@@ -334,7 +321,6 @@ toggle.addEventListener('click', () => {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-// FAQ
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.closest('.faq-item');
@@ -344,20 +330,10 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// Reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Responsive
-function fixCards() {
-  document.querySelectorAll('.pcard [style*="grid-template-columns: 1fr 1fr"]').forEach(g => {
-    g.style.gridTemplateColumns = window.innerWidth < 640 ? '1fr' : '1fr 1fr';
-  });
-}
-fixCards();
-window.addEventListener('resize', fixCards);
 </script>
 </body>
 </html>

@@ -5,14 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Webstudio</title>
 <meta name="description" content="Contactez Webstudio pour discuter de votre projet web. Réponse sous 24h. Basé à Caen, Normandie.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">web<span>studio</span></a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
@@ -22,29 +18,26 @@
     <li><a href="tarifs.html">Tarifs</a></li>
     <li><a href="apropos.html">L'équipe</a></li>
     <li><a href="accompagnement.html">Accompagnement</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-active">Contact</a></li>
     <li><a href="configurateur.html" class="nav-cta">Devis rapide</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="section-label" style="display:block;margin-bottom:12px;">Contact</div>
+    <div class="section-label">Contact</div>
     <h1>Parlons de<br>votre projet.</h1>
-    <p>Décrivez-moi votre activité et ce que vous cherchez. Je vous réponds sous 24h, sans engagement.</p>
+    <p>Décrivez-nous votre activité et ce que vous cherchez. On vous répond sous 24h, sans engagement.</p>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="section">
   <div class="container">
     <div class="contact-wrap reveal">
 
-      <!-- Info -->
       <div class="contact-info">
         <h3>Ce que vous pouvez attendre</h3>
-        <p>Un échange simple et direct. Pas de discours commercial. Je lis votre message, je comprends votre besoin et je vous reviens avec une réponse concrète.</p>
+        <p>Un échange simple et direct. Pas de discours commercial. On lit votre message, on comprend votre besoin et on vous revient avec une réponse concrète.</p>
 
         <div class="contact-details">
           <div class="contact-detail">
@@ -61,15 +54,14 @@
           </div>
         </div>
 
-        <div style="margin-top:36px;padding:24px;background:var(--bg);border-radius:12px;border:1px solid var(--border);">
-          <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px;">Avant d'écrire</div>
-          <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">
+        <div style="margin-top:28px;padding:20px 24px;background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border);">
+          <div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;">Avant d'écrire</div>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.75;">
             Si vous avez déjà une idée de votre budget, vous pouvez aussi utiliser le <a href="configurateur.html" style="color:var(--accent);font-weight:500;">configurateur de devis</a> pour obtenir une estimation immédiate.
           </p>
         </div>
       </div>
 
-      <!-- Formulaire -->
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-row">
           <div class="form-group">
@@ -102,12 +94,12 @@
           <label for="message">Votre projet <span style="color:#ef4444">*</span></label>
           <textarea id="message" name="message" rows="5" placeholder="Décrivez brièvement votre activité et ce que vous attendez de votre site..." required></textarea>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:8px;">
           <p class="form-note">Vos données restent confidentielles. Aucun démarchage.</p>
           <button type="submit" class="btn btn-primary btn-lg">Envoyer le message</button>
         </div>
         <div class="form-success" id="formSuccess">
-          Message bien reçu. Je vous réponds sous 24h.
+          Message bien reçu. On vous répond sous 24h.
         </div>
       </form>
 
@@ -115,7 +107,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
@@ -128,7 +119,7 @@
         <ul>
           <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="apropos.html">L'équipe</a></li>
-    <li><a href="accompagnement.html">Accompagnement</a></li>
+          <li><a href="accompagnement.html">Accompagnement</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -143,7 +134,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Webstudio · Thomas Dubois & Kyllian Guy</span>
-      <a href="mentions-legales.html" style="color:rgba(255,255,255,.35)">Mentions légales</a> &nbsp;&middot;&nbsp; <a href="cgv.html" style="color:rgba(255,255,255,.35)">CGV</a>
+      <span><a href="mentions-legales.html">Mentions légales</a> &nbsp;·&nbsp; <a href="cgv.html">CGV</a></span>
     </div>
   </div>
 </footer>
@@ -165,9 +156,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const message = document.getElementById('message').value.trim();
   let valid = true;
 
-  [document.getElementById('email'), document.getElementById('message')].forEach(el => {
-    el.style.borderColor = '';
-  });
+  [document.getElementById('email'), document.getElementById('message')].forEach(el => { el.style.borderColor = ''; });
 
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById('email').style.borderColor = '#ef4444';
@@ -192,6 +181,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     if (res.ok) {
       document.getElementById('formSuccess').style.display = 'block';
       this.reset();
+      btn.textContent = 'Message envoyé';
     } else {
       btn.textContent = 'Erreur — réessayez';
       btn.disabled = false;

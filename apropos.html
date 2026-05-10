@@ -4,36 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>À propos — Webstudio</title>
-<meta name="description" content="Thomas & Kyllian Guy, deux profils complémentaires basés à Caen. Design web, développement, SEO, SEA, photo/vidéo pro. Bac+3 Marketing Digital et Communication.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Thomas & Kyllian Guy, deux profils complémentaires basés à Caen. Design web, développement, SEO, SEA, photo/vidéo pro.">
 <link rel="stylesheet" href="style.css">
 <style>
-/* Responsive overrides — apropos.html */
 @media(max-width:768px) {
-  /* Stats 3 colonnes → 1 colonne */
-  .stats-grid { grid-template-columns:1fr !important; gap:2px !important; }
-  /* Benefits 2 colonnes → 1 colonne */
-  .benefits-grid { grid-template-columns:1fr !important; }
-  /* Team cards 2 colonnes → 1 colonne */
-  .team-grid { grid-template-columns:1fr !important; gap:16px !important; }
-  /* Team card padding */
-  .team-grid .pcard { padding:24px !important; }
-  /* Accompagnement banner → colonne */
-  .accomp-banner { grid-template-columns:1fr !important; gap:20px !important; }
-  /* Méthode → colonne */
+  .team-grid { grid-template-columns:1fr !important; gap:12px !important; }
   .methode-grid { grid-template-columns:1fr !important; gap:32px !important; }
-}
-@media(max-width:480px) {
-  .stats-grid > div { padding:24px 20px !important; }
-  .stats-grid > div > div:first-child { font-size:2rem !important; }
+  .stats-row { grid-template-columns:1fr !important; }
+  .benefits-row { grid-template-columns:1fr !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">web<span>studio</span></a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
@@ -48,120 +31,114 @@
   </ul>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="section-label" style="display:block;margin-bottom:12px;">À propos</div>
+    <div class="section-label">À propos</div>
     <h1>Deux profils,<br>un seul objectif.</h1>
     <p>Thomas et Kyllian Guy, basés à Caen. Une formation solide, des clients locaux, du travail bien fait.</p>
   </div>
 </section>
 
-<!-- POURQUOI UN SITE -->
-<section class="section section-dark">
+<!-- STATS -->
+<section class="section section-alt">
   <div class="container">
     <div class="section-header centered reveal">
       <div class="section-label">Pourquoi c'est important</div>
       <h2 class="section-title">Vos clients cherchent<br>en ligne. Êtes-vous là ?</h2>
-      <p class="section-sub" style="margin:16px auto 0;">Sans site, vous êtes invisible. Voici pourquoi c'est devenu incontournable.</p>
+      <p class="section-sub" style="margin:0 auto;">Sans site, vous êtes invisible. Voici pourquoi c'est devenu incontournable.</p>
     </div>
-    <div class="stats-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:16px;overflow:hidden;margin-bottom:64px;">
-      <div style="background:rgba(255,255,255,.04);padding:40px 32px;" class="reveal">
-        <div style="font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:12px;">97 %</div>
-        <div style="font-size:.95rem;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:8px;">des gens cherchent en ligne</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.6;">Vos clients cherchent sur Google avant tout. Sans vous, ils trouvent la concurrence.</div>
+
+    <div class="stats-row reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:48px;">
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--white);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">97 %</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">des gens cherchent en ligne</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Vos clients cherchent sur Google avant tout. Sans vous, ils trouvent la concurrence.</div>
       </div>
-      <div style="background:rgba(255,255,255,.04);padding:40px 32px;" class="reveal">
-        <div style="font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:12px;">24h/24</div>
-        <div style="font-size:.95rem;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:8px;">votre meilleur commercial</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.6;">Votre vitrine ouverte 24h/24, 7j/7. Même quand vous dormez.</div>
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--white);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">24h/24</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">votre meilleur commercial</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Votre vitrine ouverte 7j/7. Même quand vous dormez.</div>
       </div>
-      <div style="background:rgba(255,255,255,.04);padding:40px 32px;" class="reveal">
-        <div style="font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:12px;">+ de crédibilité</div>
-        <div style="font-size:.95rem;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:8px;">dès le premier contact</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.6;">Un site pro inspire confiance au premier coup d'oeil. Sans lui, les clients passent leur chemin.</div>
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--white);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">+crédibilité</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">dès le premier contact</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Un site pro inspire confiance. Sans lui, les clients passent leur chemin.</div>
       </div>
     </div>
-    <div class="benefits-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+    <div class="benefits-row reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <div>
-          <div style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:6px;">Vos clients locaux vous trouvent</div>
-          <div style="font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.6;">Référencement local : vous apparaissez quand quelqu'un cherche votre métier près de chez lui.</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px;">Vos clients locaux vous trouvent</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Référencement local : vous apparaissez quand quelqu'un cherche votre métier près de chez lui.</div>
         </div>
       </div>
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <div>
-          <div style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:6px;">Vous vendez plus, même sans vous déplacer</div>
-          <div style="font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.6;">Un formulaire ou une boutique en ligne génère des demandes sans que vous ayez à bouger.</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px;">Vous vendez plus, sans vous déplacer</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Un formulaire ou une boutique en ligne génère des demandes sans que vous ayez à bouger.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- À PROPOS -->
+<!-- ÉQUIPE -->
 <section class="section" id="equipe">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">L'équipe</div>
       <h2 class="section-title">Deux compétences,<br>une même exigence.</h2>
     </div>
-    <div class="team-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div class="team-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
 
-      <div class="pcard reveal" style="padding:40px;">
-        <div style="width:56px;height:56px;border-radius:16px;background:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-          <span style="font-size:1.4rem;font-weight:800;color:#fff;">T</span>
+      <div class="pcard" style="padding:36px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <span style="font-size:1.2rem;font-weight:800;color:var(--accent);">T</span>
         </div>
-        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:4px;">Thomas Dubois</div>
-        <div style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:16px;">Design web · Développement · Stratégie digitale</div>
-        <p style="font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:20px;">
-          Bac+3 Marketing Digital. Design, développement, stratégie. Des sites qui ramènent des clients.
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Design web</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">HTML / CSS / JS</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Figma / Maquettes</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">SEO on-page</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Marketing digital</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">E-commerce</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Tunnel de conversion</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Stratégie de contenu</span>
+        <div style="font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px;">Thomas Dubois</div>
+        <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">Design web · Développement · Stratégie</div>
+        <p style="font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:18px;">Bac+3 Marketing Digital. Design, développement, stratégie. Des sites qui ramènent des clients.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Design web</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">HTML / CSS / JS</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Figma</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">SEO on-page</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Marketing digital</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">E-commerce</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Tunnel de conversion</span>
         </div>
       </div>
 
-      <div class="pcard reveal" style="padding:40px;">
-        <div style="width:56px;height:56px;border-radius:16px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-          <span style="font-size:1.4rem;font-weight:800;color:#fff;">K</span>
+      <div class="pcard" style="padding:36px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <span style="font-size:1.2rem;font-weight:800;color:var(--text);">K</span>
         </div>
-        <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:4px;">Kyllian Guy</div>
-        <div style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:16px;">Communication · SEO · SEA · UX · Audiovisuel</div>
-        <p style="font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:20px;">
-          Bac+3 Communication. Visibilité, campagnes ads, SEO technique et UX. Photo/vidéo pro en option.
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">SEA / Google Ads</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Campagnes Meta</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">SEO technique</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">UX Design</span>
-          <span class="option-chip" style="font-size:.75rem;padding:5px 12px;">Photo / Vidéo pro</span>
+        <div style="font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px;">Kyllian Guy</div>
+        <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">Communication · SEO · SEA · Audiovisuel</div>
+        <p style="font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:18px;">Bac+3 Communication. Visibilité, campagnes ads, SEO technique et UX. Photo/vidéo pro en option.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">SEA / Google Ads</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Campagnes Meta</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">SEO technique</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">UX Design</span>
+          <span class="option-chip" style="font-size:.72rem;padding:4px 10px;">Photo / Vidéo</span>
         </div>
       </div>
 
     </div>
-    <!-- Accompagnement marketing -->
-    <div class="accomp-banner reveal" style="margin-top:24px;background:var(--navy);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;flex-wrap:wrap;">
+
+    <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;flex-wrap:wrap;">
       <div>
-        <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:12px;">Au-delà du site web</div>
-        <div style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3;">Accompagnement marketing<br>pour les entreprises</div>
-        <p style="font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:560px;">
-          Un site, c'est le début. On peut aussi gérer votre SEO, vos campagnes ads, vos contenus et vos réseaux. Un accompagnement adapté à votre budget.
-        </p>
+        <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:10px;">Au-delà du site web</div>
+        <div style="font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:-0.02em;">Accompagnement marketing<br>pour les entreprises</div>
+        <p style="font-size:.83rem;color:var(--muted);line-height:1.7;max-width:520px;">Un site, c'est le début. On peut aussi gérer votre SEO, vos campagnes ads, vos contenus et vos réseaux. Un accompagnement adapté à votre budget.</p>
       </div>
       <div style="flex-shrink:0;">
         <a href="contact.html" class="btn btn-primary btn-lg">En savoir plus</a>
@@ -171,41 +148,39 @@
 </section>
 
 <!-- MÉTHODE -->
-<section class="section section-bg" id="process">
+<section class="section section-alt" id="process">
   <div class="container">
     <div class="methode-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
-      <div>
-        <div class="section-header reveal">
-          <div class="section-label">Notre méthode</div>
-          <h2 class="section-title">Simple du début<br>à la fin.</h2>
-          <p class="section-sub">Pas de formulaire interminable, pas de réunion inutile. Vous commencez, on prend le relais.</p>
-        </div>
+      <div class="reveal">
+        <div class="section-label">Notre méthode</div>
+        <h2 class="section-title">Simple du début<br>à la fin.</h2>
+        <p class="section-sub">Pas de formulaire interminable, pas de réunion inutile. Vous commencez, on prend le relais.</p>
       </div>
       <div class="process-list">
         <div class="process-item reveal">
           <div class="process-n">01</div>
-          <div class="process-content">
+          <div>
             <div class="process-title">Vous remplissez le configurateur</div>
             <div class="process-desc">5 minutes, prix en temps réel. Pas besoin de savoir exactement ce que vous voulez — le questionnaire guide tout. Zéro jargon technique.</div>
           </div>
         </div>
         <div class="process-item reveal">
           <div class="process-n">02</div>
-          <div class="process-content">
+          <div>
             <div class="process-title">On vous rappelle sous 24h</div>
-            <div class="process-desc">Un échange rapide par téléphone ou visio pour préciser votre projet et répondre à vos questions. On peut aussi fixer un RDV en personne à Caen si vous préférez.</div>
+            <div class="process-desc">Un échange rapide par téléphone ou visio. On peut aussi fixer un RDV en personne à Caen si vous préférez.</div>
           </div>
         </div>
         <div class="process-item reveal">
           <div class="process-n">03</div>
-          <div class="process-content">
+          <div>
             <div class="process-title">On conçoit, vous validez</div>
-            <div class="process-desc">On travaille à partir de votre contenu — textes, photos, logo. Première version en 7 jours, on ajuste ensemble jusqu'à ce que ce soit bon.</div>
+            <div class="process-desc">On travaille à partir de votre contenu. Première version en 7 jours, on ajuste ensemble jusqu'à ce que ce soit bon.</div>
           </div>
         </div>
         <div class="process-item reveal">
           <div class="process-n">04</div>
-          <div class="process-content">
+          <div>
             <div class="process-title">Mise en ligne et on reste là</div>
             <div class="process-desc">On met tout en ligne sur votre domaine. Et on reste disponibles après — pour des ajustements, des évolutions, ou juste une question.</div>
           </div>
@@ -221,14 +196,13 @@
     <div class="section-header centered reveal">
       <div class="section-label">Ce qu'on peut créer</div>
       <h2 class="section-title">Des sites qui bougent,<br>des détails qui marquent.</h2>
-      <p class="section-sub">Passez la souris sur chaque carte pour voir les effets en action. Chaque animation peut être intégrée à votre site.</p>
+      <p class="section-sub">Passez la souris sur chaque carte pour voir les effets en action.</p>
     </div>
     <div class="demo-grid">
 
-      <!-- Tilt 3D -->
       <div class="demo-card reveal" id="demoTilt">
         <div class="demo-canvas" style="padding:32px;">
-          <div class="tilt-box" id="tiltBox"><span>Survol moi</span></div>
+          <div class="tilt-box" id="tiltBox">Survol moi</div>
         </div>
         <div class="demo-footer">
           <span class="demo-label">Effet tilt 3D</span>
@@ -236,12 +210,11 @@
         </div>
       </div>
 
-      <!-- Reveal curtain -->
       <div class="demo-card reveal">
         <div class="demo-canvas" style="padding:32px;">
           <div class="reveal-wrap">
-            <div class="reveal-img"><span>Contenu caché</span></div>
-            <div class="reveal-curtain"><span>Survolez</span></div>
+            <div class="reveal-img">Contenu caché</div>
+            <div class="reveal-curtain">Survolez</div>
           </div>
         </div>
         <div class="demo-footer">
@@ -250,7 +223,6 @@
         </div>
       </div>
 
-      <!-- Compteurs -->
       <div class="demo-card reveal" id="demoCounter">
         <div class="demo-canvas" style="padding:32px;">
           <div class="counter-grid">
@@ -274,10 +246,9 @@
         </div>
       </div>
 
-      <!-- Gradient vivant -->
       <div class="demo-card reveal">
         <div class="demo-canvas" style="padding:32px;">
-          <div class="gradient-blob"><span>Gradient animé</span></div>
+          <div class="gradient-blob">Gradient animé</div>
         </div>
         <div class="demo-footer">
           <span class="demo-label">Arrière-plans vivants</span>
@@ -285,7 +256,6 @@
         </div>
       </div>
 
-      <!-- Boutons états -->
       <div class="demo-card reveal">
         <div class="demo-canvas" style="padding:32px;">
           <div class="btn-demo-row">
@@ -300,7 +270,6 @@
         </div>
       </div>
 
-      <!-- Flip card -->
       <div class="demo-card reveal">
         <div class="demo-canvas" style="padding:32px;">
           <div class="flip-scene">
@@ -321,7 +290,7 @@
 </section>
 
 <!-- CTA -->
-<section class="section section-bg">
+<section class="section section-alt">
   <div class="container">
     <div class="cta-box reveal">
       <h2>On peut vous aider à développer votre activité en ligne.</h2>
@@ -334,7 +303,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
@@ -347,7 +315,7 @@
         <ul>
           <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="apropos.html">L'équipe</a></li>
-    <li><a href="accompagnement.html">Accompagnement</a></li>
+          <li><a href="accompagnement.html">Accompagnement</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -362,7 +330,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2025 Webstudio · Thomas Dubois & Kyllian Guy</span>
-      <a href="mentions-legales.html" style="color:rgba(255,255,255,.35)">Mentions légales</a> &nbsp;&middot;&nbsp; <a href="cgv.html" style="color:rgba(255,255,255,.35)">CGV</a>
+      <span><a href="mentions-legales.html">Mentions légales</a> &nbsp;·&nbsp; <a href="cgv.html">CGV</a></span>
     </div>
   </div>
 </footer>
@@ -378,64 +346,53 @@ toggle.addEventListener('click', () => {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-// Scroll reveal
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Tilt 3D
 const demoTilt = document.getElementById('demoTilt');
 const tiltBox  = document.getElementById('tiltBox');
 if (demoTilt && tiltBox) {
   demoTilt.addEventListener('mousemove', (e) => {
     const rect = demoTilt.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top  + rect.height / 2;
-    const dx = (e.clientX - cx) / (rect.width  / 2);
-    const dy = (e.clientY - cy) / (rect.height / 2);
-    tiltBox.style.transform = `perspective(600px) rotateY(${dx * 18}deg) rotateX(${-dy * 18}deg) scale(1.06)`;
+    const dx = (e.clientX - (rect.left + rect.width/2)) / (rect.width/2);
+    const dy = (e.clientY - (rect.top + rect.height/2)) / (rect.height/2);
+    tiltBox.style.transform = `perspective(600px) rotateY(${dx*18}deg) rotateX(${-dy*18}deg) scale(1.06)`;
   });
-  demoTilt.addEventListener('mouseleave', () => {
-    tiltBox.style.transform = 'perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)';
-  });
+  demoTilt.addEventListener('mouseleave', () => { tiltBox.style.transform = ''; });
 }
 
-// Compteurs animés
 const counters = document.querySelectorAll('.counter-num');
 if (counters.length) {
-  const counterObs = new IntersectionObserver((entries) => {
+  const cObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el     = entry.target;
+      const el = entry.target;
       const target = +el.dataset.target;
       const suffix = el.dataset.suffix || '';
-      const duration = 1400;
-      const start  = performance.now();
+      const start = performance.now();
       function step(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(ease * target) + suffix;
-        if (progress < 1) requestAnimationFrame(step);
+        const p = Math.min((now - start) / 1400, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
-      counterObs.unobserve(el);
+      cObs.unobserve(el);
     });
   }, { threshold: 0.5 });
-  counters.forEach(c => counterObs.observe(c));
+  counters.forEach(c => cObs.observe(c));
 }
 
-// Magnetic buttons
 document.querySelectorAll('.btn-demo').forEach(btn => {
   btn.addEventListener('mousemove', (e) => {
     const rect = btn.getBoundingClientRect();
-    const dx = e.clientX - (rect.left + rect.width  / 2);
-    const dy = e.clientY - (rect.top  + rect.height / 2);
-    btn.style.transform = `translate(${dx * 0.25}px, ${dy * 0.35}px)`;
+    const dx = e.clientX - (rect.left + rect.width/2);
+    const dy = e.clientY - (rect.top + rect.height/2);
+    btn.style.transform = `translate(${dx*0.25}px, ${dy*0.35}px)`;
   });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 </script>
 </body>
