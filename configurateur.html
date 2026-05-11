@@ -3,30 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Configurateur — webstudio</title>
-<meta name="description" content="Configurez votre site web en quelques clics et obtenez un devis instantané. Site vitrine ou e-commerce, choisissez vos options.">
+<title>Devis en ligne — Webstudio</title>
+<meta name="description" content="Obtenez un devis instantané pour votre site web. Répondez à quelques questions et découvrez votre prix en temps réel. Gratuit, sans engagement.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #f0f0f0;
-    --navy-light: #1a1a1e;
-    --accent: #818cf8;
-    --accent-light: #a5b4fc;
-    --accent-bg: rgba(129,140,248,0.08);
-    --accent-border: rgba(129,140,248,0.2);
+    --navy: #e8f0ff;
+    --navy-light: #142252;
+    --accent: #2563eb;
+    --accent-light: #3b82f6;
+    --accent-bg: rgba(37,99,235,0.12);
+    --accent-border: rgba(37,99,235,0.28);
     --green: #22c55e;
     --green-bg: rgba(34,197,94,0.1);
     --red: #ef4444;
-    --border: rgba(255,255,255,0.08);
-    --text: #ededed;
-    --muted: #6b6b6b;
-    --bg: #0a0a0a;
-    --white: #111111;
+    --border: rgba(255,255,255,0.1);
+    --text: #e8f0ff;
+    --muted: rgba(232,240,255,0.5);
+    --bg: #0d1f52;
+    --white: #142252;
+    --gold: #f59e0b;
     --radius: 16px;
     --radius-pill: 100px;
-    --shadow: 0 4px 24px rgba(0,0,0,0.5);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -173,7 +174,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--gold);
     margin-bottom: 12px;
   }
 
@@ -250,7 +251,7 @@
   .card-price {
     font-size: 22px;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--gold);
   }
   .card-price span { font-size: 13px; font-weight: 500; color: var(--muted); }
 
@@ -534,7 +535,7 @@
     max-width: 220px;
   }
 
-  .btn-primary:hover { background: #4f46e5; transform: translateY(-1px); }
+  .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
 
   .btn-secondary {
     background: transparent;
@@ -630,7 +631,7 @@
     font-family: inherit;
   }
 
-  .btn-cta:hover { background: #4f46e5; transform: translateY(-1px); }
+  .btn-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
 
   .price-trust {
     text-align: center;
@@ -725,7 +726,7 @@
     font-family: inherit;
   }
 
-  .success-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+  .success-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
 
   /* ── RESPONSIVE — tablette (max 900px) ── */
   @media (max-width: 900px) {
@@ -999,7 +1000,7 @@
       <div class="color-section">
         <div class="color-label">Couleur principale</div>
         <div class="color-presets" id="primaryPresets">
-          <div class="color-preset selected" style="background:#6366f1" data-color="#6366f1" onclick="selectColor('primary', '#6366f1', this)"></div>
+          <div class="color-preset selected" style="background:#2563eb" data-color="#2563eb" onclick="selectColor('primary', '#2563eb', this)"></div>
           <div class="color-preset" style="background:#0ea5e9" data-color="#0ea5e9" onclick="selectColor('primary', '#0ea5e9', this)"></div>
           <div class="color-preset" style="background:#22c55e" data-color="#22c55e" onclick="selectColor('primary', '#22c55e', this)"></div>
           <div class="color-preset" style="background:#f59e0b" data-color="#f59e0b" onclick="selectColor('primary', '#f59e0b', this)"></div>
@@ -1009,8 +1010,8 @@
           <div class="color-preset" style="background:#7c3aed" data-color="#7c3aed" onclick="selectColor('primary', '#7c3aed', this)"></div>
         </div>
         <div class="color-custom">
-          <input type="color" value="#6366f1" id="primaryCustom" oninput="selectColor('primary', this.value, null); document.getElementById('primaryHex').value = this.value;">
-          <input type="text" id="primaryHex" value="#6366f1" placeholder="#000000" maxlength="7"
+          <input type="color" value="#2563eb" id="primaryCustom" oninput="selectColor('primary', this.value, null); document.getElementById('primaryHex').value = this.value;">
+          <input type="text" id="primaryHex" value="#2563eb" placeholder="#000000" maxlength="7"
             style="width:90px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:monospace;outline:none;transition:border-color .2s;"
             oninput="onHexInput('primary', this.value)">
           <span>ou entrez un code hex</span>
@@ -1041,7 +1042,7 @@
         <div class="mood-grid">
           <div class="mood-card selected" id="mood-moderne" onclick="selectMood('Moderne & épuré', this)">
             <div class="mood-preview">
-              <div style="width:30%; background:#6366f1;"></div>
+              <div style="width:30%; background:#2563eb;"></div>
               <div style="flex:1; background:#f8fafc; display:flex; flex-direction:column; justify-content:center; padding:8px; gap:4px;">
                 <div style="height:6px; background:#0f172a; border-radius:3px; width:70%;"></div>
                 <div style="height:4px; background:#e2e8f0; border-radius:3px;"></div>
@@ -1067,7 +1068,7 @@
             <div class="mood-preview">
               <div style="flex:1; background:#0f172a; display:flex; flex-direction:column; justify-content:center; padding:8px; gap:4px;">
                 <div style="height:6px; background:#f8fafc; border-radius:3px; width:70%;"></div>
-                <div style="height:4px; background:#6366f1; border-radius:3px; width:40%;"></div>
+                <div style="height:4px; background:#2563eb; border-radius:3px; width:40%;"></div>
                 <div style="height:4px; background:#334155; border-radius:3px;"></div>
               </div>
             </div>
@@ -1247,7 +1248,7 @@
     products: 5,
     options: {},
     maintenance: true,
-    primaryColor: '#6366f1',
+    primaryColor: '#2563eb',
     secondaryColor: '#f8fafc',
     mood: 'Moderne & épuré',
   };
