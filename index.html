@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Aller au contenu</a>
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">web<span>studio</span></a>
@@ -43,34 +44,123 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main">
+  <div class="hero-orb"></div>
   <div class="container">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-dot"></span>
-      Disponibles pour de nouveaux projets
+    <div class="hero-split">
+      <div class="hero-split-text">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Disponibles pour de nouveaux projets
+        </div>
+        <h1 class="hero-h1">Votre site web,<br>livré en <em>7 jours.</em></h1>
+        <p class="hero-desc">Design, développement et stratégie. On s'occupe de tout, de la maquette à la mise en ligne.</p>
+        <div class="hero-actions">
+          <a href="configurateur.html" class="btn btn-primary btn-lg">Devis rapide &rarr;</a>
+          <a href="tarifs.html" class="btn btn-ghost btn-lg">Voir les tarifs</a>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;font-size:.65rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);border-radius:100px;padding:4px 12px;margin-bottom:28px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;display:inline-block;"></span>
+          Prix de lancement — tarifs réduits pour les premiers clients
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">950 €</div>
+            <div class="hero-stat-label">À partir de</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">7 j</div>
+            <div class="hero-stat-label">Délai moyen</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Caen</div>
+            <div class="hero-stat-label">Basés en Normandie</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4x</div>
+            <div class="hero-stat-label">Paiement sans frais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-split-img">
+        <!-- Image clipped separately so glass cards can overflow -->
+        <div class="hero-img-frame">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=85" alt="Développeur web au travail">
+        </div>
+
+        <!-- Disponible badge (top-left, glass light) -->
+        <div class="hero-glass-badge">
+          <span class="hero-glass-dot"></span>
+          Disponibles
+        </div>
+
+        <!-- Delivery card (bottom-left, glass white) -->
+        <div class="hero-glass-card">
+          <div class="hero-glass-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="hero-glass-card-title">Site livré en 7 jours</div>
+            <div class="hero-glass-card-sub">Le Normand · Brasserie · Caen</div>
+          </div>
+        </div>
+
+        <!-- Stats chip (top-right, glass dark) -->
+        <div class="hero-glass-stat">
+          <div class="hero-glass-stat-num">+40</div>
+          <div class="hero-glass-stat-label">Sites créés</div>
+        </div>
+      </div>
     </div>
-    <h1 class="hero-h1">Votre site web,<br>livré en <em>7 jours.</em></h1>
-    <p class="hero-desc">Design, développement et stratégie. On s'occupe de tout, de la maquette à la mise en ligne.</p>
-    <div class="hero-actions">
-      <a href="configurateur.html" class="btn btn-primary btn-lg">Devis rapide &rarr;</a>
-      <a href="tarifs.html" class="btn btn-ghost btn-lg">Voir les tarifs</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">Pourquoi c'est important</div>
+      <h2 class="section-title">Vos clients cherchent<br>en ligne. Êtes-vous là ?</h2>
+      <p class="section-sub" style="margin:0 auto;">Sans site, vous êtes invisible. Voici pourquoi c'est devenu incontournable.</p>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">950 €</div>
-        <div class="hero-stat-label">À partir de</div>
+
+    <div class="stats-row reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:48px;">
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--dark);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">97 %</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">des gens cherchent en ligne</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Vos clients cherchent sur Google avant tout. Sans vous, ils trouvent la concurrence.</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">7 j</div>
-        <div class="hero-stat-label">Délai moyen</div>
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--dark);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">24h/24</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">votre meilleur commercial</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Votre vitrine ouverte 7j/7. Même quand vous dormez.</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Caen</div>
-        <div class="hero-stat-label">Basés en Normandie</div>
+      <div style="background:var(--surface-2);padding:40px 32px;">
+        <div style="font-size:2.6rem;font-weight:800;color:var(--dark);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;">+crédibilité</div>
+        <div style="font-size:.87rem;color:var(--text);font-weight:600;margin-bottom:8px;">dès le premier contact</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Un site pro inspire confiance. Sans lui, les clients passent leur chemin.</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">4x</div>
-        <div class="hero-stat-label">Paiement sans frais</div>
+    </div>
+
+    <div class="benefits-row reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px;">Vos clients locaux vous trouvent</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Référencement local : vous apparaissez quand quelqu'un cherche votre métier près de chez lui.</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px;">Vous vendez plus, sans vous déplacer</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.65;">Un formulaire ou une boutique en ligne génère des demandes sans que vous ayez à bouger.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -79,51 +169,74 @@
 <!-- SERVICES -->
 <section class="section section-alt">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Ce qu'on fait</div>
-      <h2 class="section-title">Sites web sur mesure<br>pour votre activité.</h2>
-      <p class="section-sub">On s'adapte à votre secteur et on vous accompagne au-delà de la mise en ligne.</p>
+    <div class="svc2-header reveal">
+      <div>
+        <div class="section-label">Ce qu'on fait</div>
+        <h2 class="section-title">Des sites pensés<br>pour convertir.</h2>
+      </div>
+      <p class="svc2-header-sub">On s'adapte à votre secteur et on vous accompagne au-delà de la mise en ligne.</p>
     </div>
-    <div class="services-grid reveal">
-      <div class="svc-card">
-        <div class="svc-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+
+    <!-- 2 main creation services -->
+    <div class="svc2-grid">
+      <div class="svc2-card reveal">
+        <div class="svc2-top">
+          <span class="svc2-num">01</span>
+          <div class="svc2-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
         </div>
-        <div class="svc-name">Site vitrine</div>
-        <div class="svc-desc">Votre activité présentée clairement en ligne. Idéal pour les artisans, commerçants et professions libérales.</div>
-        <div class="svc-price">À partir de <strong>950 €</strong></div>
+        <h3 class="svc2-name">Site vitrine</h3>
+        <p class="svc2-desc">Votre activité présentée clairement en ligne. Idéal pour les artisans, commerçants et professions libérales qui veulent être trouvés.</p>
+        <div class="svc2-foot">
+          <div class="svc2-price">À partir de <strong>950 €</strong></div>
+          <a href="tarifs.html" class="svc2-link">Voir les tarifs →</a>
+        </div>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+
+      <div class="svc2-card dark reveal">
+        <div class="svc2-top">
+          <span class="svc2-num">02</span>
+          <div class="svc2-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          </div>
         </div>
-        <div class="svc-name">Site e-commerce</div>
-        <div class="svc-desc">Catalogue, panier, paiement sécurisé. Pour vendre en ligne sans se compliquer la vie.</div>
-        <div class="svc-price">À partir de <strong>1 399 €</strong></div>
+        <h3 class="svc2-name">Site e-commerce</h3>
+        <p class="svc2-desc">Catalogue produits, panier d'achat, paiement sécurisé. Pour vendre en ligne sans se compliquer la vie.</p>
+        <div class="svc2-foot">
+          <div class="svc2-price">À partir de <strong>1 399 €</strong></div>
+          <a href="tarifs.html" class="svc2-link">Voir les tarifs →</a>
+        </div>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+
+    <!-- 3 support services -->
+    <div class="svc3-grid">
+      <div class="svc3-card reveal">
+        <div class="svc3-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div class="svc-name">Maintenance</div>
-        <div class="svc-desc">Mises à jour, corrections, ajustements. On gère, vous n'y touchez pas.</div>
-        <div class="svc-price"><strong>85 €/mois</strong></div>
+        <div class="svc3-name">Maintenance</div>
+        <div class="svc3-desc">Mises à jour, corrections, ajustements. On gère, vous n'y touchez pas.</div>
+        <div class="svc3-price">85 €<small>/mois</small></div>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+
+      <div class="svc3-card reveal">
+        <div class="svc3-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
-        <div class="svc-name">Pack photo & vidéo</div>
-        <div class="svc-desc">Photos et vidéos pro de votre activité. Zone Normandie, déplacement inclus.</div>
-        <div class="svc-price">À partir de <strong>149 €</strong></div>
+        <div class="svc3-name">Pack photo & vidéo</div>
+        <div class="svc3-desc">Photos et vidéos pro de votre activité. Zone Normandie, déplacement inclus.</div>
+        <div class="svc3-price">À partir de <strong>149 €</strong></div>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+      <div class="svc3-card reveal">
+        <div class="svc3-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="svc-name">Accompagnement</div>
-        <div class="svc-desc">Stratégie de communication, veille marketing, présence en ligne. On construit avec vous.</div>
-        <div class="svc-price"><strong>Sur devis</strong></div>
+        <div class="svc3-name">Accompagnement</div>
+        <div class="svc3-desc">Stratégie de communication, veille marketing et présence en ligne. On construit avec vous.</div>
+        <div class="svc3-price"><strong>Sur devis</strong></div>
       </div>
     </div>
   </div>
@@ -139,21 +252,8 @@
     </div>
     <div class="demos-grid reveal">
       <a href="demos/plombier/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#1B2D4F 0%,#2563EB 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav"></div>
-            <div class="demo-mockup-hero">
-              <div class="demo-mockup-h1" style="background:rgba(255,255,255,.9)"></div>
-              <div class="demo-mockup-h1 short" style="background:rgba(255,255,255,.6)"></div>
-              <div class="demo-mockup-p"></div>
-              <div class="demo-mockup-btn"></div>
-            </div>
-            <div class="demo-mockup-cards">
-              <div class="demo-mockup-card"></div>
-              <div class="demo-mockup-card"></div>
-              <div class="demo-mockup-card"></div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-plombier.jpg" alt="Dubois Plomberie" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Artisan · Plomberie</span>
@@ -164,22 +264,8 @@
       </a>
 
       <a href="demos/coiffeur/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#1A0A00 0%,#C9943A 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav" style="background:rgba(253,248,243,.12)"></div>
-            <div class="demo-mockup-hero" style="align-items:center;text-align:center">
-              <div style="width:40px;height:1px;background:rgba(201,148,58,.7);margin:0 auto 10px"></div>
-              <div class="demo-mockup-h1" style="background:rgba(253,248,243,.85);width:70%;margin:0 auto 6px"></div>
-              <div class="demo-mockup-h1 short" style="background:rgba(201,148,58,.7);width:45%;margin:0 auto 10px"></div>
-              <div class="demo-mockup-btn" style="background:rgba(201,148,58,.8);width:120px;margin:0 auto"></div>
-            </div>
-            <div class="demo-mockup-cards">
-              <div class="demo-mockup-card" style="border:1px solid rgba(201,148,58,.2)"></div>
-              <div class="demo-mockup-card" style="border:1px solid rgba(201,148,58,.2)"></div>
-              <div class="demo-mockup-card" style="border:1px solid rgba(201,148,58,.2)"></div>
-              <div class="demo-mockup-card" style="border:1px solid rgba(201,148,58,.2)"></div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-coiffeur.jpg" alt="Studio Élise" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Commerce · Coiffure</span>
@@ -190,16 +276,8 @@
       </a>
 
       <a href="demos/electricien/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#0D0D0D 0%,#1A1A1A 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav" style="background:rgba(255,255,255,.04)"></div>
-            <div class="demo-mockup-hero" style="padding:16px 12px">
-              <div style="font-size:8px;font-weight:800;color:rgba(245,158,11,.9);letter-spacing:.1em;margin-bottom:8px;font-family:sans-serif">VOLTEX</div>
-              <div class="demo-mockup-h1" style="background:rgba(255,255,255,.85);height:10px"></div>
-              <div class="demo-mockup-h1 short" style="background:rgba(245,158,11,.7);width:55%;height:8px"></div>
-              <div style="display:flex;gap:6px;margin-top:10px"><div class="demo-mockup-btn" style="background:rgba(245,158,11,.9);width:80px"></div><div class="demo-mockup-btn" style="background:rgba(255,255,255,.1);width:80px;border:1px solid rgba(255,255,255,.15)"></div></div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-electricien.jpg" alt="Voltex Électricité" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Artisan · Électricité</span>
@@ -210,18 +288,8 @@
       </a>
 
       <a href="demos/beaute/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#1C1C2E 0%,#4a3060 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav" style="background:rgba(247,242,236,.05)"></div>
-            <div class="demo-mockup-hero" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px 12px">
-              <div style="background:linear-gradient(135deg,rgba(232,205,181,.3),rgba(212,169,160,.2));border-radius:3px;aspect-ratio:1"></div>
-              <div style="display:flex;flex-direction:column;justify-content:center;gap:5px">
-                <div style="height:6px;background:rgba(232,205,181,.7);border-radius:2px"></div>
-                <div style="height:8px;background:rgba(232,205,181,.9);border-radius:2px;width:70%"></div>
-                <div style="height:18px;width:70px;background:rgba(232,205,181,.9);border-radius:1px;margin-top:4px"></div>
-              </div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-beaute.jpg" alt="Nacre Institut" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Commerce · Beauté & Bien-être</span>
@@ -232,17 +300,8 @@
       </a>
 
       <a href="demos/restaurant/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#120C08 0%,#3a1010 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav" style="background:rgba(255,255,255,.03)"></div>
-            <div class="demo-mockup-hero" style="padding:0;position:relative;min-height:80px">
-              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(18,12,8,.95),rgba(18,12,8,.3));z-index:1"></div>
-              <div style="position:absolute;bottom:12px;left:12px;z-index:2">
-                <div style="height:5px;background:rgba(196,163,90,.7);width:40px;border-radius:1px;margin-bottom:5px"></div>
-                <div style="height:9px;background:rgba(244,239,230,.85);width:120px;border-radius:1px;margin-bottom:4px"></div>
-              </div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-restaurant.jpg" alt="Le Normand" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Restaurant · Brasserie</span>
@@ -253,18 +312,8 @@
       </a>
 
       <a href="demos/menuisier/index.html" target="_blank" class="demo-card">
-        <div class="demo-preview" style="background:linear-gradient(135deg,#2C1A0E 0%,#5C3A1E 100%)">
-          <div class="demo-preview-inner">
-            <div class="demo-mockup-nav" style="background:rgba(255,255,255,.04)"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;flex:1">
-              <div style="padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px">
-                <div style="height:5px;background:rgba(196,145,74,.7);width:50%;border-radius:1px"></div>
-                <div style="height:9px;background:rgba(255,255,255,.8);border-radius:1px"></div>
-                <div style="height:16px;width:80px;background:rgba(196,145,74,.9);border-radius:1px;margin-top:6px"></div>
-              </div>
-              <div style="background:linear-gradient(160deg,rgba(92,58,30,.8),rgba(44,26,14,.9))"></div>
-            </div>
-          </div>
+        <div class="demo-preview">
+          <img src="assets/images/preview-menuisier.jpg" alt="Atelier Leroy" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <div class="demo-body">
           <span class="demo-sector">Artisan · Menuiserie</span>
