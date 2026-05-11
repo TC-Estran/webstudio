@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Client · TC Estran Webstudio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f3;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      background: #0f0f0f;
+      color: white;
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 10px; }
+    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; }
+    header h1 span { color: #c9943a; }
+    .header-tag { font-size: .75rem; color: rgba(255,255,255,.35); margin-top: 6px; }
+    .header-right { text-align: right; }
+    .version { font-size: .7rem; color: rgba(255,255,255,.3); }
+
+    /* NAV PARTS */
+    .parts-nav {
+      display: flex;
+      background: white;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 0 60px;
+    }
+    .parts-nav a {
+      display: block;
+      padding: 18px 24px 16px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .parts-nav a.active, .parts-nav a:hover { color: #0f0f0f; border-bottom-color: #c9943a; }
+
+    /* LAYOUT */
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+
+    /* PART TITLE */
+    .part-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #c9943a;
+      margin-bottom: 8px;
+    }
+    .part-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin-bottom: 48px;
+    }
+
+    /* STEPS */
+    .step {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+      transition: border-color .2s;
+    }
+    .step.step-done { border-color: #d4ead4; }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 32px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #0f0f0f;
+      color: white;
+      font-size: .75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: .05em;
+      transition: background .2s;
+    }
+    .step.step-done .step-num { background: #3a8a3a; }
+    .step-label { font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 2px; }
+    .step-title { font-size: 1.05rem; font-weight: 700; }
+    .step-progress {
+      margin-left: auto;
+      margin-right: 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: #bbb;
+      white-space: nowrap;
+    }
+    .step-progress.done { color: #3a8a3a; }
+    .step-arrow { color: #ccc; font-size: 1.1rem; transition: transform .25s; }
+    .step.open .step-arrow { transform: rotate(180deg); }
+
+    .step-body {
+      padding: 0 32px 32px 92px;
+      display: none;
+    }
+    .step.open .step-body { display: block; }
+
+    /* ── CUSTOM CHECKLIST ── */
+    .checklist { list-style: none; margin-top: 4px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .checklist li:last-child { border-bottom: none; }
+
+    /* Hidden native checkbox */
+    .checklist input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* Custom checkbox box */
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      font-size: .9rem;
+      color: #333;
+      width: 100%;
+      transition: color .2s;
+    }
+    .checklist label::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid #d4d4d4;
+      background: white;
+      margin-top: 1px;
+      transition: all .18s ease;
+      position: relative;
+    }
+
+    /* Checked state */
+    .checklist input[type="checkbox"]:checked + label::before {
+      background: #0f0f0f;
+      border-color: #0f0f0f;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpolyline points='1.5,5 4.5,8 10.5,1.5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px 10px;
+    }
+    .checklist input[type="checkbox"]:checked + label {
+      color: #bbb;
+      text-decoration: line-through;
+      text-decoration-color: #ccc;
+    }
+
+    /* Hover effect on unchecked */
+    .checklist input[type="checkbox"]:not(:checked) + label:hover::before {
+      border-color: #999;
+      background: #f9f9f9;
+    }
+
+    /* SUB LIST */
+    .sub-list { list-style: none; margin-top: 8px; padding-left: 0; }
+    .sub-list li { font-size: .82rem; color: #666; padding: 3px 0; display: flex; gap: 8px; }
+    .sub-list li::before { content: '—'; color: #ccc; flex-shrink: 0; }
+
+    /* INFO BOX */
+    .info-box {
+      background: #f9f6f0;
+      border-left: 3px solid #c9943a;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-top: 20px;
+      font-size: .85rem;
+      color: #555;
+    }
+
+    /* CODE */
+    code {
+      background: #f0f0f0;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: .82rem;
+      font-family: 'SF Mono', monospace;
+      color: #333;
+    }
+
+    /* EXAMPLES */
+    .examples {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .example-tag {
+      background: #f0f0f0;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: .8rem;
+      font-family: monospace;
+      color: #333;
+    }
+
+    /* SECTION LABEL inside step-body */
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin: 20px 0 8px;
+    }
+    .section-label:first-child { margin-top: 4px; }
+
+    /* TIMING TABLE */
+    .timing { width: 100%; border-collapse: collapse; margin-top: 16px; border-radius: 10px; overflow: hidden; }
+    .timing th { background: #0f0f0f; color: white; padding: 12px 20px; text-align: left; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+    .timing td { padding: 14px 20px; font-size: .88rem; border-bottom: 1px solid #f0f0f0; }
+    .timing tr:last-child td { border-bottom: none; }
+    .timing tr:nth-child(odd) td { background: #fafafa; }
+    .timing .day { font-weight: 700; white-space: nowrap; }
+
+    /* DIVIDER */
+    .part-divider { border: none; border-top: 1px solid #e0e0e0; margin: 60px 0; }
+
+    /* CESSATION */
+    .cessation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .cessation-card {
+      background: white;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .cessation-card h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cessation-card h4 .icon {
+      width: 28px;
+      height: 28px;
+      background: #f5f5f3;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+    }
+    .cessation-card p, .cessation-card li {
+      font-size: .82rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    .cessation-card ul { list-style: none; }
+    .cessation-card ul li { padding: 3px 0; display: flex; gap: 8px; }
+    .cessation-card ul li::before { content: '→'; color: #c9943a; flex-shrink: 0; }
+
+    /* CLAUSE */
+    .clause {
+      background: #0f0f0f;
+      color: white;
+      border-radius: 14px;
+      padding: 32px 36px;
+      margin-top: 32px;
+    }
+    .clause-label { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #c9943a; margin-bottom: 14px; }
+    .clause p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.75); font-style: italic; }
+
+    /* ALERT */
+    .alert {
+      background: #fff8f0;
+      border: 1px solid #fde0b0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .85rem;
+      color: #7a4a00;
+      margin-bottom: 28px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* RESET BUTTON */
+    .reset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 32px;
+      padding: 9px 18px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 8px;
+      background: white;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #888;
+      cursor: pointer;
+      transition: all .18s;
+    }
+    .reset-btn:hover { border-color: #bbb; color: #333; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: .75rem;
+      color: #aaa;
+      border-top: 1px solid #e8e8e8;
+      background: white;
+    }
+
+    @media (max-width: 680px) {
+      header { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .parts-nav { padding: 0 16px; }
+      .container { padding: 32px 16px; }
+      .step-body { padding: 0 20px 24px 20px; }
+      .cessation-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-logo">TC Estran · Webstudio</div>
+    <h1>Process <span>Création de Site</span></h1>
+    <div class="header-tag">Document interne · usage personnel</div>
+  </div>
+  <div class="header-right">
+    <div class="version">v1.0 · Mai 2026</div>
+  </div>
+</header>
+
+<nav class="parts-nav">
+  <a href="#partie1" class="active">Partie 1 · Création</a>
+  <a href="#partie2">Partie 2 · Cessation</a>
+</nav>
+
+<!-- PARTIE 1 -->
+<div class="container" id="partie1">
+  <div class="part-title">Partie 1</div>
+  <h2 class="part-heading">Création du site client</h2>
+
+  <!-- ÉTAPE 1 -->
+  <div class="step" id="step-1">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-label">Étape 1</div>
+        <div class="step-title">Brief initial, appel ou RDV</div>
+      </div>
+      <div class="step-progress" id="prog-1"></div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <p style="font-size:.88rem;color:#555;margin-bottom:16px">Informations à récupérer <strong>avant de commencer quoi que ce soit</strong> :</p>
+      <ul class="checklist">
+        <li><input type="checkbox" id="c1-1"><label for="c1-1">Nom complet du client et nom commercial</label></li>
+        <li><input type="checkbox" id="c1-2"><label for="c1-2">Activité exacte et zone géographique (ville, département)</label></li>
+        <li><input type="checkbox" id="c1-3"><label for="c1-3">Numéro de téléphone et email professionnel</label></li>
+        <li><input type="checkbox" id="c1-4"><label for="c1-4">Réseaux sociaux existants</label></li>
+        <li><input type="checkbox" id="c1-5"><label for="c1-5">Photos disponibles : demander par WeTransfer ou Drive</label></li>
+        <li><input type="checkbox" id="c1-6"><label for="c1-6">Couleurs ou charte graphique existante (logo si dispo)</label></li>
+        <li><input type="checkbox" id="c1-7"><label for="c1-7">Pages souhaitées (accueil, services, galerie, contact…)</label></li>
+        <li><input type="checkbox" id="c1-8"><label for="c1-8">Délai souhaité</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 -->
+  <div class="step" id="step-2">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-label">Étape 2</div>
+        <div class="step-title">Choix du nom de domaine</div>
+      </div>
+      <div class="step-progress" id="prog-2"></div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <p style="font-size:.88rem;color:#555;margin-bottom:16px"><strong>Avant le call</strong>, préparer 3-4 suggestions déjà vérifiées disponibles sur ovh.com :</p>
+
+      <div class="section-label">Règles de sélection</div>
+      <ul class="checklist">
+        <li><input type="checkbox" id="c2-1"><label for="c2-1">Court et mémorisable</label></li>
+        <li><input type="checkbox" id="c2-2"><label for="c2-2">Contient l'activité et/ou le nom + ville si possible</label></li>
+        <li><input type="checkbox" id="c2-3"><label for="c2-3">Toujours prendre le <code>.fr</code> pour un artisan local</label></li>
+        <li><input type="checkbox" id="c2-4"><label for="c2-4">Éviter les tirets en trop</label></li>
+        <li><input type="checkbox" id="c2-5"><label for="c2-5">3-4 suggestions vérifiées disponibles préparées avant le call</label></li>
+      </ul>
+
+      <p style="font-size:.8rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 8px">Exemples</p>
+      <div class="examples">
+        <span class="example-tag">martin-plomberie.fr</span>
+        <span class="example-tag">plomberie-martin-caen.fr</span>
+        <span class="example-tag">coiffure-dupont.fr</span>
+      </div>
+
+      <div class="section-label" style="margin-top:24px">Achat du domaine</div>
+      <ul class="checklist">
+        <li><input type="checkbox" id="c2-6"><label for="c2-6">Achat sur <strong>ton compte OVH</strong>, le client ne voit pas le prix</label></li>
+        <li><input type="checkbox" id="c2-7"><label for="c2-7">Facturer au client 25-30 €/an (ta marge de gestion)</label></li>
+        <li><input type="checkbox" id="c2-8"><label for="c2-8">Le domaine reste sous ton compte pendant la prestation</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 -->
+  <div class="step" id="step-3">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-label">Étape 3 · Jour 1</div>
+        <div class="step-title">Mise en ligne rapide</div>
+      </div>
+      <div class="step-progress" id="prog-3"></div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <p style="font-size:.88rem;color:#555;margin-bottom:16px">Objectif : faire indexer le site par Google le plus tôt possible, même si le site n'est pas terminé.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" id="c3-1"><label for="c3-1">Créer le repo GitHub (public)</label></li>
+        <li><input type="checkbox" id="c3-2"><label for="c3-2">Créer une page <code>index.html</code> minimale : nom, activité, ville, téléphone, mots-clés</label></li>
+        <li><input type="checkbox" id="c3-3"><label for="c3-3">Configurer les DNS sur OVH (pointer le domaine vers GitHub Pages)</label></li>
+        <li><input type="checkbox" id="c3-4"><label for="c3-4">Activer GitHub Pages sur le repo</label></li>
+        <li><input type="checkbox" id="c3-5"><label for="c3-5">Créer un compte Google Search Console pour le domaine</label></li>
+        <li><input type="checkbox" id="c3-6"><label for="c3-6">Soumettre le sitemap (<code>nomdusite.fr/sitemap.xml</code>)</label></li>
+        <li><input type="checkbox" id="c3-7"><label for="c3-7">Demander l'indexation des pages disponibles</label></li>
+      </ul>
+      <div class="info-box">L'indexation prend <strong>2 à 6 semaines</strong> sur un nouveau domaine. En commençant dès le Jour 1, Google a le temps de travailler pendant que tu développes le site.</div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 4 -->
+  <div class="step" id="step-4">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-label">Étape 4 · J2 à J6</div>
+        <div class="step-title">Développement du site</div>
+      </div>
+      <div class="step-progress" id="prog-4"></div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><input type="checkbox" id="c4-1"><label for="c4-1">Site complet, responsive (mobile en priorité)</label></li>
+        <li><input type="checkbox" id="c4-2"><label for="c4-2">Pages définies avec le client lors du brief</label></li>
+        <li><input type="checkbox" id="c4-3"><label for="c4-3">Photos intégrées (client ou Pexels si besoin)</label></li>
+        <li>
+          <input type="checkbox" id="c4-4">
+          <label for="c4-4">Formulaire connecté à <strong>Web3Forms</strong>
+            <ul class="sub-list">
+              <li>Demander au client de créer un compte sur web3forms.com</li>
+              <li>Il génère sa clé API et te l'envoie</li>
+              <li>Tu l'intègres dans le <code>&lt;form&gt;</code></li>
+              <li>Les soumissions arrivent directement dans sa boîte mail</li>
+            </ul>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="c4-5">
+          <label for="c4-5">SEO de base sur chaque page
+            <ul class="sub-list">
+              <li><code>&lt;title&gt;</code> unique et descriptif</li>
+              <li><code>&lt;meta name="description"&gt;</code> bien rédigée</li>
+              <li>Un seul <code>&lt;h1&gt;</code> par page avec les mots-clés</li>
+              <li>Balises <code>alt</code> sur toutes les images</li>
+            </ul>
+          </label>
+        </li>
+        <li><input type="checkbox" id="c4-6"><label for="c4-6">Sitemap.xml mis à jour avec toutes les pages</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 5 -->
+  <div class="step" id="step-5">
+    <div class="step-header" onclick="toggle(this)">
+      <div class="step-num">05</div>
+      <div>
+        <div class="step-label">Étape 5 · Jour 7</div>
+        <div class="step-title">Livraison</div>
+      </div>
+      <div class="step-progress" id="prog-5"></div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><input type="checkbox" id="c5-1"><label for="c5-1">Vérification complète sur mobile et desktop</label></li>
+        <li><input type="checkbox" id="c5-2"><label for="c5-2">Vérification de tous les liens et formulaires</label></li>
+        <li><input type="checkbox" id="c5-3"><label for="c5-3">Demander la ré-indexation des pages finales sur Search Console</label></li>
+        <li>
+          <input type="checkbox" id="c5-4">
+          <label for="c5-4">Expliquer au client
+            <ul class="sub-list">
+              <li>Le référencement prend 2 à 4 semaines minimum</li>
+              <li>Partager le lien sur ses réseaux accélère l'indexation</li>
+              <li>Créer une fiche Google Business Profile est fortement conseillé</li>
+            </ul>
+          </label>
+        </li>
+        <li><input type="checkbox" id="c5-5"><label for="c5-5">Livrer un accès en lecture seule au repo GitHub si souhaité</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TIMING -->
+  <div style="margin-top:40px">
+    <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-bottom:16px">Timing idéal</p>
+    <table class="timing">
+      <thead>
+        <tr><th>Jour</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="day">J1</td><td>Brief · Choix domaine · Achat OVH · Page provisoire en ligne · Search Console</td></tr>
+        <tr><td class="day">J2 – J6</td><td>Développement complet du site</td></tr>
+        <tr><td class="day">J7</td><td>Livraison · Ré-indexation · Explication client</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="reset-btn" onclick="resetAll()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6A4 4 0 1 1 6 2c1.1 0 2.1.44 2.83 1.17L10 4.5V2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Réinitialiser toutes les coches
+  </button>
+</div>
+
+<!-- PARTIE 2 -->
+<div class="container" id="partie2">
+  <hr class="part-divider">
+  <div class="part-title">Partie 2</div>
+  <h2 class="part-heading">Cessation de prestation</h2>
+
+  <div class="alert">
+    ⚠️ <span>Aucun transfert n'est effectué tant qu'une <strong>facture est en attente de règlement</strong>.</span>
+  </div>
+
+  <p style="font-size:.88rem;color:#555;margin-bottom:24px">S'applique en cas de fin de contrat, qu'elle soit à l'initiative du client ou de TC Estran.</p>
+
+  <div class="cessation-grid">
+    <div class="cessation-card">
+      <h4><span class="icon">🌐</span> Nom de domaine</h4>
+      <ul>
+        <li>Transfert OVH vers le compte OVH du client</li>
+        <li>Délai : 24 à 48h après demande</li>
+        <li>Tu génères un code de transfert depuis ton espace OVH</li>
+        <li>Coût éventuel : à la charge du client</li>
+      </ul>
+    </div>
+    <div class="cessation-card">
+      <h4><span class="icon">📁</span> Fichiers du site</h4>
+      <ul>
+        <li>Livraison des sources complètes (zip ou accès GitHub)</li>
+        <li>Format HTML/CSS/JS, sans dépendance</li>
+        <li>Le client héberge où il veut ensuite</li>
+      </ul>
+    </div>
+    <div class="cessation-card">
+      <h4><span class="icon">✉️</span> Formulaires</h4>
+      <ul>
+        <li>Le client crée son compte Web3Forms avec son email</li>
+        <li>Tu changes la clé API avant livraison des fichiers</li>
+        <li>Les anciennes soumissions ne sont pas transférables</li>
+      </ul>
+    </div>
+    <div class="cessation-card">
+      <h4><span class="icon">📊</span> Google Search Console</h4>
+      <ul>
+        <li>Tu ajoutes le client en tant que propriétaire principal</li>
+        <li>Tu te retires de l'accès</li>
+        <li>L'historique d'indexation reste intact</li>
+      </ul>
+    </div>
+    <div class="cessation-card">
+      <h4><span class="icon">📍</span> Google Business Profile</h4>
+      <ul>
+        <li>Transfert de gestion au compte Google du client</li>
+        <li>Délai : immédiat</li>
+      </ul>
+    </div>
+    <div class="cessation-card" style="background:#fafafa;border-style:dashed">
+      <h4 style="color:#999"><span class="icon">🚫</span> Ce qui ne suit pas</h4>
+      <ul>
+        <li style="color:#999">Ton compte OVH et tes accès personnels</li>
+        <li style="color:#999">Tes templates et outils de développement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-label">Clause contrat recommandée</div>
+    <p>"En cas de fin de prestation, TC Estran s'engage à transférer l'ensemble des éléments liés au site (domaine, fichiers sources, accès Search Console) dans un délai de <strong style="color:white">5 jours ouvrés</strong> suivant le règlement de toute facture en attente. Le client reste propriétaire de son contenu et de son nom de domaine à l'issue de la prestation."</p>
+  </div>
+</div>
+
+<footer>
+  TC Estran · Webstudio · Document interne · v1.0 · Mai 2026
+</footer>
+
+<script>
+  // Map each step ID to its checkboxes
+  const STEPS = {
+    'step-1': ['c1-1','c1-2','c1-3','c1-4','c1-5','c1-6','c1-7','c1-8'],
+    'step-2': ['c2-1','c2-2','c2-3','c2-4','c2-5','c2-6','c2-7','c2-8'],
+    'step-3': ['c3-1','c3-2','c3-3','c3-4','c3-5','c3-6','c3-7'],
+    'step-4': ['c4-1','c4-2','c4-3','c4-4','c4-5','c4-6'],
+    'step-5': ['c5-1','c5-2','c5-3','c5-4','c5-5'],
+  };
+
+  const PROG_MAP = {
+    'step-1': 'prog-1',
+    'step-2': 'prog-2',
+    'step-3': 'prog-3',
+    'step-4': 'prog-4',
+    'step-5': 'prog-5',
+  };
+
+  // ── Persist & restore from localStorage ──
+  function saveState() {
+    const state = {};
+    Object.values(STEPS).flat().forEach(id => {
+      const el = document.getElementById(id);
+      if (el) state[id] = el.checked;
+    });
+    localStorage.setItem('process-client-v1', JSON.stringify(state));
+  }
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('process-client-v1') || '{}');
+      Object.entries(saved).forEach(([id, checked]) => {
+        const el = document.getElementById(id);
+        if (el) el.checked = checked;
+      });
+    } catch(e) {}
+  }
+
+  // ── Update progress counter + step style ──
+  function updateProgress(stepId) {
+    const ids = STEPS[stepId];
+    const total = ids.length;
+    const done = ids.filter(id => document.getElementById(id)?.checked).length;
+    const progEl = document.getElementById(PROG_MAP[stepId]);
+    const stepEl = document.getElementById(stepId);
+
+    if (progEl) {
+      if (done === 0) {
+        progEl.textContent = '';
+        progEl.className = 'step-progress';
+      } else if (done === total) {
+        progEl.textContent = '✓ Terminé';
+        progEl.className = 'step-progress done';
+      } else {
+        progEl.textContent = `${done} / ${total}`;
+        progEl.className = 'step-progress';
+      }
+    }
+
+    if (stepEl) {
+      if (done === total) {
+        stepEl.classList.add('step-done');
+      } else {
+        stepEl.classList.remove('step-done');
+      }
+    }
+  }
+
+  function updateAllProgress() {
+    Object.keys(STEPS).forEach(updateProgress);
+  }
+
+  // ── Wire up checkboxes ──
+  function initCheckboxes() {
+    Object.entries(STEPS).forEach(([stepId, ids]) => {
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('change', () => {
+            saveState();
+            updateProgress(stepId);
+          });
+        }
+      });
+    });
+  }
+
+  // ── Toggle accordion ──
+  function toggle(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  // ── Reset all ──
+  function resetAll() {
+    if (!confirm('Remettre toutes les coches à zéro ?')) return;
+    Object.values(STEPS).flat().forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.checked = false;
+    });
+    localStorage.removeItem('process-client-v1');
+    updateAllProgress();
+  }
+
+  // ── Nav active state ──
+  document.querySelectorAll('.parts-nav a').forEach(a => {
+    a.addEventListener('click', function() {
+      document.querySelectorAll('.parts-nav a').forEach(x => x.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── Init ──
+  loadState();
+  initCheckboxes();
+  updateAllProgress();
+</script>
+
+</body>
+</html>

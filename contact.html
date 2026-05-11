@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Webstudio</title>
+<title>Contact · Webstudio</title>
 <meta name="description" content="Contactez Webstudio pour discuter de votre projet web. Réponse sous 24h. Basé à Caen, Normandie.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Aller au contenu</a>
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">web<span>studio</span></a>
@@ -31,12 +32,12 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-alt" id="main">
   <div class="container">
     <div class="contact-wrap reveal">
 
       <div class="contact-info">
-        <h3>Ce que vous pouvez attendre</h3>
+        <h2>Ce que vous pouvez attendre</h2>
         <p>Un échange simple et direct. Pas de discours commercial. On lit votre message, on comprend votre besoin et on vous revient avec une réponse concrète.</p>
 
         <div class="contact-details">
@@ -183,11 +184,11 @@ document.getElementById('contactForm').addEventListener('submit', async function
       this.reset();
       btn.textContent = 'Message envoyé';
     } else {
-      btn.textContent = 'Erreur — réessayez';
+      btn.textContent = 'Erreur, réessayez';
       btn.disabled = false;
     }
   } catch {
-    btn.textContent = 'Erreur — réessayez';
+    btn.textContent = 'Erreur, réessayez';
     btn.disabled = false;
   }
 });
